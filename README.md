@@ -1,4 +1,4 @@
-components
-==========
+Webix Components
+==================
 
-Third party integrations for the Webix UI
+Collection of third party integrations for the Webix UI
