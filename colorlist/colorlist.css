@@ -1,0 +1,19 @@
+.wbx_colorlist .webix_list_item{
+	line-height:28px;
+	overflow:hidden;
+}
+.wbx_colorlist .webix_selected{
+	 border-color:white !important;
+	 border-radius:8px;
+	 box-shadow: inset 0px 0px 3px 3px rgba(255,255,255,0.5);
+}
+.webix_list_item .wbx_colorbar{
+	float:left; width:8px; margin-right:20px;
+	border-radius: 3px;
+}
+.webix_selected .wbx_colorbar{
+	visibility: hidden;
+}
+.webix_list_item .wbx_text{
+	margin-left:10px;
+}
