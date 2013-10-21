@@ -1,0 +1,9 @@
+JustGage is released under MIT license. Feel free to use it and modify it in any way you find suitable.
+
+JustGage is a handy JavaScript plugin for generating and animating nice & clean dashboard gauges. It is based on Raphaël library for vector drawing.
+
+Checkout http://justgage.com for details, demos, current release and more.
+
+Project sites:
+	https://github.com/toorshia/justgage
+	http://justgage.com

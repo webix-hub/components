@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="http://cdn.webix.io/edge/webix.css" type="text/css" media="screen" charset="utf-8">
+		<script src="http://cdn.webix.io/edge/webix.js" type="text/javascript" charset="utf-8"></script>
+		
+		<title>Sigma Chart</title>
+		<script type="text/javascript" src="./sigma.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript" charset="utf-8">
+			webix.codebase = "./";
+
+			webix.ui({
+				type:"space", rows:[
+					{
+						view:"sigma-chart", 
+						url:"./data/les_miserables.gexf"
+					}
+				]
+			});
+
+		</script>
+	</body>
+
+
+	
+</html>

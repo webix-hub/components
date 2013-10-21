@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+	<script type="text/javascript" src="http://cdn.webix.io/edge/webix.js"></script>
+	<link rel="stylesheet" type="text/css" href="http://cdn.webix.io/edge/webix.css">
+
+	<script type="text/javascript" src="./ckeditor.js"></script>
+</head>
+<body>
+	<div id="sample_div" style='width:600px; height:300px; margin:50px;'></div>
+	<script type="text/javascript">
+		//path from which autoload extra libraries
+		webix.codebase = "./";
+
+		webix.ui({
+			container:"sample_div",
+			borderless:true,
+    		view:"ckeditor",
+    		value:'<h2>Text editor</h2> <div><small>From Wikipedia, the free encyclopedia</small></div> <p>A <strong>text editor</strong> is a type of program used for editing plain text files </p>'
+		});
+	</script>
+</body>
+</html>
