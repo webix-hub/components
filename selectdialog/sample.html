@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="../../webix/codebase/webix.css" type="text/css" media="screen" charset="utf-8">
+		<script src="../../webix/codebase/webix.js" type="text/javascript" charset="utf-8"></script>
+
+		<script type="text/javascript" src="selectdialog.js"></script>
+		<link rel="stylesheet" type="text/css" href="selectdialog.css">
+
+		<title>Open Dialog</title>
+		<style>
+			html, body{
+				height:100%;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<input type="button"  style='width:200px; height:30px;' value="Select file" onClick="$$('dialog').show(this);">
+		</div>	
+
+		<script type="text/javascript" charset="utf-8">
+
+		var testdata = 	[
+			{id:1, type:"folder", name:"Films", folder_id:0},
+			{id:2, type:"folder", name:"Pictures", folder_id:0},
+			{id:3, type:"file", name:"My Fair Lady", folder_id:1},
+			{id:4, type:"file", name:"Into the Wild", folder_id:1},
+			{id:5, type:"file", name:"IMG001", folder_id:2},
+			{id:6, type:"file", name:"IMG002", folder_id:2},
+			{id:7, type:"file", name:"IMG003", folder_id:2},
+			{id:8, type:"file", name:"Report", folder_id:0},
+			{id:9, type:"file", name:"Schedule", folder_id:0},
+			{id:10, type:"file", name:"IMG004", folder_id:0},
+			{id:11, type:"folder", name:"July 2013", folder_id:2},
+			{id:12, type:"folder", name:"August 2013", folder_id:2},
+			{id:13, type:"file", name:"IMG005", folder_id:11},
+			{id:14, type:"file", name:"IMG006", folder_id:11},
+			{id:15, type:"file", name:"IMG007", folder_id:11},
+			{id:16, type:"file", name:"IMG008", folder_id:12},
+			{id:17, type:"file", name:"IMG009", folder_id:12},
+			{id:18, type:"file", name:"IMG010", folder_id:12},
+			{id:19, type:"file", name:"IMG011", folder_id:12},
+			{id:20, type:"file", name:"IMG012", folder_id:12}
+		];
+
+
+		webix.ui({
+			id:"dialog",
+			view:"select-dialog",
+			
+			//accepts same settings as webix.window
+			position:"center", width:500, height:400,
+
+			data: testdata,
+			head:"Open File",
+			onOpen:function(name, folder, item, folders){
+				var msg = name + " from  " + folder;
+				webix.message(msg); 
+			},
+			onCancel:function(){ webix.message("onCancel"); }
+		});
+
+		</script>
+	</body>
+</html>
