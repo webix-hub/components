@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="http://cdn.webix.io/edge/webix.css" type="text/css" media="screen" charset="utf-8">
+		<script src="http://cdn.webix.io/edge/webix.js" type="text/javascript" charset="utf-8"></script>
+
+		
+		<script type="text/javascript" src="./dhtmlx/dhtmlxcommon.js"></script>
+		<script type="text/javascript" src="./dhtmlx/dhtmlxcontainer.js"></script>
+		<script type="text/javascript" src="./dhtmlx/dhtmlxlayout.js"></script>
+		<link rel="stylesheet" href="./dhtmlx/dhtmlxlayout.css" type="text/css" media="screen" charset="utf-8">
+		<link rel="stylesheet" href="./dhtmlx/skins/dhtmlxlayout_dhx_skyblue.css" type="text/css" media="screen" charset="utf-8">
+
+		<script type="text/javascript" src="./dhtmlx.js"></script>
+
+		<title>DHTMLX layouts</title>
+	</head>
+	<body>
+		<div id="parentId" style="position: relative; top: 20px; left: 20px; width: 600px; height: 400px; aborder: #B5CDE4 1px solid;"></div>
+
+		<script type="text/javascript" charset="utf-8">
+			dhtmlx.skin = "dhx_skyblue";
+
+			dhxLayout = new dhtmlXLayoutObject("parentId", "3U");
+			dhxLayout.cells("a").setText("Main Page");
+
+			//use webix layout
+			dhxLayout.cells("b").setText("Layout");
+			dhxLayout.cells("b").attachWebix({
+				type:"wide", rows:[
+					{ template:"1" },
+					{ type:"wide", cols:[ 
+						{ template:"2" },
+						{ template:"3" },
+						{ template:"4" }
+					]},
+					{ template:"5"},
+				]
+			});
+
+			//init webix component
+			dhxLayout.cells("c").setText("DataTable");
+			dhxLayout.cells("c").attachWebix({
+				view:"datatable",  scrollX:false, select:true,
+				columns:[
+					{ id:"rank",	header:"", css:"rank",  		width:50},
+					{ id:"title",	header:"Film title",width:200},
+					{ id:"year",	header:"Released" , width:80},
+					{ id:"votes",	header:"Votes", 	width:100}
+				],
+				data: [
+					{ id:1, title:"The Shawshank Redemption", year:1994, votes:678790, rating:9.2, rank:1, category:"Thriller"},
+					{ id:2, title:"The Godfather", year:1972, votes:511495, rating:9.2, rank:2, category:"Crime"},
+					{ id:3, title:"The Godfather: Part II", year:1974, votes:319352, rating:9.0, rank:3, category:"Crime"},
+					{ id:4, title:"The Good, the Bad and the Ugly", year:1966, votes:213030, rating:8.9, rank:4, category:"Western"},
+					{ id:5, title:"Pulp fiction", year:1994, votes:533848, rating:8.9, rank:5, category:"Crime"},
+					{ id:6, title:"12 Angry Men", year:1957, votes:164558, rating:8.9, rank:6, category:"Western"}
+				]
+			})
+		</script>
+	</body>
+</html>
