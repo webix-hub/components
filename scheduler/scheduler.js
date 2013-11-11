@@ -7,10 +7,9 @@ webix.protoUI({
 		webix.delay(webix.bind(this._render_once, this));
 	},
 	_render_once:function(){
-		webix.require("scheduler/codebase/dhtmlxscheduler_white.css");
+		webix.require("scheduler/dhtmlxscheduler.css");
 		webix.require([
-			"scheduler/codebase/dhtmlxscheduler.js",
-			"scheduler/codebase/ext/dhtmlxscheduler_white.js"
+			"scheduler/dhtmlxscheduler.js"
 		], function(){
 			if (this.config.init)
 				this.config.init.call(this);
