@@ -27,7 +27,7 @@ Editors
 - [Mercury](http://webix-hub.github.io/components/mercury/sample.html) (mercury-editor)
 - [tiny MCE](http://webix-hub.github.io/components/tinymce/sample.html) (tinymce-editor)
 - [Nic Edit](http://webix-hub.github.io/components/nicedit/sample.html) (nic-editor)
-- [Code Mirror](http://webix-hub.github.io/components/codemirror-editor/sample.html) (codemirror-editor)
+- [Code Mirror](http://webix-hub.github.io/components/codemirror/sample.html) (codemirror-editor)
 
 
 Charts
