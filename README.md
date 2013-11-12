@@ -3,8 +3,8 @@ Webix Components
 
 Collection of custom components
 
-- Colored List (colorlist)
-- Win8 like menu (winmenu)
+- [Colored List](http://webix-hub.github.io/components/colorlist/sample.html) (colorlist)
+- [Win8 like menu](http://webix-hub.github.io/components/winmenu/sample.html) (winmenu)
 
 
 Third Party Integratons
@@ -15,36 +15,36 @@ Collection of third party integrations for the Webix UI
 Maps
 ------
 
-- Goggle Maps (google-map)
-- Open Street Maps (open-map)
-- Yandex Maps (yandex-map)
-- Here Maps (was Nokia Maps) (nokia-map)
+- [Goggle Maps](http://webix-hub.github.io/components/googlemap/sample.html) (google-map)
+- [Open Street Maps](http://webix-hub.github.io/components/openmap/sample.html) (open-map)
+- [Yandex Maps](http://webix-hub.github.io/components/yandexmap/sample.html) (yandex-map)
+- [Here Maps](http://webix-hub.github.io/components/nokiamap/sample.html), also known as Nokia Maps (nokia-map)
 
 
 Editors
 ---------
-- CKEditor (ckeditor)
-- Mercury (mercury-editor)
-- tiny MCE (tinymce-editor)
-- Nic Edit (nic-editor)
-- Code Mirror (codemirror-editor)
+- [CKEditor](http://webix-hub.github.io/components/ckeditor/sample.html) (ckeditor)
+- [Mercury](http://webix-hub.github.io/components/mercury/sample.html) (mercury-editor)
+- [tiny MCE](http://webix-hub.github.io/components/tinymce/sample.html) (tinymce-editor)
+- [Nic Edit](http://webix-hub.github.io/components/nicedit/sample.html) (nic-editor)
+- [Code Mirror](http://webix-hub.github.io/components/codemirror-editor/sample.html) (codemirror-editor)
 
 
 Charts
 -------
-- Raphael (raphael-chart)
-- D3 (d3-chart)
-- Sigma Chart (sigma-chart)
-- Just Gage (justgage-chart)
+- [Raphael](http://webix-hub.github.io/components/raphael/sample.html) (raphael-chart)
+- [D3](http://webix-hub.github.io/components/d3/sample.html) (d3-chart)
+- [Sigma Chart](http://webix-hub.github.io/components/sigma/sample.html) (sigma-chart)
+- [Just Gage](http://webix-hub.github.io/components/justgage/sample.html) (justgage-chart)
 
 
 DHTMLX components
 -------------------
-- DHTMLX Scheduler (dhx-scheduler)
-- DHTMLX Gantt (dhx-gantt)
+- [DHTMLX Scheduler](http://webix-hub.github.io/components/scheduler/sample.html) (dhx-scheduler)
+- [DHTMLX Gantt](http://webix-hub.github.io/components/gantt/sample.html) (dhx-gantt)
 
 
 Other
 ------
 
-- Hipchat 
+- [Hipchat ](http://webix-hub.github.io/components/hipchat/sample.html) (hipchat)
