@@ -23,7 +23,7 @@ webix.protoUI({
 		}, this);
 	},
 	_set_inner_size:function(x, y){
-		if (!this._3rd_editor || !this.$width) return;
+		if (!this._3rd_editor || !this._3rd_editor.container || !this.$width) return;
 		this._3rd_editor.resize(x, y);
 	},
 	$setSize:function(x,y){
