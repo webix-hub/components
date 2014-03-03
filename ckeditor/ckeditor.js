@@ -4,6 +4,7 @@ webix.protoUI({
 		this.$view.className += " webix_selectable";
 	},
 	defaults:{
+		borderless:true,
 		toolbar: [
 			[ 'Bold', 'Italic', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' ],
 			[ 'FontSize', 'TextColor', 'BGColor' ]
@@ -36,6 +37,9 @@ webix.protoUI({
 		this.config.value = value;
 		if (this._3rd_editor)
 			this._3rd_editor.setData(value);
+		else webix.delay(function(){
+			this.setValue(value);
+		},this,[],100);
 	},
 	getValue:function(){
 		return this._3rd_editor?this._3rd_editor.getData():this.config.value;
