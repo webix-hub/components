@@ -3,6 +3,9 @@ webix.protoUI({
 	defaults:{
 		tabs:["day", "week", "month"]
 	},
+	getScheduler:function(){
+		return this._scheduler;
+	},
 	$init:function(config){
 		this.$ready.push(function(){
 			var tabs = this.config.tabs;
@@ -28,6 +31,8 @@ webix.protoUI({
 		webix.require([
 			"scheduler/dhtmlxscheduler.js"
 		], function(){
+			var scheduler = this._scheduler = window.Scheduler ? Scheduler.getSchedulerInstance() : window.scheduler;
+
 			if (this.config.init)
 				this.config.init.call(this);
 
