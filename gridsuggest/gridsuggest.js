@@ -11,7 +11,7 @@ webix.protoUI({
 			select:true
 		},
 		filter:function(item, value){
-			var text = this._settings.template(item);
+			var text = this.config.template(item);
 			if (text.toString().toLowerCase().indexOf(value.toLowerCase())===0) return true;
 				return false;
 		}
@@ -21,6 +21,15 @@ webix.protoUI({
 			obj.body.autoConfig = true;
 		if (!obj.template)
 			obj.template = webix.bind(this._getText, this);
+
+		this.$ready.push(this._first_render);
+	},
+	_first_render:function(){
+		this.attachEvent('onValueSuggest', function(){
+           	webix.delay(function(){
+                webix.callEvent("onEditEnd",[]);
+            });
+        });
 	},
 	_getText:function(item, common){
 		var grid = this.getBody();
