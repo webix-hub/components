@@ -22,15 +22,13 @@ webix.protoUI({
 		if (!obj.template)
 			obj.template = webix.bind(this._getText, this);
 
-		this.$ready.push(this._first_render);
-	},
-	_first_render:function(){
 		this.attachEvent('onValueSuggest', function(){
            	webix.delay(function(){
                 webix.callEvent("onEditEnd",[]);
             });
         });
 	},
+
 	_getText:function(item, common){
 		var grid = this.getBody();
 		var value = this.config.textValue || grid.config.columns[0].id;

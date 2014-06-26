@@ -11,11 +11,8 @@ webix.protoUI({
 		}
 	},
 	$init:function(){
-		this.$ready.push(this._first_render)	
-	},
-	_first_render:function(){
 		this.attachEvent('onValueSuggest', function(data){
-           	webix.delay(function(){
+            webix.delay(function(){
                 webix.callEvent("onEditEnd",[]);
             });
         });
