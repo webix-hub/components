@@ -25,6 +25,10 @@ webix.protoUI({
         L.tileLayer(c.layer, {
 		    attribution: c.attribution
 		}).addTo(this.map);
+		
+	this.attachEvent("onViewResize", function(){
+	    this.map.invalidateSize();	
+	});
     },
 	center_setter:function(config){
 		if(this.map)
@@ -51,4 +55,4 @@ webix.protoUI({
 		layer:"http://{s}.tile.osm.org/{z}/{x}/{y}.png",
 		attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a>'
 	}
-}, webix.ui.view);
+}, webix.ui.view, webix.EventSystem);
