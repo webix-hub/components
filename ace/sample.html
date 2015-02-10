@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+	<script type="text/javascript" src="http://cdn.webix.io/edge/webix.js"></script>
+	<link rel="stylesheet" type="text/css" href="http://cdn.webix.io/edge/webix.css">
+
+	<script type="text/javascript" src="./ace.js"></script>
+</head>
+<body>
+	<div id="sample_div" style='width:600px; height:300px; margin:50px;'></div>
+	<script type="text/javascript">
+		//path from which autoload extra libraries
+		webix.codebase = "./";
+		
+		webix.ui({
+			container: "sample_div",
+    		view: "ace-editor",
+            theme: "monokai",
+    		mode: "javascript",
+    		value: 'function foo(items) {\n\tvar i;\n\tfor (i = 0; i < items.length; i++) {\n\t\talert("Ace Rocks " + items[i]);\n\t}\n}'
+		});
+    </script>
+</body>
+</html>
