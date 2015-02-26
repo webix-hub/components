@@ -51,3 +51,4 @@ Other
 ------
 
 - [Hipchat ](http://webix-hub.github.io/components/hipchat/sample.html) (hipchat)
+- [Konva](http://webix-hub.github.io/components/konva/sample.html) (konva)
