@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+    <script type="text/javascript" src="http://cdn.webix.io/edge/webix.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://cdn.webix.io/edge/webix.css">
+
+    <script type="text/javascript" src="./graph3d.js"></script>
+</head>
+<body>
+<div id="sample_div" style='width:500px; height:500px; margin:50px;'></div>
+<script type="text/javascript">
+    //path from which autoload extra libraries
+    webix.codebase = "./";
+
+    webix.ui({
+        container: "sample_div",
+        view: "graph3d",
+        width: '100%',
+        height: '100%',
+        steps: 100, // number of datapoints will be steps*steps
+        axisMax: 300,
+        data: function(x, y){
+            return (Math.sin(x/50) * Math.cos(y/50) * 50 + 50); //custom function or object
+        }
+    });
+</script>
+</body>
+</html>
