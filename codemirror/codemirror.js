@@ -12,10 +12,18 @@ webix.protoUI({
 	},
 	_render_cm_editor:function(){
 		webix.require("codemirror/lib/codemirror.css");
-		webix.require([
-			"codemirror/lib/codemirror.js",
-			"codemirror/mode/"+this.config.mode+"/"+this.config.mode+".js"
-		], this._render_when_ready, this);
+		var deps = [
+			"codemirror/lib/codemirror.js"
+		];
+
+		if (this.config.mode == "htmlmixed"){
+			deps.push("codemirror/mode/xml/xml.js");
+			deps.push("codemirror/mode/css/css.js");
+			deps.push("codemirror/mode/javascript/javascript.js");
+		}
+
+		deps.push("codemirror/mode/"+this.config.mode+"/"+this.config.mode+".js");
+		webix.require(deps, this._render_when_ready, this);
 	},
 
 	_render_when_ready:function(){

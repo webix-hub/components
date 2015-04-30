@@ -30,6 +30,7 @@ Editors
 - [tiny MCE](http://webix-hub.github.io/components/tinymce/sample.html) (tinymce-editor)
 - [Nic Edit](http://webix-hub.github.io/components/nicedit/sample.html) (nic-editor)
 - [Code Mirror](http://webix-hub.github.io/components/codemirror/sample.html) (codemirror-editor)
+- [Ace](http://webix-hub.github.io/components/ace/sample.html) (ace-editor)
 
 
 Charts
@@ -50,3 +51,4 @@ Other
 ------
 
 - [Hipchat ](http://webix-hub.github.io/components/hipchat/sample.html) (hipchat)
+- [Konva](http://webix-hub.github.io/components/konva/sample.html) (konva)
