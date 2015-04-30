@@ -1,7 +1,7 @@
 webix.protoUI({
     name:"paper",
     $init:function(config){
-        var elm = document.createElement('canvas');
+        var elm = document.createElement("canvas");
         elm.id  = config.canvas;
         this._canvas = this.$view.appendChild(elm);
 
