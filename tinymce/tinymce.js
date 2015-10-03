@@ -18,8 +18,8 @@ webix.protoUI({
 
 		//path to tinymce codebase
 		tinyMCEPreInit = { suffix:"", query:"", base: webix.codebase+"tinymce/" };
-		webix.require("tinymce/tiny_mce.js", function(first_time){
-			if (first_time){
+		webix.require("tinymce/tiny_mce.js", function(){
+			if (!tinymce.dom.Event.domLoaded){
 				//woraround event logic in tinymce
 				tinymce.dom.Event.domLoaded = true;
 				webix.html.addStyle(".mceLayout{ border-width:0px !important}\n.mceLayout tr.mceFirst td {border-top:none !important;}");

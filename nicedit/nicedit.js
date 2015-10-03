@@ -10,9 +10,10 @@ webix.protoUI({
 		this.$ready.push(this._render_nic_editor);
 	},
 	_render_nic_editor:function(){
-		webix.require("nicedit/nicEdit.js", function(first_time){
-			if (first_time){
+		webix.require("nicedit/nicEdit.js", function(){
+			if (!this._editorCss){
 				webix.html.addStyle(".nicEdit-panel{height:22px}\n.nicEdit-panelContain{border-top-width:0px !important;}");
+				this._editorCss = true;
 			}
 			
 			this.config.config.iconsPath = webix.codebase+"nicedit/nicEditorIcons.gif";

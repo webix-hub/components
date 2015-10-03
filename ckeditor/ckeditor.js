@@ -18,6 +18,7 @@ webix.protoUI({
 		webix.require("ckeditor/ckeditor.js", function(){
 			this._3rd_editor = CKEDITOR.replace( this.config.textAreaID, {
 				toolbar: this.config.toolbar,
+				language: "en",
 				width:this.$width -2,
 				height:this.$height - 44
 			});
