@@ -5,6 +5,7 @@ webix.protoUI({
 	},
 	defaults:{
 		borderless:true,
+		language:"en",
 		toolbar: [
 			[ 'Bold', 'Italic', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' ],
 			[ 'FontSize', 'TextColor', 'BGColor' ]
@@ -18,7 +19,7 @@ webix.protoUI({
 		webix.require("ckeditor/ckeditor.js", function(){
 			this._3rd_editor = CKEDITOR.replace( this.config.textAreaID, {
 				toolbar: this.config.toolbar,
-				language: "en",
+				language: this.config.language,
 				width:this.$width -2,
 				height:this.$height - 44
 			});
