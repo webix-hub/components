@@ -1,0 +1,108 @@
+/* SideBar*/
+.webix_sidebar{
+	background: #fff;
+}
+
+.webix_sidebar .webix_tree_item {
+	color: #454545;
+	height: 35px;
+	line-height: 35px;
+}
+.webix_sidebar .webix_scroll_cont > .webix_tree_leaves {
+	padding: 0;
+}
+.webix_sidebar_selected{
+	background-color: #f2f2f2;
+}
+.webix_sidebar_expanded .webix_tree_item:hover{
+	background-color: #F6F6F6;
+}
+.webix_sidebar .webix_tree_item.webix_selected{
+	background-color: #F6F6F6;
+	box-shadow: 5px 0 #3498db inset;
+}
+
+.webix_sidebar .webix_tree_item.webix_selected span{
+	background-color: transparent;
+	padding-right:0;
+}
+.webix_sidebar .webix_tree_branch_1 .webix_tree_item{
+	padding-left:40px;
+}
+.webix_sidebar .webix_tree_branch_1>.webix_tree_item{
+	height: 40px;
+	line-height: 40px;
+	padding-left:0;
+}
+.webix_sidebar .webix_tree_branch_1{
+	border-bottom:1px solid #f5f5f5;
+}
+.webix_sidebar .webix_tree_item.webix_selected span, .webix_sidebar .webix_tree_item span{
+	margin:0;
+	padding:0px;
+
+}
+.webix_sidebar_icon{
+	width: 40px;
+	text-align: center;
+}
+
+.webix_sidebar .webix_tree_leaves .webix_tree_leaves {
+	margin-left: 0px;
+}
+
+.webix_sidebar_dir_icon{
+	float: right;
+	line-height: inherit;
+}
+
+/*Popup*/
+.webix_sidebar_popup{
+	padding:0 !important;
+	border-radius: 0 !important;
+	margin-top: 0 !important;
+	border:none !important;
+	box-shadow: 2px 3px 3px #ddd;
+}
+.webix_sidebar_popup_right{
+	box-shadow: -1px 3px 3px #ddd;
+}
+
+.webix_sidebar_popup, .webix_sidebar_popup .webix_list_item,
+.webix_sidebar_popup .webix_win_body, .webix_win_body > .webix_view,
+.webix_sidebar_popup .webix_win_content{
+	border-radius:0;
+}
+
+.webix_sidebar_popup_title.webix_selected .webix_template{
+	background-color: #F6F6F6;
+}
+.webix_sidebar_popup_title .webix_template{
+	line-height: 40px;
+	padding: 0 10px;
+	border: 1px solid #f5f5f5;
+	border-bottom-color: #ddd;
+	border-left:none;
+}
+.webix_sidebar_selected.webix_sidebar_popup_title .webix_template{
+	background: #f2f2f2;
+	border-left: none;
+}
+.webix_sidebar_popup_list .webix_list_item{
+	border-left: 1px solid #f2f2f2;
+	border-right: 1px solid #f5f5f5;
+}
+.webix_sidebar_popup_list .webix_list_item:first-child{
+	border-top: 1px solid #f5f5f5;
+}
+
+.webix_sidebar_popup_list .webix_list_item:hover{
+	background-color: #F6F6F6;
+}
+.webix_sidebar_popup_list .webix_list_item.webix_selected,
+.webix_sidebar_popup_list .webix_list_item.webix_selected:hover{
+	background-color: #F6F6F6;
+	box-shadow: 5px 0 #3498db inset;
+}
+
+
