@@ -7,6 +7,7 @@ Collection of custom components
 - [Win8 like menu](http://webix-hub.github.io/components/winmenu/sample.html) (winmenu)
 - [Grid suggest](http://webix-hub.github.io/components/gridsuggest/sample.html) (winmenu)
 - [Data suggest](http://webix-hub.github.io/components/datasuggest/sample.html) (winmenu)
+- [SideBar menu](http://webix-hub.github.io/components/sidebar/sample.html) (sidebar)
 
 
 Third Party Integratons
