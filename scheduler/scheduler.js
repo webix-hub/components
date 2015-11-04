@@ -26,6 +26,12 @@ webix.protoUI({
 			webix.delay(webix.bind(this._render_once, this));
 		});
 	},
+	$setSize: function(x,y){
+		if(webix.ui.view.prototype.$setSize.call(this,x,y)){
+			if(this._scheduler)
+				this._scheduler.setCurrentView();
+		}
+	},
 	_render_once:function(){
 		webix.require("scheduler/dhtmlxscheduler.css");
 		webix.require([

@@ -3,6 +3,12 @@ webix.protoUI({
 	$init:function(){
 		webix.delay(webix.bind(this._render_once, this));
 	},
+	$setSize: function(x,y){
+		if(webix.ui.view.prototype.$setSize.call(this,x,y)){
+			if(window.gantt)
+				gantt.render();
+		}
+	},
 	_render_once:function(){
 		webix.require("gantt/dhtmlxgantt.css");
 		webix.require("gantt/dhtmlxgantt.js", function(){
