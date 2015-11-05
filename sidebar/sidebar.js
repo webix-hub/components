@@ -147,7 +147,8 @@ webix.protoUI({
 									if(data.length){
 										this.show();
 										this.data.importData(data);
-										this.select(selectedId);
+										if(this.exists(selectedId))
+											this.select(selectedId);
 									}
 									else
 										this.hide();
