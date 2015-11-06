@@ -17,7 +17,7 @@ webix.protoUI({
 		webix.delay(webix.bind(this._render_once, this));
 	},
 	_render_once:function(){
-		webix.require("d3/d3.v2.min.js",function(first_init){
+		webix.require("d3/d3.v3.min.js",function(first_init){
 
 			if (this.config.init)
 				this.config.init.call(this);
