@@ -5,8 +5,8 @@ Collection of custom components
 
 - [Colored List](http://webix-hub.github.io/components/colorlist/sample.html) (colorlist)
 - [Win8 like menu](http://webix-hub.github.io/components/winmenu/sample.html) (winmenu)
-- [Grid suggest](http://webix-hub.github.io/components/gridsuggest/sample.html) (winmenu)
-- [Data suggest](http://webix-hub.github.io/components/datasuggest/sample.html) (winmenu)
+- [Grid suggest](http://webix-hub.github.io/components/gridsuggest/sample.html) (gridsuggest)
+- [Data suggest](http://webix-hub.github.io/components/datasuggest/sample.html) (datasuggest)
 - [SideBar menu](http://webix-hub.github.io/components/sidebar/sample.html) (sidebar)
 - [Slide Button](http://webix-hub.github.io/components/slidebutton/sample.html) (slidebutton)
 
