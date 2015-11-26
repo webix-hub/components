@@ -25,23 +25,22 @@ webix.protoUI({
 			this.closeAll();
 			return !this.config.collapsed;
 		});
-		this.attachEvent("onItemClick", function(id, ev){
+		this.attachEvent("onItemClick", function(id, ev, node){
 			if(this.getPopup() && !this.getPopup().config.hidden)
 				ev.showpopup = true;
+			if(webix.env.touch)
+				this._showPopup(id, node);
 		});
 		this.attachEvent("onBeforeSelect", function(id){
 			if(!this.getItem(id).$count){
 				var selected = this.getSelectedId();
-
 				if(selected && id!= selected){
 					var parentId = this.getParentId(selected);
 
 					this.removeCss(parentId, "webix_sidebar_selected");
 				}
-
 				return true;
 			}
-
 			return false;
 		});
 		this.attachEvent("onAfterSelect", function(id){
@@ -52,27 +51,64 @@ webix.protoUI({
 			title.callEvent("onMasterSelect",[id]);
 		});
 		this.attachEvent("onMouseMove", function(id, ev, node){
-			if(this.config.collapsed){
-				var popup = this.getPopup();
-
-				if(popup){
-					var title = this.getPopupTitle();
-					if(title){
-						title.callEvent("onMasterMouseMove",[ id, ev, node]);
-					}
-					var list = this.getPopupList();
-					if(list){
-						list.callEvent("onMasterMouseMove",[id, ev, node]);
-					}
-					var x = (this.config.position == "left"?this.config.collapsedWidth:-popup.config.width);
-					popup.show(node, {x: x , y:-1});
-				}
-
-			}
+			this._showPopup(id, node);
 		});
 
 		if(this.config.collapsed)
 			this.collapse();
+	},
+	_showPopup: function(id, node){
+		if(this.config.collapsed){
+			var popup = this.getPopup();
+
+			if(popup){
+				var title = this.getPopupTitle();
+				if(title){
+					this._updateTitle(id);
+				}
+				var list = this.getPopupList();
+				if(list){
+					this._updateList(id);
+				}
+				var x = (this.config.position == "left"?this.config.collapsedWidth:-popup.config.width);
+				popup.show(node, {x: x , y:-1});
+			}
+		}
+	},
+	_updateTitle: function(id){
+		var title = this.getPopupTitle();
+		title.masterId = id;
+		title.parse(this.getItem(id));
+		var selectedId = this.getSelectedId();
+		if(selectedId && this.getParentId(selectedId) == id){
+			webix.html.addCss(title.$view, "webix_sidebar_selected", true);
+		}
+		else{
+			webix.html.removeCss(title.$view, "webix_sidebar_selected");
+		}
+
+		if(selectedId == id){
+			webix.html.addCss(title.$view, "webix_selected", true);
+		}
+		else{
+			webix.html.removeCss(title.$view, "webix_selected");
+		}
+	},
+	_updateList: function(id){
+		var list = this.getPopupList();
+		list.masterId = id;
+		var selectedId = this.getSelectedId();
+		var data = [].concat(webix.copy(this.data.getBranch(id)));
+		list.unselect();
+		if(data.length){
+			list.show();
+			list.data.importData(data);
+			if(list.exists(selectedId))
+				list.select(selectedId);
+		}
+		else
+			list.hide();
+
 	},
 	_initContextMenu: function(){
 		var config = this.config,
@@ -96,25 +132,6 @@ webix.protoUI({
 							view: "template", 	borderless: true, css: "webix_sidebar_popup_title",
 							template: "#value#", height: this.config.titleHeight+2,
 							on:{
-								onMasterMouseMove: function( id, ev, node){
-									var master = this.getTopParentView().master;
-									this.masterId = id;
-									this.parse(master.getItem(id));
-									var selectedId = master.getSelectedId();
-									if(selectedId && master.getParentId(selectedId) == id){
-										webix.html.addCss(this.$view, "webix_sidebar_selected", true);
-									}
-									else{
-										webix.html.removeCss(this.$view, "webix_sidebar_selected");
-									}
-
-									if(selectedId == id){
-										webix.html.addCss(this.$view, "webix_selected", true);
-									}
-									else{
-										webix.html.removeCss(this.$view, "webix_selected");
-									}
-								},
 								onMasterSelect: function(id){
 									var master = this.getTopParentView().master;
 									if( master && master.getParentId(id) == this.masterId){
@@ -138,20 +155,6 @@ webix.protoUI({
 							on:{
 								onAfterSelect: function(id){
 									this.getTopParentView().master.select(id);
-								},
-								onMasterMouseMove: function( id, ev, node){
-									var master = this.getTopParentView().master;
-									this.masterId = id;
-									var selectedId = master.getSelectedId();
-									var data = [].concat(webix.copy(master.data.getBranch(id)));
-									if(data.length){
-										this.show();
-										this.data.importData(data);
-										if(this.exists(selectedId))
-											this.select(selectedId);
-									}
-									else
-										this.hide();
 								}
 							}
 						}

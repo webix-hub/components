@@ -4,7 +4,7 @@ menu_data = [
 		{ id: "dashboard2", value: "Dashboard 2"}
 	]},
 	{id: "layouts", icon: "columns", value:"Layouts", data:[
-		{ id: "accrodions", value: "Accordions"},
+		{ id: "accordions", value: "Accordions"},
 		{ id: "portlets", value: "Portlets"}
 	]},
 	{id: "tables", icon: "table", value:"Data Tables", data:[
