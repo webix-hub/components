@@ -5,9 +5,11 @@ webix.protoUI({
 		this._contentobj = this.$view.firstChild;
 
 		this.map = null;
+		
 		this.$ready.push(this.render);
 	},
 	render:function(){
+
         if(typeof google=="undefined"||typeof google.maps=="undefined"){
             var name = "webix_callback_"+webix.uid();
             window[name] = webix.bind(function(){
@@ -24,13 +26,14 @@ webix.protoUI({
 	},
     _initMap:function(define){
         var c = this.config;
-
-        this.map = new google.maps.Map(this._contentobj, {
-            zoom: c.zoom,
-            center: new google.maps.LatLng(c.center[0], c.center[1]),
-            mapTypeId: google.maps.MapTypeId[c.mapType]
-        });
-        webix._ldGMap = null;
+        if(this.isVisible(c.id)){
+			this.map = new google.maps.Map(this._contentobj, {
+				zoom: c.zoom,
+				center: new google.maps.LatLng(c.center[0], c.center[1]),
+				mapTypeId: google.maps.MapTypeId[c.mapType]
+			});
+			webix._ldGMap = null;
+        }
     },
 	center_setter:function(config){
 		if(this.map)
