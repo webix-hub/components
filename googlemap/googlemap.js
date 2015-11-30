@@ -22,7 +22,7 @@ webix.protoUI({
             document.getElementsByTagName("head")[0].appendChild(script);
         }
         else
-            if(this.isVisible(this.config.id)) this._initMap();
+            this._initMap();
 	},
     _initMap:function(define){
         var c = this.config;
