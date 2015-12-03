@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+	<script type="text/javascript" src="http://cdn.webix.io/edge/webix.js"></script>
+	<link rel="stylesheet" type="text/css" href="http://cdn.webix.io/edge/webix.css">
+	<script type="text/javascript" src="./dndlist.js"></script>
+</head>
+<body>
+	<h1>Webix Component: Drag & Drop List (dndlist)</h1>
+	<h2>By MLukman (https://github.com/MLukman)</h2>
+	<div id="form1"></div>
+	<h3>Parameters:</h3>
+	
+	<dl>
+		<dt>choices</dt>
+		<dd>Array of strings that user can choose from</dd>
+
+		<dt>value</dt>
+		<dd>Array of strings that user have chosen</dd>
+
+		<dt>choicesHeader</dt>
+		<dd>The title for the choices list</dd>
+
+		<dt>valueHeader</dt>
+		<dd>The title for the selected values</dd>
+		
+		<dt>swap</dt>
+		<dd>If true, the choices will be on the right and chosen values will be on the left. By default is false, which is choices on the left and chosen values on the right.</dd>
+	</dl>
+
+	<p>p/s: Standard parameters: name, height, label, labelWidth, labelAlign, labelPosition</p>
+	
+	<h3>Functions:</h3>
+	
+	<dl>
+		<dt>setChoices(array)</dt>
+		<dd>Sets the choices</dd>
+
+		<dt>addValue(string)</dt>
+		<dd>Add a value to the chosen values list (even if the value is not in the choices list)</dd>
+
+		<dt>removeValue(string)</dt>
+		<dd>Remove a value from the chosen values list and add it to the choices list. The value must exist in the chosen list.</dd>
+	</dl>
+
+	<p>p/s: Standard form control functions: getValue(), setValue(array)</p>
+
+	<script type="text/javascript">
+		webix.ui({
+			container: "form1",
+			view: "form",
+			width: 800,
+			elementsConfig: {
+				labelPosition: "top"
+			},
+			elements: [
+				{
+					view: "text",
+					name: "name",
+					label: "Name",
+					value: "Unknown"
+				},
+				{
+					view: "dndlist",
+					name: "attributes",
+					label: "Attributes",
+					choices: [ "Tall", "Handsome", "Rich", "Kind", "Hardworking", "Romantic" ],
+					value: [ "Handsome" ]
+				},
+				{
+					view: "button",
+					label: "Get Values",
+					click: function() {
+						webix.alert('<pre style="text-align:left; padding: 0px 20px">values = '
+							+ JSON.stringify(this.getFormView().getValues(), null, 2)
+							+ '</pre>');
+					}
+				},
+				{
+					view: "button",
+					label: "Preset Values",
+					click: function() {
+						this.getFormView().setValues({
+							name: "John Doe",
+							attributes: [ "Kind", "Rich" ]
+						});
+					}
+				}
+			]
+		});
+	</script>
+</body>
+</html>
