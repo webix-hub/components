@@ -7,6 +7,7 @@ Collection of custom components
 - [Win8 like menu](http://webix-hub.github.io/components/winmenu/sample.html) (winmenu)
 - [Grid suggest](http://webix-hub.github.io/components/gridsuggest/sample.html) (gridsuggest)
 - [Data suggest](http://webix-hub.github.io/components/datasuggest/sample.html) (datasuggest)
+- [Double list](http://webix-hub.github.io/components/dndlist/sample.html) (dndlist)
 - [SideBar menu](http://webix-hub.github.io/components/sidebar/sample.html) (sidebar)
 - [Slide Button](http://webix-hub.github.io/components/slidebutton/sample.html) (slidebutton)
 
@@ -41,6 +42,7 @@ Charts
 - [D3](http://webix-hub.github.io/components/d3/sample.html) (d3-chart)
 - [Sigma Chart](http://webix-hub.github.io/components/sigma/sample.html) (sigma-chart)
 - [Just Gage](http://webix-hub.github.io/components/justgage/sample.html) (justgage-chart)
+- [Just Gage](http://webix-hub.github.io/components/fusion/sample.html) (fusion-chart)
 
 
 DHTMLX components
@@ -54,3 +56,9 @@ Other
 
 - [Hipchat ](http://webix-hub.github.io/components/hipchat/sample.html) (hipchat)
 - [Konva](http://webix-hub.github.io/components/konva/sample.html) (konva)
+
+
+Thanks
+------
+
+- [Muhammad Lukman](https://github.com/MLukman) fusion charts integration and dndlist component
