@@ -5,7 +5,6 @@
  *
  * Requires Webix >= 3.1.1 
  */  
-
 webix.protoUI({
 	name: "dndlist",
 	defaults: {
@@ -118,7 +117,7 @@ webix.protoUI({
 		});
 	},
 	setChoices: function (choices) {
-		var choicesDt = $$(this.$view).$$('choices');
+		var choicesDt = this.$$('choices');
 		choicesDt.clearAll();
 		var values = this.getValue();
 		for (var i = 0; i < choices.length; i++) {
@@ -140,15 +139,15 @@ webix.protoUI({
 	},
 	getValue: function () {
 		var value = [];
-		var valueDt = $$(this.$view).$$('value');
+		var valueDt = this.$$('value');
 		valueDt.eachRow(function (row) {
 			value.push(valueDt.getItem(row).value);
 		}, true);
 		return value;
 	},
 	addValue: function (value) {
-		var valueDt = $$(this.$view).$$('value');
-		var choicesDt = $$(this.$view).$$('choices');
+		var valueDt = this.$$('value');
+		var choicesDt = this.$$('choices');
 		var rowFinder = (function (row) {
 			return row.value === value;
 		});
@@ -161,8 +160,8 @@ webix.protoUI({
 		}
 	},
 	removeValue: function (val) {
-		var valueDt = $$(this.$view).$$('value');
-		var choicesDt = $$(this.$view).$$('choices');
+		var valueDt = this.$$('value');
+		var choicesDt = this.$$('choices');
 		var rowFinder = (function (row) {
 			return row.value === val;
 		});
