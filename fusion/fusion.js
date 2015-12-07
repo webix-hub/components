@@ -14,7 +14,6 @@ webix.protoUI({
 		webix.delay(webix.bind(this._render_once, this));
 	},
 	_render_once: function(){
-		webix.codebase = "./";
 		webix.require("fusioncharts/fusioncharts.js", webix.bind(function() {
 		
 			// require additional js files
