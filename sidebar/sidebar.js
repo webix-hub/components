@@ -22,7 +22,8 @@ webix.protoUI({
 	_initSidebar: function(){
 		this._fullWidth = this.config.width;
 		this.attachEvent("onBeforeOpen", function(id){
-			this.closeAll();
+			if(!this.config.multipleOpen)
+				this.closeAll();
 			return !this.config.collapsed;
 		});
 		this.attachEvent("onItemClick", function(id, ev, node){
