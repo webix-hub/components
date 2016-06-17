@@ -20,15 +20,18 @@ webix.protoUI({
     _initMap:function(define){
 	    var c = this.config;
 
-        this.map = L.map(this._contentobj);
-        this.map.setView(c.center, c.zoom);
-        L.tileLayer(c.layer, {
-		    attribution: c.attribution
-		}).addTo(this.map);
+	    if(this.isVisible(c.id)){
+
+	        this.map = L.map(this._contentobj);
+	        this.map.setView(c.center, c.zoom);
+	        L.tileLayer(c.layer, {
+			    attribution: c.attribution
+			}).addTo(this.map);
+		}	
 		
-	this.attachEvent("onViewResize", function(){
-	    this.map.invalidateSize();	
-	});
+		this.attachEvent("onViewResize", function(){
+		    this.map.invalidateSize();	
+		});
     },
 	center_setter:function(config){
 		if(this.map)

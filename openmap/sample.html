@@ -7,18 +7,37 @@
 	<script type="text/javascript" src="./openmap.js"></script>
 </head>
 <body>
-	<div id="sample_div" style='width:600px; height:300px; margin:50px;'></div>
+	<!-- <div id="sample_div" style='width:600px; height:300px; margin:50px;'></div> -->
 	<script type="text/javascript">
 		//path from which autoload extra libraries
 		webix.codebase = "./";
 
-		webix.ui({
-			container:"sample_div",
-    		view:"open-map",
-    		id:"map",
-			zoom:6,
-			center:[ 48.724, 8.215 ]
+		    webix.ui({
+			view: "window", 
+			id: "mapwin",
+			move:true,
+			head: {
+				view:"toolbar", elements:[
+					{ view:"label",  label: "OpenStreet Map", align:'left'}, 
+					{ view:'button', label: 'Close', width:120, click:function(){$$("mapwin").hide();}}
+				]
+			},
+			body:{
+				view:"open-map",
+				id:"map",
+				zoom:15,
+				center:[ 51.505, -0.09 ]
+			},
+			top:50, left:50, width:600, height:500
 		});
+  
+		  webix.ui({
+		    view:"button",label:"show map",click:function(){
+		      $$('mapwin').show();
+		      if(!$$('mapwin').isVisible())
+		     	$$('mapwin').render();
+		    }
+		  });
 	</script>
 </body>
 </html>
