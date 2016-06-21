@@ -1,9 +1,13 @@
-.wbx_seldialog_folder:hover{
+.wbx_seldialog_folder:hover, .wbx_seldialog_icon:hover{
 	background-color:#FFDB8F;
 }
 .wbx_seldialog_folder{
 	display:inline-block;
 	font-size:15px;
 	padding:3px;
-	margin:-3px;
+	margin:-3px -3px 0 0;
+}
+.wbx_seldialog_icon{
+	margin-left: 5px;
+    width: 12px;
 }
