@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <title> Form Editor with Automatic Configuration </title>
+	<script type="text/javascript" src="http://cdn.webix.io/site/webix.js"></script>
+	<link rel="stylesheet" type="text/css" href="http://cdn.webix.io/site/webix.css">
+
+  <link rel="stylesheet" href="./form_editor.css" type="text/css" media="screen" charset="utf-8">
+  <script src="./form_editor.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+   <script type="text/javascript" charset="utf-8">
+
+   		if (!webix.env.touch && webix.ui.scrollSize)
+            webix.CustomScroll.init();
+
+        var data = { name:"Vet Clinic", license:{ from:"2015-05-05", to:"2017-05-05"}, clients: [ 
+			{ owner:"Claire", pet:{ name:"Tom", animal: "cat "}},
+			{ owner:"Eric", pet:{ name:"Adele", animal: "dog" }} 
+		]};
+
+
+	   	webix.ui({
+	   		padding:20,
+	   		width:600,
+	   		rows:[
+	   			{ type:"header", template:"Form editor with automatic configuration"},
+	   			{ view:"form-editor", id:"top", data:webix.copy(data)},
+	   			{ margin:7, cols:[
+	   				{view:"button", autowidth:true, value: "Get values", click:function(){
+	   					webix.message(JSON.stringify($$("top").getValues(), null, 2));
+	   				}},
+	   				{view:"button", autowidth:true, value: "Set values", click:function(){
+	   					$$("top").setValues(webix.copy(data));
+	   				}},
+	   				{view:"button",  autowidth:true, value: "Clear", click:function(){
+	   					$$("top").clear();
+	   				}},
+	   				{}
+				]}
+	   		]
+	   	});
+
+
+   
+
+
+      
+
+
+   
+	</script>
+  
+</body>
+</html>

@@ -1,0 +1,48 @@
+.webix_view.webix_form_editor{
+	position:relative;
+}
+.webix_view.webix_form_editor .webix_icon.fa-trash:hover,
+.webix_view.webix_form_editor .webix_icon.fa-plus-circle:hover {
+	cursor:pointer;
+	color:#3498db;
+}
+.webix_view.webix_form_editor .webix_dtable_subview{
+	background-color:initial;
+	padding-left:0px !important;
+}
+.webix_view.webix_form_editor .webix_dtable{
+	border-width:1px !important;
+}
+.webix_view.webix_form_editor .webix_ss_footer .webix_hcell{
+	background-color:initial;
+}
+.webix_view.webix_form_editor .webix_ss_footer .webix_icon{
+	margin-left:2px;
+}
+.webix_view.webix_form_editor .group_header{
+   border:none;
+   font-weight:bold;
+}
+.group_header div{
+	padding:10px;
+	margin-left:10px;
+}
+.group_header:before{
+	position: absolute;
+	content: "\f107";
+	margin-top: 9px;
+	margin-left: -3px;
+	font-family:FontAwesome;
+	font-size:20px;
+	font-weight:400;
+}
+.webix_view.webix_form_editor .webix_form .webix_scroll_cont{
+	border-width: 0 0 0 2px !important;
+	border-left: 2px solid #D2E3EF;
+}
+.webix_view.webix_form_editor .webix_form.webix_editor_top > .webix_scroll_cont{
+	border-width: 0px !important;
+}
+.webix_view.webix_form_editor .webix_el_text{
+	margin-left: 14px !important;
+}
