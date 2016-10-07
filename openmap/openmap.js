@@ -20,15 +20,14 @@ webix.protoUI({
     _initMap:function(define){
 	    var c = this.config;
 
-        this.map = L.map(this._contentobj);
-        this.map.setView(c.center, c.zoom);
-        L.tileLayer(c.layer, {
-		    attribution: c.attribution
-		}).addTo(this.map);
-		
-	this.attachEvent("onViewResize", function(){
-	    this.map.invalidateSize();	
-	});
+	    if(this.isVisible(c.id)){
+
+	        this.map = L.map(this._contentobj);
+	        this.map.setView(c.center, c.zoom);
+	        L.tileLayer(c.layer, {
+			    attribution: c.attribution
+			}).addTo(this.map);
+		}
     },
 	center_setter:function(config){
 		if(this.map)
@@ -54,5 +53,10 @@ webix.protoUI({
 		center:[ 39.5, -98.5 ],
 		layer:"http://{s}.tile.osm.org/{z}/{x}/{y}.png",
 		attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a>'
+	},
+	$setSize:function(){
+		webix.ui.view.prototype.$setSize.apply(this, arguments);
+		if(this.map)
+            this.map.invalidateSize();
 	}
 }, webix.ui.view, webix.EventSystem);

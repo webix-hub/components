@@ -4,21 +4,30 @@ webix.protoUI({
 		this.$view.innerHTML = "<div class='webix_map_content' style='width:100%;height:100%'></div>";
 		this._contentobj = this.$view.firstChild;
 
-		this.map = null;
-		
+		this._map = webix.promise.defer();
 		this.$ready.push(this.render);
+	},
+	getMap:function(){
+		return this._map;
 	},
 	render:function(){
 
         if(typeof google=="undefined"||typeof google.maps=="undefined"){
             var name = "webix_callback_"+webix.uid();
             window[name] = webix.bind(function(){
-                 this._initMap.call(this,true);
+            	this._initMap.call(this,true);
             },this);
 
             var script = document.createElement("script");
             script.type = "text/javascript";
-            script.src = "//maps.google.com/maps/api/js?callback="+name;
+            var src = "//maps.google.com/maps/api/js?callback="+name;
+
+            if (this.config.key)
+            	src += "&key="+this.config.key;
+            if (this.config.libraries)
+            	src += "&libraries="+this.config.libraries;
+
+            script.src = src;
             document.getElementsByTagName("head")[0].appendChild(script);
         }
         else
@@ -32,7 +41,7 @@ webix.protoUI({
 				center: new google.maps.LatLng(c.center[0], c.center[1]),
 				mapTypeId: google.maps.MapTypeId[c.mapType]
 			});
-			webix._ldGMap = null;
+			this._map.resolve(this.map);
         }
     },
 	center_setter:function(config){

@@ -1,7 +1,8 @@
 webix.protoUI({
 	name:"tinymce-editor",
 	defaults:{
-		config:{ theme:"simple" },
+		config:{ theme:"modern", statusbar:false },
+		barHeight:74,
 		value:""
 	},
 	$init:function(config){
@@ -17,25 +18,30 @@ webix.protoUI({
 		this.$view.innerHTML = "<textarea id='"+this._mce_id+"' style='width:1px; height:1px'></textarea>";
 
 		//path to tinymce codebase
-		tinyMCEPreInit = { suffix:"", query:"", base: webix.codebase+"tinymce/" };
-		webix.require("tinymce/tiny_mce.js", function(){
+		tinyMCEPreInit = { query:"", base: webix.codebase+"tinymce", suffix:".min" };
+		webix.require("tinymce/tinymce.min.js", function(){
 			if (!tinymce.dom.Event.domLoaded){
 				//woraround event logic in tinymce
 				tinymce.dom.Event.domLoaded = true;
-				webix.html.addStyle(".mceLayout{ border-width:0px !important}\n.mceLayout tr.mceFirst td {border-top:none !important;}");
+				webix.html.addStyle(".mce-tinymce.mce-container{ border-width:0px !important}");
 			}
 			
 			var config = this.config.config;
+
 			config.mode = "exact";
 			config.height = 300;
-			config.oninit = webix.bind(this._mce_editor_ready, this);
+			config.setup = webix.bind(this._mce_editor_setup, this);
 			config.elements = [this._mce_id];
 			config.id = this._mce_id;
+
 			tinyMCE.init(config);
 
 		}, this);
 
 		this._init_tinymce_once = function(){};
+	},
+	_mce_editor_setup:function(editor){
+		editor.on("init", webix.bind(this._mce_editor_ready,this))
 	},
 	_mce_editor_ready:function(editor){
 		this._3rd_editor = tinyMCE.get(this._mce_id);
@@ -46,20 +52,7 @@ webix.protoUI({
 	},
 	_set_inner_size:function(){
 		if (!this._3rd_editor || !this.$width) return;
-		var height_fix = 11;
-		var editor = document.getElementById(this._mce_id+"_tbl");
-		if (!editor){
-			editor = this.$view.childNodes[1].firstChild;
-			height_fix = 5;
-		}
-		var iframe = document.getElementById(this._mce_id+"_ifr");
-
-		if (!this._mce_delta)
-			this._mce_delta = parseInt(editor.style.height,10) - parseInt(iframe.style.height,10)+height_fix;
-
-		editor.style.width = this.$width + "px";
-		editor.style.height = this.$height + "px";
-		iframe.style.height = this.$height - this._mce_delta + "px";
+		this._3rd_editor.theme.resizeTo(this.$width, this.$height - this.config.barHeight);
 	},
 	$setSize:function(x,y){
 		if (webix.ui.view.prototype.$setSize.call(this, x, y)){
