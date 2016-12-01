@@ -13,6 +13,7 @@ Collection of custom components
 - [SideBar menu](http://webix-hub.github.io/components/sidebar/sample.html) (sidebar)
 - [Slide Button](http://webix-hub.github.io/components/slidebutton/sample.html) (slidebutton)
 - [Form Editor tool](http://webix-hub.github.io/components/formeditor/sample.html) (form-editor)
+- [Ribbon Control](http://webix-hub.github.io/components/ribbon/sample_tabs.html) (ribbon)
 
 
 Third Party Integratons
