@@ -1,0 +1,60 @@
+<!doctype html>
+<head>
+	<meta charset="utf-8">
+	<title> Webix Ribbon::Plain </title>
+	
+	<link rel="stylesheet" href="http://cdn.webix.io/edge/webix.css" type="text/css" media="screen" charset="utf-8">
+	<script src="http://cdn.webix.io/edge/webix.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="ribbon.js"></script>
+	<link rel="stylesheet" type="text/css" href="ribbon.css">
+  	
+  	<body>
+  		<div id="testA"></div>
+  		<script>
+
+		webix.ui({
+			view:"ribbon",
+			id:"myribbon",
+			container:"testA",
+			height:160,
+			on:{
+				"onAction":function(name, value){
+					webix.message(name+(!webix.isUndefined(value)?": "+value:""));
+				}
+			},
+			height:120,
+			items:[
+				{ type:"block", header:"File", width:200, cols:[
+					{view:"button", name:"open", label:"Open", image:"images/open.gif", type:"imageTop", height:60},
+					{view:"button", name:"save", label:"Save", image:"images/save.gif", type:"imageTop", height:60},
+					{view:"button", name:"print", label:"Print", image:"images/save.gif", type:"imageTop", height:60}
+				]},
+				{ type:"block", header:"Actions", width:200, cols:[
+					{view:"button", name:"copy", label:"Copy", image:"images/copy.gif", type:"imageTop", height:60},
+					{view:"button", name:"cut", label:"Cut", image:"images/cut.gif", type:"imageTop", height:60},
+					{view:"button", name:"paste", label:"Paste", image:"images/paste.gif", type:"imageTop", height:60}
+				]},
+				{ type:"block", headerPosition:"bottom", header:"Data operations", rows:[
+					{view:"button", name:"new", label:"New", image:"images/new.jpg", type:"image" },
+					{ width:150, cols:[
+						{view:"button", name:"undo", label:"Undo", image:"images/undo.jpg", type:"image"},
+						{view:"button", name:"redo", label:"Redo", image:"images/redo.jpg", type:"image"}
+					]}
+				]},
+				{ type:"block", headerPosition:"bottom", header:"File operations", width:300,  rows:[
+					{view:"text", name:"filename", label:"Enter file name", labelWidth:120},
+					{view:"text", name:"filepath", label:"Enter path", labelWidth:120}
+				]}
+			]
+
+		});
+
+
+
+
+  		</script>
+
+	</body>
+</html>	
+
+
