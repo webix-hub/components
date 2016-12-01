@@ -1,0 +1,26 @@
+.webix_ribbon .webix_control.webix_el_label{
+	color:#999;
+	text-align:center;
+}
+.webix_ribbon .webix_view{
+	background-color:#f4f4f4 !important;
+	color:#666;
+}
+.webix_ribbon .webix_after_all_tabs{
+	height:0px !important;
+}
+.webix_ribbon .webix_tab_filler{
+	background-color:#eee;
+}
+.webix_ribbon div.webix_item_tab{
+	background-color:#eee;
+	color:#666;
+	border-color:#ddd;
+	border-left-width:1px;
+}
+.webix_ribbon div.webix_item_tab.webix_selected {
+	background-color:transparent;
+}
+.webix_ribbon .webix_el_combo span{
+	background-color:#888;
+}
