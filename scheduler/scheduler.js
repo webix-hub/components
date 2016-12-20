@@ -25,6 +25,12 @@ webix.protoUI({
 			//if setSize will be implemented - below line can be replaced with webix.ready
 			webix.delay(webix.bind(this._render_once, this));
 		});
+
+		this.attachEvent("onDestruct", function(){
+			var sch = this.getScheduler();
+			if (sch)
+				scheduler.cancel_lightbox();
+		});
 	},
 	$setSize: function(x,y){
 		if(webix.ui.view.prototype.$setSize.call(this,x,y)){
@@ -48,4 +54,4 @@ webix.protoUI({
 
 		}, this);
 	}
-}, webix.ui.view);
+}, webix.EventSystem, webix.ui.view);
