@@ -17,7 +17,15 @@ webix.protoUI({
 
 		window.CKEDITOR_BASEPATH = webix.codebase+"ckeditor/";
 		webix.require("ckeditor/ckeditor.js", function(){
-			this._3rd_editor = CKEDITOR.replace( this.config.textAreaID, {
+			var initMethod;
+			if(this.config.editorType === "inline") {
+				CKEDITOR.disableAutoInline = true;
+				initMethod = "inline";
+			} else {
+				initMethod = "replace";
+			}
+			
+			this._3rd_editor = CKEDITOR.[initMethod]( this.config.textAreaID, {
 				toolbar: this.config.toolbar,
 				language: this.config.language,
 				width:this.$width -2,
