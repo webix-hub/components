@@ -25,7 +25,7 @@ webix.protoUI({
 				initMethod = "replace";
 			}
 			
-			this._3rd_editor = CKEDITOR.[initMethod]( this.config.textAreaID, {
+			this._3rd_editor = CKEDITOR[initMethod]( this.config.textAreaID, {
 				toolbar: this.config.toolbar,
 				language: this.config.language,
 				width:this.$width -2,
