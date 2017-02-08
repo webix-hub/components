@@ -1,4 +1,3 @@
-//version 5
 if (typeof(window.dhtmlXCellObject) != "undefined") {
 
 	dhtmlXCellObject.prototype.attachWebix = function(conf) {
