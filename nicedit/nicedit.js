@@ -7,6 +7,8 @@ webix.protoUI({
 	$init:function(config){
 		this.$view.innerHTML = "<div style='padding:10px'>123</div>";
 		this.$view.className += " webix_selectable";
+
+		this._waitEditor = webix.promise.defer();
 		this.$ready.push(this._render_nic_editor);
 	},
 	_render_nic_editor:function(){
@@ -22,6 +24,8 @@ webix.protoUI({
 			this._3rd_editor = nic.nicInstances[nic.nicInstances.length-1];
 			this._set_inner_size();
 
+			this._waitEditor.resolve(this._3rd_editor);
+			
 			this.setValue(this.config.value);
 			if (this._focus_await)
 				this.focus();
@@ -42,11 +46,6 @@ webix.protoUI({
 			this._set_inner_size();
 		}
 	},
-
-
-
-
-
 	setValue:function(value){
 		this.config.value = value;
 		if (this._3rd_editor)
@@ -60,7 +59,7 @@ webix.protoUI({
 		if (this._3rd_editor)
 			this._3rd_editor.elm.focus();
 	},
-	getEditor:function(){
-		return this._3rd_editor;
+	getEditor:function(waitEditor){
+		return waitEditor?this._waitEditor:this._3rd_editor;
 	}
 }, webix.ui.view);

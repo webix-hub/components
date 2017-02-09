@@ -4,37 +4,40 @@
 		this.$view.innerHTML = "<div class='webix_map_content' style='width:100%;height:100%'></div>";
 		this._contentobj = this.$view.firstChild;
 		
-		this.map = null;
+		this._map = null;
 		this.$ready.push(this.render);
 	},
 	render:function(){
 		if (this._check_loading) return;
         this._initMap();
 	},
+	getMap:function(){
+		return this._map;
+	},
     _initMap:function(define){
 	    var c = this.config;
-        this.map = new nokia.maps.map.Display(this._contentobj, {
+        this._map = new nokia.maps.map.Display(this._contentobj, {
         	center:c.center,
         	zoomLevel:c.zoom,
         	baseMapType:nokia.maps.map.Display[c.mapType]
         });
     },
 	center_setter:function(config){
-		if(this.map)
-            this.map.setCenter(nokia.maps.geo.Coordinate(config[0], config[1]));
+		if(this._map)
+            this._map.setCenter(nokia.maps.geo.Coordinate(config[0], config[1]));
         
 		return config;
 	},
 	mapType_setter:function(config){
 		//NORMAL, SATELLITE, TERRAIN
-		if(this.map)
-        	this.map.set("baseMapType", this.map[config]);
+		if(this._map)
+        	this._map.set("baseMapType", this._map[config]);
 
 		return config;
 	},
 	zoom_setter:function(config){
-		if(this.map)
-			 this.map.setZoomLevel(config);
+		if(this._map)
+			 this._map.setZoomLevel(config);
 
 		return config;
 	},

@@ -4,11 +4,11 @@ webix.protoUI({
 		this.$view.innerHTML = "<div class='webix_map_content' style='width:100%;height:100%'></div>";
 		this._contentobj = this.$view.firstChild;
 
-		this._map = webix.promise.defer();
+		this._waitMap = webix.promise.defer();
 		this.$ready.push(this.render);
 	},
-	getMap:function(){
-		return this._map;
+	getMap:function(waitMap){
+		return waitMap?this._waitMap:this._map;
 	},
 	render:function(){
 
@@ -36,30 +36,30 @@ webix.protoUI({
     _initMap:function(define){
         var c = this.config;
         if(this.isVisible(c.id)){
-			this.map = new google.maps.Map(this._contentobj, {
+			this._map = new google.maps.Map(this._contentobj, {
 				zoom: c.zoom,
 				center: new google.maps.LatLng(c.center[0], c.center[1]),
 				mapTypeId: google.maps.MapTypeId[c.mapType]
 			});
-			this._map.resolve(this.map);
+			this._waitMap.resolve(this._map);
         }
     },
 	center_setter:function(config){
-		if(this.map)
-            this.map.setCenter(new google.maps.LatLng(config[0], config[1]));
+		if(this._map)
+            this._map.setCenter(new google.maps.LatLng(config[0], config[1]));
         
 		return config;
 	},
 	mapType_setter:function(config){
 		/*ROADMAP,SATELLITE,HYBRID,TERRAIN*/
-        if(this.map)
-        	this.map.setMapTypeId(google.maps.MapTypeId[config]);
+        if(this._map)
+        	this._map.setMapTypeId(google.maps.MapTypeId[config]);
 
 		return config;
 	},
 	zoom_setter:function(config){
-		if(this.map)
-			 this.map.setZoom(config);
+		if(this._map)
+			 this._map.setZoom(config);
 
 		return config;
 	},
@@ -70,7 +70,7 @@ webix.protoUI({
 	},
 	$setSize:function(){
 		webix.ui.view.prototype.$setSize.apply(this, arguments);
-		if(this.map)
-            google.maps.event.trigger(this.map, "resize");
+		if(this._map)
+            google.maps.event.trigger(this._map, "resize");
 	}
 }, webix.ui.view);

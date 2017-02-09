@@ -3,10 +3,12 @@ webix.protoUI({
 	defaults:{
 		tabs:["day", "week", "month"]
 	},
-	getScheduler:function(){
-		return this._scheduler;
+	getScheduler:function(waitScheduler){
+		return waitScheduler ? this._waitScheduler : this._scheduler;
 	},
 	$init:function(config){
+		this._waitScheduler = webix.promise.defer();
+
 		this.$ready.push(function(){
 			var tabs = this.config.tabs;
 
@@ -51,6 +53,8 @@ webix.protoUI({
 			scheduler.init(this.$view.firstChild, (this.config.date||new Date()), (this.config.mode||"week"));
 			if (this.config.ready)
 				this.config.ready.call(this);
+
+			this._waitScheduler.resolve(scheduler);
 
 		}, this);
 	}
