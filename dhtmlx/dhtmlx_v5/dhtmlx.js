@@ -2,31 +2,37 @@ if (typeof(window.dhtmlXCellObject) != "undefined") {
 
 	dhtmlXCellObject.prototype.attachWebix = function(conf) {
 
-	this.callEvent("_onBeforeContentAttach",["webix"]);
+		this.callEvent("_onBeforeContentAttach",["webix"]);
 
-	var obj = document.createElement("DIV");
-	var id = "webix_" + webix.uid();
-	obj.id = id;
-	obj.style.width = "100%";
-	obj.style.height = "100%";
-	obj.style.position = "relative";
-	obj.style.overflow = "hidden";
+		var obj = document.createElement("DIV");
+		var id = obj.id = "webix_" + webix.uid();
 
-	this._attachObject(obj);
+		obj.style.width = "100%";
+		obj.style.height = "100%";
+		obj.style.position = "relative";
+		obj.style.overflow = "hidden";
 
-	this.dataType = "grid";
-	conf.container = id;
-	this.dataObj = new webix.ui(conf);
+		this._attachObject(obj);
 
-	// fix layout cell for material
-	if (this.conf.skin == "material" && typeof(window.dhtmlXLayoutCell) == "function" && this instanceof window.dhtmlXLayoutCell) {
-	this.cell.childNodes[this.conf.idx.cont].style.overflow = "hidden";
-	}
+		//mimic dhtmlxGrid API
+		this.dataType = "grid";
+		this.dataObj = new webix.ui(conf, id);
+		this.dataObj.setSizes = function(){
+			if (this.resize) this.resize();
+			else this.render();
+		};
+		
 
-	obj = null;
+		// fix layout cell for material
+		if (this.conf.skin == "material" && typeof(window.dhtmlXLayoutCell) == "function" && this instanceof window.dhtmlXLayoutCell) {
+			this.cell.childNodes[this.conf.idx.cont].style.overflow = "hidden";
+		}
 
-	this.callEvent("_onContentAttach",[]);
+		obj = null;
 
-	return this.dataObj;
+		
+		this.callEvent("_onContentAttach",[]);
+
+		return this.dataObj;
 	};
 }
