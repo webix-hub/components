@@ -15,7 +15,7 @@ webix.protoUI({
         if(typeof google=="undefined"||typeof google.maps=="undefined"){
             var name = "webix_callback_"+webix.uid();
             window[name] = webix.bind(function(){
-            	this._initMap.call(this,true);
+				this._initMap.call(this,true);
             },this);
 
             var script = document.createElement("script");
@@ -23,9 +23,9 @@ webix.protoUI({
             var src = "//maps.google.com/maps/api/js?callback="+name;
 
             if (this.config.key)
-            	src += "&key="+this.config.key;
+				src += "&key="+this.config.key;
             if (this.config.libraries)
-            	src += "&libraries="+this.config.libraries;
+				src += "&libraries="+this.config.libraries;
 
             script.src = src;
             document.getElementsByTagName("head")[0].appendChild(script);
@@ -53,20 +53,20 @@ webix.protoUI({
 	mapType_setter:function(config){
 		/*ROADMAP,SATELLITE,HYBRID,TERRAIN*/
         if(this._map)
-        	this._map.setMapTypeId(google.maps.MapTypeId[config]);
+			this._map.setMapTypeId(google.maps.MapTypeId[config]);
 
 		return config;
 	},
 	zoom_setter:function(config){
 		if(this._map)
-			 this._map.setZoom(config);
+			this._map.setZoom(config);
 
 		return config;
 	},
 	defaults:{
 		zoom: 5,
 		center:[ 39.5, -98.5 ],
-		mapType: "ROADMAP" 
+		mapType: "ROADMAP"
 	},
 	$setSize:function(){
 		webix.ui.view.prototype.$setSize.apply(this, arguments);
