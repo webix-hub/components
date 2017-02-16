@@ -35,7 +35,7 @@ webix.protoUI({
 		this._init_ckeditor_once = function(){};
 	},
 	_set_inner_size:function(x, y){
-		if (!this._3rd_editor || !this._3rd_editor.container || !this.$width) return;
+		if (!this._3rd_editor || !this._3rd_editor.container || !this.$width || this.config.editorType === "inline") return;
 		this._3rd_editor.resize(x, y);
 	},
 	$setSize:function(x,y){
