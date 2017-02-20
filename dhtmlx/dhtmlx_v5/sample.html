@@ -22,12 +22,15 @@
 			}
 		</style>
 		<script>
-			var myLayout;
+			var dhxLayout;
 			function doOnLoad() {
-				myLayout = new dhtmlXLayoutObject("layoutObj", "3L");
+				dhxLayout = new dhtmlXLayoutObject("layoutObj", "3L");
+
+				dhxLayout.cells("a").setText("Main Page");
 
 				//use webix layout
-				myLayout.cells("b").attachWebix({
+				dhxLayout.cells("b").setText("Layout");
+				dhxLayout.cells("b").attachWebix({
 					type:"wide", rows:[
 						{ template:"1" },
 						{ type:"wide", cols:[ 
@@ -40,7 +43,8 @@
 				});
 
 				//init webix component
-				myLayout.cells("c").attachWebix({
+				dhxLayout.cells("c").setText("DataTable");
+				dhxLayout.cells("c").attachWebix({
 					view:"datatable",  scrollX:false, select:true,
 					columns:[
 						{ id:"rank",	header:"", css:"rank",  		width:50},
