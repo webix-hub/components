@@ -2,7 +2,7 @@ if (window.dhtmlx){
 
 	if (!dhtmlx.attaches)
 		dhtmlx.attaches = {};
-		
+
 	dhtmlx.attaches.attachWebix=function(conf){
 		var obj = document.createElement("DIV");
 		obj.id = "webix_"+webix.uid();

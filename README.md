@@ -15,7 +15,6 @@ Collection of custom components
 - [Form Editor tool](http://webix-hub.github.io/components/formeditor/sample.html) (form-editor)
 - [Ribbon Control](http://webix-hub.github.io/components/ribbon/sample_tabs.html) (ribbon)
 
-
 Third Party Integratons
 ========================
 
@@ -34,7 +33,7 @@ Editors
 ---------
 - [CKEditor](http://webix-hub.github.io/components/ckeditor/sample.html) (ckeditor)
 - [Mercury](http://webix-hub.github.io/components/mercury/sample.html) (mercury-editor)
-- [tiny MCE](http://webix-hub.github.io/components/tinymce/sample.html) (tinymce-editor)
+- [Tiny MCE](http://webix-hub.github.io/components/tinymce/sample.html) (tinymce-editor)
 - [Nic Edit](http://webix-hub.github.io/components/nicedit/sample.html) (nic-editor)
 - [Code Mirror](http://webix-hub.github.io/components/codemirror/sample.html) (codemirror-editor)
 - [Ace](http://webix-hub.github.io/components/ace/sample.html) (ace-editor)
@@ -46,21 +45,20 @@ Charts
 - [D3](http://webix-hub.github.io/components/d3/sample.html) (d3-chart)
 - [Sigma Chart](http://webix-hub.github.io/components/sigma/sample.html) (sigma-chart)
 - [Just Gage](http://webix-hub.github.io/components/justgage/sample.html) (justgage-chart)
-- [Just Gage](http://webix-hub.github.io/components/fusion/sample.html) (fusion-chart)
-
+- [Fusion](http://webix-hub.github.io/components/fusion/sample.html) (fusion-chart)
 
 DHTMLX components
 -------------------
 - [DHTMLX Scheduler](http://webix-hub.github.io/components/scheduler/sample.html) (dhx-scheduler)
 - [DHTMLX Gantt](http://webix-hub.github.io/components/gantt/sample.html) (dhx-gantt)
-
+- [Using Webix with DHTMLX components](http://webix-hub.github.io/components/dhtmlx/dhtmlx_v5/sample.html)
 
 Other
 ------
 
 - [Hipchat ](http://webix-hub.github.io/components/hipchat/sample.html) (hipchat)
 - [Konva](http://webix-hub.github.io/components/konva/sample.html) (konva)
-
+- [Paper](http://webix-hub.github.io/components/paper/sample.html) (paper)
 
 Thanks
 ------

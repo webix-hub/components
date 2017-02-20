@@ -53,6 +53,6 @@ webix.protoUI({
 			this._3rd_editor.focus();
 	},
 	getEditor:function(){
-		return this._3rd_editor.getData();
+		return this._3rd_editor;
 	}
 }, webix.ui.view);
