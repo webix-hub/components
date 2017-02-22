@@ -1,6 +1,7 @@
 webix.protoUI({
     name:'justgage-chart',
     $init:function(config){
+        this._waitChart = webix.promise.defer();
         this.$ready.push(this._render_after_load);
     },
     defaults:{
@@ -19,14 +20,18 @@ webix.protoUI({
                 gage_config.id = temp_id;
                 gage_config.relativeGaugeSize = true;
 
-                this.config.gage=new JustGage(gage_config);
+                this._chart = new JustGage(gage_config);
+                this._waitChart.resolve(this._chart);
         },this);
     },
     setValue:function(value){
         this.config.value=value;
-        this.config.gage.refresh(value,100);
+        this._chart.refresh(value,100);
     },
     getValue:function(){
         return this.config.value;
+    },
+    getChart:function(waitChart){
+        return waitChart ? this._waitChart : this._chart;
     }
 },webix.ui.view);
