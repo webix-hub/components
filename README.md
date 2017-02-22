@@ -10,6 +10,7 @@ Collection of custom components
 - [Grid suggest](http://webix-hub.github.io/components/gridsuggest/sample.html) (gridsuggest)
 - [Data suggest](http://webix-hub.github.io/components/datasuggest/sample.html) (datasuggest)
 - [Double list](http://webix-hub.github.io/components/dndlist/sample.html) (dndlist)
+- [Select dialog](http://webix-hub.github.io/components/selectdialog/sample.html)
 - [SideBar menu](http://webix-hub.github.io/components/sidebar/sample.html) (sidebar)
 - [Slide Button](http://webix-hub.github.io/components/slidebutton/sample.html) (slidebutton)
 - [Form Editor tool](http://webix-hub.github.io/components/formeditor/sample.html) (form-editor)
@@ -26,7 +27,7 @@ Maps
 - [Goggle Maps](http://webix-hub.github.io/components/googlemap/sample.html) (google-map)
 - [Open Street Maps](http://webix-hub.github.io/components/openmap/sample.html) (open-map)
 - [Yandex Maps](http://webix-hub.github.io/components/yandexmap/sample.html) (yandex-map)
-- [Here Maps](http://webix-hub.github.io/components/nokiamap/sample.html), also known as Nokia Maps (nokia-map)
+- [Here Maps](http://webix-hub.github.io/components/heremap/sample.html), also known as Nokia Maps (nokia-map)
 
 
 Editors
