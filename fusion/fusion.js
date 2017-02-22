@@ -11,6 +11,7 @@ webix.protoUI({
 		}
 	},
 	$init:function(config){
+		this._waitChart = webix.promise.defer();
 		webix.delay(webix.bind(this._render_once, this));
 	},
 	_render_once: function(){
@@ -33,15 +34,17 @@ webix.protoUI({
 			}
 			
 			var loadrequires = (function() {
-				if (requires.length == 0) {
+				if (requires.length === 0) {
 					var config = this.config.config;
 					config.renderAt = this.$view;
 					config.width = this.$width;
 					config.height = this.$height;
 					config.dataSource.chart.showBorder = 0;
-			        
-					this.fusion = new FusionCharts(config);
-					this.fusion.render();
+
+					this._chart = new FusionCharts(config);
+					this._chart.render();
+
+					this._waitChart.resolve(this._chart);
 				} else {
 					var nreq = requires.shift();
 					webix.require("fusioncharts/" + nreq, webix.bind(loadrequires, this));
@@ -53,12 +56,12 @@ webix.protoUI({
 	},
 	$setSize:function(x,y){
 		if (webix.ui.view.prototype.$setSize.call(this,x,y)){
-			if (this.fusion) {
-				this.fusion.resizeTo(this.$width, this.$height);
+			if (this._chart) {
+				this._chart.resizeTo(this.$width, this.$height);
 			}
 		}
 	},
-	getChart:function(){
-		return this.fusion;
-	},
-}, webix.EventSystem, webix.ui.view );
+	getChart:function(waitChart){
+		return waitChart?this._waitChart:this._chart;
+	}
+}, webix.ui.view);

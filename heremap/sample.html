@@ -3,20 +3,28 @@
 <head>
 	<script type="text/javascript" src="http://cdn.webix.io/edge/webix.js"></script>
 	<link rel="stylesheet" type="text/css" href="http://cdn.webix.io/edge/webix.css">
-
-	<script type="text/javascript" src="./nokiamap.js"></script>
-	<script src="http://js.api.here.com/se/2.5.3/jsl.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="./heremap.js"></script>
+	<title>Here Map</title>
 </head>
 <body>
 	<div id="sample_div" style='width:600px; height:300px; margin:50px;'></div>
 	<script type="text/javascript">
 		webix.ui({
 			container:"sample_div",
-    		view:"nokia-map",
+    		view:"here-map",
     		id:"map",
 			zoom:6,
+			/*
+				provide your own Nokia map credentails
+				https://developer.here.com/javascript-apis/documentation/v3/maps/common/credentials.html
+			*/
+			key:{
+				app_id: "rKXqAgcqFKC1SwjKmLHK",
+				app_code: "C4lZgPcRAUprVs852zTYxQ"
+			},
 			center:[ 48.724, 8.215 ]
 		});
+		
 	</script>
 </body>
 </html>
