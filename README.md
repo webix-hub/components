@@ -10,7 +10,7 @@ Collection of custom components
 - [Grid suggest](http://webix-hub.github.io/components/gridsuggest/sample.html) (gridsuggest)
 - [Data suggest](http://webix-hub.github.io/components/datasuggest/sample.html) (datasuggest)
 - [Double list](http://webix-hub.github.io/components/dndlist/sample.html) (dndlist)
-- [Select dialog](http://webix-hub.github.io/components/selectdialog/sample.html)
+- [Select dialog](http://webix-hub.github.io/components/selectdialog/sample.html) (select-dialog)
 - [SideBar menu](http://webix-hub.github.io/components/sidebar/sample.html) (sidebar)
 - [Slide Button](http://webix-hub.github.io/components/slidebutton/sample.html) (slidebutton)
 - [Form Editor tool](http://webix-hub.github.io/components/formeditor/sample.html) (form-editor)
