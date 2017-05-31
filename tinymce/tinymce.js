@@ -32,9 +32,14 @@ webix.protoUI({
 
 			config.mode = "exact";
 			config.height = 300;
-			config.setup = webix.bind(this._mce_editor_setup, this);
 			config.elements = [this._mce_id];
 			config.id = this._mce_id;
+
+			var customsetup = config.setup;
+			config.setup = webix.bind(function(editor){
+				if(customsetup) customsetup(editor);
+				this._mce_editor_setup(editor);
+			}, this);
 
 			tinyMCE.init(config);
 
