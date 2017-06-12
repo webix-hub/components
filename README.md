@@ -24,7 +24,6 @@ Collection of third party integrations for the Webix UI
 Maps
 ------
 
-- [Goggle Maps](http://webix-hub.github.io/components/googlemap/sample.html) (google-map)
 - [Open Street Maps](http://webix-hub.github.io/components/openmap/sample.html) (open-map)
 - [Yandex Maps](http://webix-hub.github.io/components/yandexmap/sample.html) (yandex-map)
 - [Here Maps](http://webix-hub.github.io/components/heremap/sample.html), also known as Nokia Maps (here-map)
