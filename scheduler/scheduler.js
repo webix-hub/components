@@ -3,10 +3,12 @@ webix.protoUI({
 	defaults:{
 		tabs:["day", "week", "month"]
 	},
-	getScheduler:function(){
-		return this._scheduler;
+	getScheduler:function(waitScheduler){
+		return waitScheduler ? this._waitScheduler : this._scheduler;
 	},
 	$init:function(config){
+		this._waitScheduler = webix.promise.defer();
+
 		this.$ready.push(function(){
 			var tabs = this.config.tabs;
 
@@ -24,6 +26,12 @@ webix.protoUI({
 			//because we are not messing with resize model
 			//if setSize will be implemented - below line can be replaced with webix.ready
 			webix.delay(webix.bind(this._render_once, this));
+		});
+
+		this.attachEvent("onDestruct", function(){
+			var sch = this.getScheduler();
+			if (sch)
+				scheduler.cancel_lightbox();
 		});
 	},
 	$setSize: function(x,y){
@@ -46,6 +54,8 @@ webix.protoUI({
 			if (this.config.ready)
 				this.config.ready.call(this);
 
+			this._waitScheduler.resolve(scheduler);
+
 		}, this);
 	}
-}, webix.ui.view);
+}, webix.EventSystem, webix.ui.view);

@@ -7,6 +7,8 @@ webix.protoUI({
 	},
 	$init:function(config){
 		this.$view.className += " webix_selectable";
+
+		this._waitEditor = webix.promise.defer();
 		this.$ready.push(this.render);
 	},
 	render:function(){
@@ -30,9 +32,14 @@ webix.protoUI({
 
 			config.mode = "exact";
 			config.height = 300;
-			config.setup = webix.bind(this._mce_editor_setup, this);
 			config.elements = [this._mce_id];
 			config.id = this._mce_id;
+
+			var customsetup = config.setup;
+			config.setup = webix.bind(function(editor){
+				if(customsetup) customsetup(editor);
+				this._mce_editor_setup(editor);
+			}, this);
 
 			tinyMCE.init(config);
 
@@ -46,6 +53,8 @@ webix.protoUI({
 	_mce_editor_ready:function(editor){
 		this._3rd_editor = tinyMCE.get(this._mce_id);
 		this._set_inner_size();
+		this._waitEditor.resolve(this._3rd_editor);
+
 		this.setValue(this.config.value);
 		if (this._focus_await)
 			this.focus();
@@ -60,11 +69,6 @@ webix.protoUI({
 			this._set_inner_size();
 		}
 	},
-
-
-
-
-
 	setValue:function(value){
 		this.config.value = value;
 		if (this._3rd_editor)
@@ -78,7 +82,7 @@ webix.protoUI({
 		if (this._3rd_editor)
 			this._3rd_editor.focus();
 	},
-	getEditor:function(){
-		return this._3rd_editor;
+	getEditor:function(waitEditor){
+		return waitEditor?this._waitEditor:this._3rd_editor;
 	}
 }, webix.ui.view);
