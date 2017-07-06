@@ -170,7 +170,7 @@ webix.protoUI({
 			},
 			"fa-plus-circle":function(){
 				var id = this.add({});
-				if(this.getTopParentView().getMasterView)
+				if(self._isSubView(this))
 					self._delayEdit = {view:this, id:id};
 				else this.editCell(id);
 			}
@@ -186,6 +186,14 @@ webix.protoUI({
 		else config.paddingX = 0;
 
 		return config;
+	},
+	_isSubView:function(view){
+		var parent = view.getParentView();
+		if(parent && parent.getMasterView)
+			return true;
+		if(parent)
+			return this._isSubView(parent);
+		return false;
 	},
 	_getForm:function(data, name){
 		var config = { view:"subform", elements:[], $editor:this.config.id};

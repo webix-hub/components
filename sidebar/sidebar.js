@@ -113,6 +113,7 @@ webix.protoUI({
 	},
 	_initContextMenu: function(){
 		var config = this.config,
+			top = this,
 			popup;
 
 		if(config.popup){
@@ -134,7 +135,7 @@ webix.protoUI({
 							template: "#value#", height: this.config.titleHeight+2,
 							on:{
 								onMasterSelect: function(id){
-									var master = this.getTopParentView().master;
+									var master = $$(top.config.popupId).master;
 									if( master && master.getParentId(id) == this.masterId){
 										webix.html.addCss(this.$view, "webix_sidebar_selected", true);
 									}
@@ -146,7 +147,7 @@ webix.protoUI({
 							onClick:{
 								webix_template: function(){
 									var id = this.masterId;
-									var master = this.getTopParentView().master;
+									var master = $$(top.config.popupId).master;
 									if(!master.getItem(id).$count)
 										master.select(id);
 								}
@@ -155,7 +156,7 @@ webix.protoUI({
 						{ view: "list", select: true, 	borderless: true, css: "webix_sidebar_popup_list",  autoheight: true,
 							on:{
 								onAfterSelect: function(id){
-									this.getTopParentView().master.select(id);
+									$$(top.config.popupId).master.select(id);
 								}
 							}
 						}
