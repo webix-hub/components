@@ -36,8 +36,7 @@ webix.protoUI({
     },
 	center_setter:function(config){
 		if(this._map)
-            this._map.setCenter(config);
-        
+            this._map.panTo(config);
 		return config;
 	},
 	mapType_setter:function(config){
