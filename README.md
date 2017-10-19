@@ -16,8 +16,12 @@ Collection of custom components
 - [Form Editor tool](http://webix-hub.github.io/components/formeditor/sample.html) (form-editor)
 - [Ribbon Control](http://webix-hub.github.io/components/ribbon/sample_tabs.html) (ribbon)
 
+<<<<<<< HEAD
 
 Third Party Integratons
+=======
+Third Party Integrations
+>>>>>>> master
 ========================
 
 Collection of third party integrations for the Webix UI
