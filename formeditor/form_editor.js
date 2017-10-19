@@ -191,7 +191,7 @@ webix.protoUI({
 		var parent = view.getParentView();
 		if(parent && parent.getMasterView)
 			return true;
-		if(parent) 
+		if(parent)
 			return this._isSubView(parent);
 		return false;
 	},
