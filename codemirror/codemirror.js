@@ -22,6 +22,9 @@ webix.protoUI({
 			deps.push("codemirror/mode/css/css.js");
 			deps.push("codemirror/mode/javascript/javascript.js");
 		}
+		if(this.config.matchBrackets){
+			deps.push("codemirror/addon/edit/matchbrackets.js")
+		}
 
 		deps.push("codemirror/mode/"+this.config.mode+"/"+this.config.mode+".js");
 		webix.require(deps, this._render_when_ready, this);
