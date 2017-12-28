@@ -40,7 +40,7 @@ webix.protoUI({
 	},
 	setValue:function(value){
 		this.config.value = value;
-		if (this._3rd_editor)
+		if (this._3rd_editor && this._3rd_editor.status === 'ready')
 			this._3rd_editor.setData(value);
 		else webix.delay(function(){
 			this.setValue(value);
