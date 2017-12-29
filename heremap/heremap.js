@@ -12,8 +12,8 @@
 	render:function(){
 		if(!window.H || !window.H.map){
 			webix.require([
-				"http://js.api.here.com/v3/3.0/mapsjs-core.js",
-				"http://js.api.here.com/v3/3.0/mapsjs-service.js"
+				"//js.api.here.com/v3/3.0/mapsjs-core.js",
+				"//js.api.here.com/v3/3.0/mapsjs-service.js"
 			], this._initMap, this);
 		}
 		else
