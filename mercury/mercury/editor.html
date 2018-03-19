@@ -24,10 +24,17 @@
 	<body onscroll='window.setTimeout(function(){ document.body.scrollTop = 0; },1);'>
 		<div id="webix_content" data-mercury="full"></div>
 		<script type="text/javascript">
-			if (window.parent == top){ 
+			var isTop = false;
+			try {
+				isTop = window.parent == top;
+				window.Mercury = parent.Mercury || window.Mercury;
+			} catch(e){
+				isTop = true;
+			}
+
+			if (isTop){ 
 				new Mercury.PageEditor(null, {}).statusbar.hide();
 			} else { 
-				window.Mercury = top.Mercury||parent.Mercury||parent.parent.Mercury; 
 				Mercury.trigger("initialize:frame"); 
 			} 
 		</script>
