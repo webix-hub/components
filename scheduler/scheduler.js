@@ -41,21 +41,36 @@ webix.protoUI({
 		}
 	},
 	_render_once:function(){
-		webix.require("scheduler/dhtmlxscheduler.css");
+		var cdn = this.config.cdn;
+		var skin = this.config.skin || "flat";
+		if (skin === "terrace"){
+			skin = "";
+		} else {
+			skin = "_"+skin;
+		}
+
+		if (cdn === false){
+			this._after_render_once();
+			return;
+		}
+
+		cdn = cdn || "https://cdn.webix.com/components/scheduler/";
+		webix.require(cdn+"scheduler/dhtmlxscheduler"+skin+".css");
 		webix.require([
-			"scheduler/dhtmlxscheduler.js"
-		], function(){
-			var scheduler = this._scheduler = window.Scheduler ? Scheduler.getSchedulerInstance() : window.scheduler;
+			cdn+"scheduler/dhtmlxscheduler.js"
+		], this._after_render_once, this);
+	},
+	_after_render_once:function(){
+		var scheduler = this._scheduler = window.Scheduler ? Scheduler.getSchedulerInstance() : window.scheduler;
 
-			if (this.config.init)
-				this.config.init.call(this);
+		if (this.config.init)
+			this.config.init.call(this, scheduler);
 
-			scheduler.init(this.$view.firstChild, (this.config.date||new Date()), (this.config.mode||"week"));
-			if (this.config.ready)
-				this.config.ready.call(this);
+		scheduler.init(this.$view.firstChild, (this.config.date||new Date()), (this.config.mode||"week"));
+		if (this.config.ready)
+			this.config.ready.call(this, scheduler);
 
-			this._waitScheduler.resolve(scheduler);
+		this._waitScheduler.resolve(scheduler);
 
-		}, this);
 	}
 }, webix.EventSystem, webix.ui.view);
