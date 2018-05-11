@@ -1,7 +1,8 @@
 webix.protoUI({
 	name:"dhx-scheduler",
 	defaults:{
-		tabs:["day", "week", "month"]
+		tabs:["day", "week", "month"],
+		skin:"terrace",
 	},
 	getScheduler:function(waitScheduler){
 		return waitScheduler ? this._waitScheduler : this._scheduler;
@@ -42,7 +43,7 @@ webix.protoUI({
 	},
 	_render_once:function(){
 		var cdn = this.config.cdn;
-		var skin = this.config.skin || "flat";
+		var skin = this.config.skin;
 		if (skin === "terrace"){
 			skin = "";
 		} else {
@@ -57,18 +58,19 @@ webix.protoUI({
 		cdn = cdn || "https://cdn.webix.com/components/scheduler/";
 		webix.require(cdn+"scheduler/dhtmlxscheduler"+skin+".css");
 		webix.require([
-			cdn+"scheduler/dhtmlxscheduler.js"
+			cdn+"scheduler/dhtmlxscheduler.js?v=4.4"
 		], this._after_render_once, this);
 	},
 	_after_render_once:function(){
 		var scheduler = this._scheduler = window.Scheduler ? Scheduler.getSchedulerInstance() : window.scheduler;
+		scheduler.skin = this.config.skin;
 
 		if (this.config.init)
-			this.config.init.call(this, scheduler);
+			this.config.init.call(this);
 
 		scheduler.init(this.$view.firstChild, (this.config.date||new Date()), (this.config.mode||"week"));
 		if (this.config.ready)
-			this.config.ready.call(this, scheduler);
+			this.config.ready.call(this);
 
 		this._waitScheduler.resolve(scheduler);
 

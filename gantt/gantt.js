@@ -1,5 +1,8 @@
 webix.protoUI({
 	name:"dhx-gantt",
+	defaults:{
+		skin:"terrace"
+	},
 	$init:function(){
 		this._waitGantt = webix.promise.defer();
 		webix.delay(webix.bind(this._render_once, this));
@@ -15,7 +18,7 @@ webix.protoUI({
 	},
 	_render_once:function(){
 		var cdn = this.config.cdn;
-		var skin = this.config.skin || "material";
+		var skin = this.config.skin;
 		
 		if (cdn === false){
 			this._after_render_once();
@@ -23,9 +26,9 @@ webix.protoUI({
 		}
 
 		cdn = cdn || "https://cdn.webix.com/components/gantt/";
-		webix.require(cdn + "gantt/skins/dhtmlxgantt"+skin+".css");
+		webix.require(cdn + "gantt/skins/dhtmlxgantt_"+skin+".css");
 		webix.require([
-			cdn + "gantt/dhtmlxgantt.js"
+			cdn + "gantt/dhtmlxgantt.js?v=5.1"
 		], this._after_render_once, this);
 	},
 	_after_render_once:function(){
