@@ -1,6 +1,6 @@
 {
   "name": "@wbx/view-dhx-gantt",
-  "version": "5.1.1",
+  "version": "5.1.2",
   "description": "DHTMLX gantt as Webix view",
   "main": "gantt.js",
   "scripts": {
