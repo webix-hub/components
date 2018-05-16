@@ -9,18 +9,30 @@ webix.protoUI({
 		this.$ready.push(this._render_cm_editor);
 	},
 	_render_cm_editor:function(){
+		this._cdn = this.config.cdn;
+		
+		if (this._cdn === false){
+			this._render_when_ready();
+			return;
+		};
+
+		this._cdn = this._cdn || "https://cdnjs.cloudflare.com/ajax/libs/ace/1.3.3/";
+
 		webix.require([
-			"ace/src-min-noconflict/ace.js"
-		], this._render_when_ready, this);
+			this._cdn + "ace.js"
+		]).then(() => this._render_when_ready()).catch(function(e){
+	      console.log(e);
+	    });
 	},
 
 	_render_when_ready:function(){
-        var basePath = webix.codebase+"ace/src-min-noconflict/";
-
-        ace.config.set("basePath", basePath);
-        ace.config.set("modePath", basePath);
-        ace.config.set("workerPath", basePath);
-        ace.config.set("themePath", basePath);
+        
+        if (this._cdn){
+        	ace.config.set("basePath", this._cdn);
+            ace.config.set("modePath", this._cdn);
+            ace.config.set("workerPath", this._cdn);
+            ace.config.set("themePath", this._cdn);
+        };
 
 		this._editor = ace.edit(this.$view);
 		

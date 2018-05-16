@@ -4,13 +4,22 @@
 	<script type="text/javascript" src="http://cdn.webix.com/edge/webix.js"></script>
 	<link rel="stylesheet" type="text/css" href="http://cdn.webix.com/edge/webix.css">
 
+	<!-- `cdn:false` assumes that path is declared manually -->
+	<!-- 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.3.3/ace.js"></script>
+	<script>
+		var basePath = "https://cdnjs.cloudflare.com/ajax/libs/ace/1.3.3/";
+		ace.config.set("basePath", basePath);
+        ace.config.set("modePath", basePath);
+        ace.config.set("workerPath", basePath);
+        ace.config.set("themePath", basePath);
+	</script> 
+	-->
+
 	<script type="text/javascript" src="./ace.js"></script>
 </head>
 <body>
 	<script type="text/javascript">
-		//path from which autoload extra libraries
-		webix.codebase = "./";
-		
 		webix.ui({
 			cols:[{
 				header:"JavaScript", body:{
