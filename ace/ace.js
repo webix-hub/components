@@ -20,7 +20,7 @@ webix.protoUI({
 
 		webix.require([
 			this._cdn + "ace.js"
-		]).then(() => this._render_when_ready()).catch(function(e){
+		]).then( webix.bind(this._render_when_ready, this) ).catch(function(e){
 	      console.log(e);
 	    });
 	},
