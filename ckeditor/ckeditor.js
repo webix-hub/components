@@ -16,17 +16,29 @@ webix.protoUI({
 		var tid = this.config.textAreaID = "t"+webix.uid();
 		this.$view.innerHTML = "<textarea id='"+tid+"'>"+this.config.value+"</textarea>";
 
-		window.CKEDITOR_BASEPATH = webix.codebase+"ckeditor/";
-		webix.require("ckeditor/ckeditor.js", function(){
-			this._3rd_editor = CKEDITOR.replace( this.config.textAreaID, {
-				toolbar: this.config.toolbar,
-				language: this.config.language,
-				width:this.$width -2,
-				height:this.$height - 44
-			});
-			this._waitEditor.resolve(this._3rd_editor);
-		}, this);
-		this._init_ckeditor_once = function(){};
+		this._cdn = this.config.cdn;
+		
+		if (this.cdn !== false){
+			this._cdn = this._cdn || "//cdn.ckeditor.com/4.9.2/standard/";
+		
+			window.CKEDITOR_BASEPATH = this._cdn;			
+			webix.require([this._cdn+"ckeditor.js"])
+			.then( webix.bind(this._render_ckeditor, this) )
+			.catch(function(e){
+		      console.log(e);
+		    });
+		} else {
+			this._render_ckeditor;
+		};
+	},
+	_render_ckeditor:function(){
+		this._3rd_editor = CKEDITOR.replace( this.config.textAreaID, {
+			toolbar: this.config.toolbar,
+			language: this.config.language,
+			width:this.$width -2,
+			height:this.$height - 44
+		});
+		this._waitEditor.resolve(this._3rd_editor);
 	},
 	_set_inner_size:function(x, y){
 		if (!this._3rd_editor || !this._3rd_editor.container || !this.$width) return;
