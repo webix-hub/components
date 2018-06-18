@@ -12,22 +12,46 @@ webix.protoUI({
 		this.$ready.push(this._render_cm_editor);
 	},
 	_render_cm_editor:function(){
-		webix.require("codemirror/lib/codemirror.css");
-		var deps = [
-			"codemirror/lib/codemirror.js"
+
+		this._cdn = this.config.cdn;
+
+		if (this._cdn === false){
+			this._render_when_ready;
+			return;
+		};
+
+		this._cdn = this._cdn ? this._cdn : "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.38.0/";
+		// basic
+		var sources = [
+			this._cdn+"/codemirror.css",
+			this._cdn+"/codemirror.js"
 		];
 
+		// mode
 		if (this.config.mode == "htmlmixed"){
-			deps.push("codemirror/mode/xml/xml.js");
-			deps.push("codemirror/mode/css/css.js");
-			deps.push("codemirror/mode/javascript/javascript.js");
-		}
-		if(this.config.matchBrackets){
-			deps.push("codemirror/addon/edit/matchbrackets.js")
-		}
+			sources.push(this._cdn+"/mode/xml/xml.js");
+			sources.push(this._cdn+"/mode/css/css.js");
+			sources.push(this._cdn+"/mode/javascript/javascript.js");
+		} else {
+			var mode = this.config.mode ? this.config.mode : "javascript";
+			sources.push(this._cdn+"/mode/"+mode+"/"+mode+".js");
+		};
 
-		deps.push("codemirror/mode/"+this.config.mode+"/"+this.config.mode+".js");
-		webix.require(deps, this._render_when_ready, this);
+		// theme
+		if (this.config.theme && this.config.theme !== "default"){
+			sources.push(this._cdn+"/theme/"+this.config.theme+".css")
+		};
+
+		// matchbrackets add-on
+		if(this.config.matchBrackets){
+			sources.push(this._cdn+"/addon/edit/matchbrackets.js")
+		};
+
+		webix.require(sources)
+		.then( webix.bind(this._render_when_ready, this) )
+		.catch(function(e){
+			console.log(e);
+		});		
 	},
 	_render_when_ready:function(){
 		this._editor = CodeMirror.fromTextArea(this.$view.firstChild, {
