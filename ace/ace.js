@@ -16,10 +16,10 @@ webix.protoUI({
 			return;
 		};
 
-		this._cdn = this._cdn || "https://cdnjs.cloudflare.com/ajax/libs/ace/1.3.3/";
+		this._cdn = this._cdn || "https://cdnjs.cloudflare.com/ajax/libs/ace/1.3.3";
 
 		webix.require([
-			this._cdn + "ace.js"
+			this._cdn + "/ace.js"
 		]).then( webix.bind(this._render_when_ready, this) ).catch(function(e){
 	      console.log(e);
 	    });

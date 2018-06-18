@@ -18,18 +18,19 @@ webix.protoUI({
 
 		this._cdn = this.config.cdn;
 		
-		if (this.cdn !== false){
-			this._cdn = this._cdn || "//cdn.ckeditor.com/4.9.2/standard/";
-		
-			window.CKEDITOR_BASEPATH = this._cdn;			
-			webix.require([this._cdn+"ckeditor.js"])
-			.then( webix.bind(this._render_ckeditor, this) )
-			.catch(function(e){
-		      console.log(e);
-		    });
-		} else {
+		if (this._cdn === false){
 			this._render_ckeditor;
+			return;
 		};
+
+		this._cdn = this._cdn || "//cdn.ckeditor.com/4.9.2/standard/";
+	
+		window.CKEDITOR_BASEPATH = this._cdn;			
+		webix.require([this._cdn+"/ckeditor.js"])
+		.then( webix.bind(this._render_ckeditor, this) )
+		.catch(function(e){
+			console.log(e);
+		});		
 	},
 	_render_ckeditor:function(){
 		this._3rd_editor = CKEDITOR.replace( this.config.textAreaID, {
