@@ -12,7 +12,6 @@ webix.protoUI({
 
 		this.$ready.push(function(){
 			var tabs = this.config.tabs;
-
 			var html = ["<div class='dhx_cal_container' style='width:100%; height:100%;'><div class='dhx_cal_navline'><div class='dhx_cal_prev_button'>&nbsp;</div><div class='dhx_cal_next_button'>&nbsp;</div><div class='dhx_cal_today_button'></div><div class='dhx_cal_date'></div>"];
 			if (tabs)
 				for (var i=0; i<tabs.length; i++)
@@ -41,25 +40,30 @@ webix.protoUI({
 				this._scheduler.setCurrentView();
 		}
 	},
-	_render_once:function(){
-		var cdn = this.config.cdn;
+	_render_once:function(){		
+		this._cdn = this.config.cdn;
+		
 		var skin = this.config.skin;
 		if (skin === "terrace"){
 			skin = "";
 		} else {
 			skin = "_"+skin;
-		}
-
-		if (cdn === false){
+		};
+		
+		if (this._cdn === false){
 			this._after_render_once();
 			return;
-		}
+		};
 
-		cdn = cdn || "https://cdn.webix.com/components/scheduler/";
-		webix.require(cdn+"scheduler/dhtmlxscheduler"+skin+".css");
-		webix.require([
-			cdn+"scheduler/dhtmlxscheduler.js?v=4.4"
-		], this._after_render_once, this);
+		this._cdn = this._cdn || "http://cdn.dhtmlx.com/scheduler/edge";
+		var sources = [
+			this._cdn+"/dhtmlxscheduler"+skin+".css",
+			this._cdn+"/dhtmlxscheduler.js"			
+		];
+
+		webix.require(sources).then( webix.bind(this._after_render_once, this) ).catch(function(e){
+			console.log(e);
+		});
 	},
 	_after_render_once:function(){
 		var scheduler = this._scheduler = window.Scheduler ? Scheduler.getSchedulerInstance() : window.scheduler;
