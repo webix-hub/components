@@ -15,18 +15,16 @@ webix.protoUI({
 	_init_ckeditor_once:function(){
 		var tid = this.config.textAreaID = "t"+webix.uid();
 		this.$view.innerHTML = "<textarea id='"+tid+"'>"+this.config.value+"</textarea>";
-
-		this._cdn = this.config.cdn;
 		
-		if (this._cdn === false){
+		if (this.config.cdn === false){
 			this._render_ckeditor;
 			return;
 		};
 
-		this._cdn = this._cdn || "//cdn.ckeditor.com/4.9.2/standard/";
+		var cdn = this.config.cdn || "//cdn.ckeditor.com/4.9.2/standard/";
 	
-		window.CKEDITOR_BASEPATH = this._cdn;			
-		webix.require([this._cdn+"/ckeditor.js"])
+		window.CKEDITOR_BASEPATH = cdn;			
+		webix.require([cdn+"/ckeditor.js"])
 		.then( webix.bind(this._render_ckeditor, this) )
 		.catch(function(e){
 			console.log(e);

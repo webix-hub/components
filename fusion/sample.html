@@ -4,118 +4,77 @@
 		<link rel="stylesheet" href="http://cdn.webix.com/edge/webix.css" type="text/css" media="screen" charset="utf-8">
 		<script src="http://cdn.webix.com/edge/webix.js" type="text/javascript" charset="utf-8"></script>
 		
-		<title>FusionCharts</title>
+		
 		<script type="text/javascript" src="./fusion.js"></script>
+		<script type="text/javascript" src="data/data.js"></script>
+
+		<title>FusionCharts</title>
 	</head>
 	<body>
-		<h1>Webix integration with FusionCharts (fusion-chart)</h1>
-		<h2>By MLukman (https://github.com/MLukman)</h2>
-
-		<div id="chartArea"></div>
-			
-		<h3>Parameters:</h3>
-		<dl>
-			<dt>config</dt>
-			<dd>The FusionCharts initialization config object</dd>
-	
-			<dt>require</dt>
-			<dd>Whether to load up additional JS files or not. Default:
-			<pre>{
-	charts: true,
-	powercharts: false,
-	widgets: false,
-	gantt: false,
-	maps: false
-}
-			</pre>
-			</dd>
-	
-		</dl>
-	
-		<h3>Functions:</h3>
-		<dl>
-			<dt>getChart()</dt>
-			<dd>Gets the FusionCharts object</dd>
-		</dl>
-		
-		<p>Note: if you have a licensed copy of FusionCharts, simply replace the content of fusioncharts folder with your copy.</p>
-
 		<script type="text/javascript" charset="utf-8">
-			webix.codebase = "./";
+
+			var column2dConfig = {
+				"type": "column2d",
+				"dataFormat": "json",
+				"dataSource": {
+					"chart": {
+						"caption": "Monthly revenue for last year",
+						"subCaption": "Harry's SuperMart",
+						"xAxisName": "Month",
+						"yAxisName": "Revenues (In USD)",
+						"theme": "fint",
+					 },
+					"data": column2dData
+				}
+			};
+
+			var angulargaugeConfig = {
+				"type": "angulargauge",
+				"dataFormat": "json",
+				"dataSource": {
+					"chart": {
+						"caption": "Customer Satisfaction Score",
+						"subcaption": "Last week",
+						"lowerLimit": "0",
+						"upperLimit": "100",
+						"theme": "zune"
+					},
+					"colorRange": {
+						"color": [
+							{
+								"minValue": "0",
+								"maxValue": "50",
+								"code": "#e44a00"
+							},
+							{
+								"minValue": "50",
+								"maxValue": "75",
+								"code": "#f8bd19"
+							},
+							{
+								"minValue": "75",
+								"maxValue": "100",
+								"code": "#6baa01"
+							}
+						]
+					},
+					"dials": {
+						"dial": [
+							{
+								"value": "67"
+							}
+						]
+					}
+				}
+			};		
+
 			webix.ui({
-				view: "window",
-				head: "FusionCharts Integration Example",
-				position: "center",
-				move: true,
-				width: 800,
-				height: 400,
-				body: {
-					cols: [
+				rows:[
+					{template:"Webix integration with FusionCharts (fusion-chart)", type:"header"},					
+					{cols:[						
 						{
 							view:"fusion-chart",
-							config: {
-								"type": "column2d",
-						        "dataFormat": "json",
-						        "dataSource": {
-						          "chart": {
-						              "caption": "Monthly revenue for last year",
-						              "subCaption": "Harry's SuperMart",
-						              "xAxisName": "Month",
-						              "yAxisName": "Revenues (In USD)",
-						              "theme": "fint",
-						           },
-						          "data": [
-						              {
-						                 "label": "Jan",
-						                 "value": "420000"
-						              },
-						              {
-						                 "label": "Feb",
-						                 "value": "810000"
-						              },
-						              {
-						                 "label": "Mar",
-						                 "value": "720000"
-						              },
-						              {
-						                 "label": "Apr",
-						                 "value": "550000"
-						              },
-						              {
-						                 "label": "May",
-						                 "value": "910000"
-						              },
-						              {
-						                 "label": "Jun",
-						                 "value": "510000"
-						              },
-						              {
-						                 "label": "Jul",
-						                 "value": "680000"
-						              },
-						              {
-						                 "label": "Aug",
-						                 "value": "620000"
-						              },
-						              {
-						                 "label": "Sep",
-						                 "value": "610000"
-						              },
-						              {
-						                 "label": "Oct",
-						                 "value": "490000"
-						              },
-						              {
-						                 "label": "Nov",
-						                 "value": "900000"
-						              },
-						              {
-						                 "label": "Dec",
-						                 "value": "730000"
-						              }
-						           ]
-						        }
-							}
+							config: column2dConfig,
 						},
 						{ view: 'resizer' },
 						{
@@ -123,51 +82,14 @@
 							require: {
 								widgets: true
 							},
-							config: {
-								"type": "angulargauge",
-						        "dataFormat": "json",
-						        "dataSource": {
-								    "chart": {
-								        "caption": "Customer Satisfaction Score",
-								        "subcaption": "Last week",
-								        "lowerLimit": "0",
-								        "upperLimit": "100",
-								        "theme": "zune"
-								    },
-								    "colorRange": {
-								        "color": [
-								            {
-								                "minValue": "0",
-								                "maxValue": "50",
-								                "code": "#e44a00"
-								            },
-								            {
-								                "minValue": "50",
-								                "maxValue": "75",
-								                "code": "#f8bd19"
-								            },
-								            {
-								                "minValue": "75",
-								                "maxValue": "100",
-								                "code": "#6baa01"
-								            }
-								        ]
-								    },
-								    "dials": {
-								        "dial": [
-								            {
-								                "value": "67"
-								            }
-								        ]
-								    }
-						        }
-							}
+							config: angulargaugeConfig,
 						}
-					]
-				}
+					]},
+					{template:text, autoheight:true}
+				]
 			}).show();
 
-			$$("$fusion-chart1").getChart(true).then(function(chart){ debugger; })
+			$$("$fusion-chart1").getChart(true).then(function(chart){ webix.message("Charts are loaded") })
 		</script>
 	</body>
 	

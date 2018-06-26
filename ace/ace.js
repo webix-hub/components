@@ -8,26 +8,23 @@ webix.protoUI({
 		this._waitEditor = webix.promise.defer();
 		this.$ready.push(this._render_cm_editor);
 	},
-	_render_cm_editor:function(){
-		this._cdn = this.config.cdn;
-		
-		if (this._cdn === false){
+	_render_cm_editor:function(){		
+		if (this.config.cdn === false){
 			this._render_when_ready();
 			return;
 		};
 
-		this._cdn = this._cdn || "https://cdnjs.cloudflare.com/ajax/libs/ace/1.3.3";
+		var cdn = this.config.cdn || "https://cdnjs.cloudflare.com/ajax/libs/ace/1.3.3";
 
 		webix.require([
-			this._cdn + "/ace.js"
+			cdn + "/ace.js"
 		]).then( webix.bind(this._render_when_ready, this) ).catch(function(e){
 	      console.log(e);
 	    });
 	},
-
 	_render_when_ready:function(){
         
-        if (this._cdn){
+        if (this.config.cdn){
         	ace.config.set("basePath", this._cdn);
             ace.config.set("modePath", this._cdn);
             ace.config.set("workerPath", this._cdn);
