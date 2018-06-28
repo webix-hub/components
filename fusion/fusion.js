@@ -22,8 +22,7 @@ webix.protoUI({
 		};
 
 		var cdn = this.config.cdn;
-		var chartsExist = typeof FusionCharts !== "undefined";
-		var check = cdn || chartsExist;
+		var check = cdn || window.FusionCharts;
 		webix.assert(check, "No path to FusionChart sources");
 		
 		var sources = [];

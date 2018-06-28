@@ -13,6 +13,8 @@
 			container:"sample_div",
     		view:"here-map",
     		id:"map",
+			modules:["mapevents", "ui"],
+			center:[ 48.724, 8.215 ],
 			zoom:6,
 			/*
 				provide your own Nokia map credentails
@@ -21,8 +23,18 @@
 			key:{
 				app_id: "rKXqAgcqFKC1SwjKmLHK",
 				app_code: "C4lZgPcRAUprVs852zTYxQ"
-			},
-			center:[ 48.724, 8.215 ]
+			}
+		});
+
+
+		$$("map").getMap(true).then(function(map){
+			// to-do: get rid of the timeout
+			// but the default layer needs time to render
+			setTimeout(function(){
+				H.ui.UI.createDefault(map, $$("map").getLayers());
+				var mapEvents = new H.mapevents.MapEvents(map);
+				var behavior = new H.mapevents.Behavior(mapEvents);
+			}, 100);
 		});
 		
 	</script>

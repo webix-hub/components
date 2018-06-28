@@ -1,5 +1,11 @@
-	webix.protoUI({
+webix.protoUI({
 	name:"here-map",
+	defaults:{
+		zoom: 5,
+		center:[ 39.5, -98.5 ],
+		mapType: {type:"normal", layer:"map"},
+		modules:[]
+	},
 	$init:function(config){
 		this.$view.innerHTML = "<div class='webix_map_content' style='width:100%;height:100%'></div>";
 		this._contentobj = this.$view.firstChild;
@@ -10,25 +16,44 @@
 		webix.delay(this.render, this); //let it paint
 	},
 	render:function(){
-		if(!window.H || !window.H.map){
-			webix.require([
-				"https://js.api.here.com/v3/3.0/mapsjs-core.js",
-				"https://js.api.here.com/v3/3.0/mapsjs-service.js"
-			], this._initMap, this);
-		}
-		else
+
+		if(window.H && window.H.map){
 			this._initMap();
+			return;
+		};
+
+		var cdn = "https://js.api.here.com/v3/3.0";
+		var sources = [
+			cdn+"/mapsjs-core.js",
+			cdn+"/mapsjs-service.js"
+		];
+
+		var modules = this.config.modules;	
+		for (var i=0; i<modules.length; i++){
+			sources.push(cdn+"/mapsjs-"+modules[i]+".js");
+			if (modules[i] == "ui")
+				sources.push(cdn+"/mapsjs-"+modules[i]+".css");
+		};
+
+		webix.require(sources)
+		.then( webix.bind(this._initMap, this) )
+		.catch(function(e){ 
+			console.log(e) 
+		});
 	},
 	getMap:function(waitMap){
 		return waitMap?this._waitMap:this._map;
 	},
-    _initMap:function(){
+	getLayers:function(){
+		return this._defaultLayers;
+	},
+	_initMap:function(){
 		var c = this.config;
 
 		if(!this._defaultLayers){
 			var platform = new H.service.Platform(c.key);
 			this._defaultLayers = platform.createDefaultLayers();
-		}
+		};
 
 		if(this.isVisible(c.id)){
 			this._map = new H.Map( this._contentobj,
@@ -40,13 +65,13 @@
 			);
 			this._waitMap.resolve(this._map);
 		}
-    },
+	},
 	center_setter:function(config){
 		config = { lat:config[0], lng:config[1]};
 		
 		if(this._map)
-            this._map.setCenter(config);
-        
+			this._map.setCenter(config);
+
 		return config;
 	},
 	mapType_setter:function(config){
@@ -70,10 +95,5 @@
 			this._map.setZoom(config);
 
 		return config;
-	},
-	defaults:{
-		zoom: 5,
-		center:[ 39.5, -98.5 ],
-		mapType: {type:"normal", layer:"map"}
 	}
 }, webix.ui.view);
