@@ -16,7 +16,7 @@ webix.protoUI({
 			} else this._ready_awaits = 1;
 		});
 
-		webix.delay(webix.bind(this._render_once, this));
+		webix.delay(this._render_once, this);
 	},
 	_render_once:function(){
 				

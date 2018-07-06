@@ -12,7 +12,7 @@ webix.protoUI({
 
         if (this.config.cdn === false){
             // justGage uses document.getElementById, so ensure the rendering is finished
-            webix.delay(webix.bind(this._render_after_load, this));
+            webix.delay(this._render_after_load, this);
             return;
         };
 

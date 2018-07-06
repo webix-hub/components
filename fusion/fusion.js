@@ -12,7 +12,7 @@ webix.protoUI({
 	},
 	$init:function(config){
 		this._waitChart = webix.promise.defer();
-		webix.delay(webix.bind(this._render_once, this));
+		webix.delay(this._render_once, this);
 	},
 	_render_once: function(){
 
@@ -23,7 +23,8 @@ webix.protoUI({
 
 		var cdn = this.config.cdn;
 		var check = cdn || window.FusionCharts;
-		webix.assert(check, "No path to FusionChart sources");
+		if (!check)
+			webix.message({text:"No path to FusionChart sources", type:"error", expire:-1});
 		
 		var sources = [];
 
