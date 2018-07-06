@@ -5,10 +5,20 @@ webix.protoUI({
         this.$ready.push(this.render);
     },
     render:function(){
-        if(!window.Konva)
-            webix.require("konva/konva.js", this._initStage, this);
-        else
-            this._initStage();
+
+        if(this.config.cdn == false){
+            webix.delay(this._initStage, this);
+            return;
+        }
+
+        var cdn = this.config.cdn ? this.config.cdn : "https://cdn.rawgit.com/konvajs/konva/2.1.7";
+        webix.require([
+            cdn+"/konva.min.js"
+        ])
+        .then( webix.bind(this._initStage, this) )
+        .catch(function(e){
+            console.log(e)
+        });
     },
     _initStage:function(){
         this._stage = new Konva.Stage({
