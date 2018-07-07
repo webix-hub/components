@@ -1,5 +1,11 @@
 webix.protoUI({
 	name:"open-map",
+	defaults:{
+		zoom: 5,
+		center:[ 39.5, -98.5 ],
+		layer:"http://{s}.tile.osm.org/{z}/{x}/{y}.png",
+		attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a>'
+	},
 	$init:function(){
 		this.$view.innerHTML = "<div class='webix_map_content' style='width:100%;height:100%'></div>";
 		this._contentobj = this.$view.firstChild;
@@ -11,14 +17,22 @@ webix.protoUI({
 		return waitMap?this._waitMap:this._map;
 	},
 	render:function(){
-        if(!window.L || !window.L.map){
-        	webix.require([
-				"leaflet/leaflet.js",
-				"leaflet/leaflet.css"
-			], this._initMap, this);
-        }
-        else
+        if (this.config.cdn === false && (!window.L || !window.L.map)){        	
             this._initMap();
+            return;
+        };
+
+        var cdn = this.config.cdn ? this.config.cdn : "https://unpkg.com/leaflet@1.3.1/dist";
+
+        webix.require([
+			cdn+"/leaflet.js",
+			cdn+"/leaflet.css"
+		])
+		.then( webix.bind(this._initMap, this) )
+		.catch(function(e){
+			console.log(e);
+		});
+        
 	},
     _initMap:function(define){
 	    var c = this.config;
@@ -51,12 +65,6 @@ webix.protoUI({
 			 this._map.setZoom(config);
 
 		return config;
-	},
-	defaults:{
-		zoom: 5,
-		center:[ 39.5, -98.5 ],
-		layer:"http://{s}.tile.osm.org/{z}/{x}/{y}.png",
-		attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a>'
 	},
 	$setSize:function(){
 		webix.ui.view.prototype.$setSize.apply(this, arguments);
