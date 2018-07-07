@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<link rel="stylesheet" href="http://cdn.webix.com/edge/webix.css" type="text/css" media="screen" charset="utf-8">
-		<script src="http://cdn.webix.com/edge/webix.js" type="text/javascript" charset="utf-8"></script>
-		<title>Paper</title>
+	<link rel="stylesheet" href="http://cdn.webix.com/edge/webix.css" type="text/css" media="screen" charset="utf-8">
+	<script src="http://cdn.webix.com/edge/webix_debug.js" type="text/javascript" charset="utf-8"></script>
+	<title>Paper</title>
+
         <script type="text/javascript" src="./paper.js"></script>
-        <script type="text/paperscript" src="./paperchain.js" canvas="canvasA"></script>
-        <script type="text/paperscript" src="./paperballs.js" canvas="canvasB"></script>
+        <script type="text/paperscript" src="./paper_smoothing.js" canvas="canvasA"></script>
+        
 	</head>
 	<body> 
         <script type="text/javascript" charset="utf-8">
-        webix.codebase = "./";
         webix.ui({
         	rows:[
         		{ type:"header", template:"Paper app"},
-        		{ view:"paper", canvas:"canvasA"},
-        		{ view:"resizer"},
-        		{ view:"paper", canvas:"canvasB", gravity:2 },
-                { type:"header", template:"bottom bar"},
+        		{ 
+                                view:"paper", 
+                                canvas:"canvasA"
+                        }
         	]
         });
 		</script>

@@ -34,7 +34,7 @@ webix.protoUI({
 	_render_nic_editor:function(){
 		if (!this._editorCss){
 			var style = ".nicEdit-panel{height:auto}\n";
-			style += ".nicEdit-panelContain{border-top-width:0px !important;}\n"
+			style += ".nicEdit-panelContain{border-top-width:0px !important;}\n";
 			style += ".webix_selectable>div:nth-child(2){overflow-y:auto;}";
 			webix.html.addStyle(style);
 			this._editorCss = true;
