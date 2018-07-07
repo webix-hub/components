@@ -5,7 +5,7 @@ webix.protoUI({
 		value:""
 	},
 	$init:function(config){
-		this.$view.innerHTML = "<div style='padding:10px'>123</div>";
+		this.$view.innerHTML = "<div style='padding:10px'>A placeholder</div>";
 		this.$view.className += " webix_selectable";
 
 		this._waitEditor = webix.promise.defer();
@@ -33,7 +33,10 @@ webix.protoUI({
 	},
 	_render_nic_editor:function(){
 		if (!this._editorCss){
-			webix.html.addStyle(".nicEdit-panel{height:auto}\n.nicEdit-panelContain{border-top-width:0px !important;}");
+			var style = ".nicEdit-panel{height:auto}\n";
+			style += ".nicEdit-panelContain{border-top-width:0px !important;}\n"
+			style += ".webix_selectable>div:nth-child(2){overflow-y:auto;}";
+			webix.html.addStyle(style);
 			this._editorCss = true;
 		}
 		
