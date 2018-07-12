@@ -20,10 +20,9 @@ webix.protoUI({
 
 		var sources = [];
 		
-		if (this.config.cdn)
-			sources.push(this.config.cdn+"/nicEdit.js")
-		else
-			sources.push("http://js.nicedit.com/nicEdit-latest.js");
+		var cdn = this.config.cdn ? this.config.cdn : "https://cdnjs.cloudflare.com/ajax/libs/NicEdit/0.93";
+
+		sources.push(cdn+"/nicEdit.js")
 
 		webix.require(sources)
 		.then(webix.bind(this._render_nic_editor, this))

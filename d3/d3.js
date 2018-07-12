@@ -2,7 +2,7 @@ webix.protoUI({
 	name:"d3-chart",
 	defaults:{
 		minified:true,
-		version:5
+		version:"5"
 	},
 	$init:function(){
 		this._ready_awaits = 0;
@@ -28,7 +28,7 @@ webix.protoUI({
 		var cdn = this.config.cdn ? this.config.cdn : "https://d3js.org";
 		// get the minified file by default
 		var isMin = this.config.minified ? ".min" : "";
-		var version = this.config.version ? this.config.version.toString() : "5"; 
+		var version = this.config.version.toString();
 
 		var source = cdn+"/d3.v"+version+isMin+".js";
 		

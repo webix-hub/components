@@ -1,8 +1,8 @@
 {
-  "name": "@wbx/view-dhx-scheduler",
-  "version": "4.4.0",
-  "description": "DHTMLX Scheduler as Webix view",
-  "main": "scheduler.js",
+  "name": "@wbx/view-nic-editor",
+  "version": "2.1.7",
+  "description": "NicEdit editor as Webix view",
+  "main": "nicedit.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,11 +12,11 @@
   },
   "keywords": [
     "webix",
-    "dhtmlx",
-    "scheduler",
+    "nicedit",
+    "editor",
     "view"
   ],
-  "author": "Maksim Kozhukh",
+  "author": "XB Software",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/webix-hub/components/issues"

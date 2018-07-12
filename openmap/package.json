@@ -1,8 +1,8 @@
 {
-  "name": "@wbx/view-dhx-scheduler",
-  "version": "4.4.0",
-  "description": "DHTMLX Scheduler as Webix view",
-  "main": "scheduler.js",
+  "name": "@wbx/view-open-map",
+  "version": "1.3.1",
+  "description": "Leaflet OpenStreet map as Webix view",
+  "main": "openmap.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,11 +12,12 @@
   },
   "keywords": [
     "webix",
-    "dhtmlx",
-    "scheduler",
+    "openstreet",
+    "leaflet",
+    "map",
     "view"
   ],
-  "author": "Maksim Kozhukh",
+  "author": "XB Software",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/webix-hub/components/issues"

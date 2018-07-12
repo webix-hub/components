@@ -25,7 +25,7 @@ webix.protoUI({
 			return;
 		};
 
-		var cdn = this.config.cdn ? this.config.cdn : "https://cloud.tinymce.com/stable";
+		var cdn = this.config.cdn ? this.config.cdn : "https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.7.13";
 
 		//path to tinymce codebase
 		window.tinyMCEPreInit = { 
