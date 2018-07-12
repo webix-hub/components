@@ -3,7 +3,6 @@
 <head>
 	<script type="text/javascript" src="http://cdn.webix.com/edge/webix.js"></script>
 	<link rel="stylesheet" type="text/css" href="http://cdn.webix.com/edge/webix.css">
-
 	<script type="text/javascript" src="./yandexmap.js"></script>
 </head>
 <body>
@@ -11,8 +10,9 @@
 	<script type="text/javascript">
 		webix.ui({
 			container:"sample_div",
-    		view:"yandex-map",
-    		id:"map",
+			view:"yandex-map",
+			id:"map",
+			load:["Map","Placemark"],
 			zoom:6,
 			center:[ 48.724, 8.215 ]
 		});

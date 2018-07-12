@@ -34,7 +34,9 @@ webix.protoUI({
 			suffix:".min" 
 		};
 
-		webix.require(cdn+"/tinymce.min.js")
+		webix.require([
+			cdn+"/tinymce.min.js"
+		])
 		.then( webix.bind(this._init_tinymce_once, this) )
 		.catch(function(e){
 			console.log(e);
