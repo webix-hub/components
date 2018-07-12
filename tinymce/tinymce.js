@@ -13,37 +13,57 @@ webix.protoUI({
 	},
 	render:function(){
 		this._set_inner_size();
-	},
-	_init_tinymce_once:function(){
+	},	
+	_require_tinymce_once:function(){
+
 		//set id for future usage
 		this._mce_id = "webix_mce_"+this.config.id;
 		this.$view.innerHTML = "<textarea id='"+this._mce_id+"' style='width:1px; height:1px'></textarea>";
 
+		if (this.config.cdn === false){
+			this._init_tinymce_once();
+			return;
+		};
+
+		var cdn = this.config.cdn ? this.config.cdn : "https://cloud.tinymce.com/stable";
+
 		//path to tinymce codebase
-		tinyMCEPreInit = { query:"", base: webix.codebase+"tinymce", suffix:".min" };
-		webix.require("tinymce/tinymce.min.js", function(){
-			if (!tinymce.dom.Event.domLoaded){
-				//woraround event logic in tinymce
-				tinymce.dom.Event.domLoaded = true;
-				webix.html.addStyle(".mce-tinymce.mce-container{ border-width:0px !important}");
-			}
-			
-			var config = this.config.config;
+		window.tinyMCEPreInit = { 
+			query:"", 
+			base: cdn, 
+			suffix:".min" 
+		};
 
-			config.mode = "exact";
-			config.height = 300;
-			config.elements = [this._mce_id];
-			config.id = this._mce_id;
+		webix.require(cdn+"/tinymce.min.js")
+		.then( webix.bind(this._init_tinymce_once, this) )
+		.catch(function(e){
+			console.log(e);
+		});
 
-			var customsetup = config.setup;
-			config.setup = webix.bind(function(editor){
-				if(customsetup) customsetup(editor);
-				this._mce_editor_setup(editor);
-			}, this);
+	},
+	_init_tinymce_once:function(){		
 
-			tinyMCE.init(config);
+		if (!tinymce.dom.Event.domLoaded){
+			//woraround event logic in tinymce
+			tinymce.dom.Event.domLoaded = true;
+			webix.html.addStyle(".mce-tinymce.mce-container{ border-width:0px !important}");
+		}
+		
+		var config = this.config.config;
 
+		config.mode = "exact";
+		config.height = 300;
+		config.elements = [this._mce_id];
+		config.id = this._mce_id;
+
+		var customsetup = config.setup;
+		config.setup = webix.bind(function(editor){
+			if(customsetup) customsetup(editor);
+			this._mce_editor_setup(editor);
 		}, this);
+
+		tinyMCE.init(config);
+
 
 		this._init_tinymce_once = function(){};
 	},
@@ -65,7 +85,7 @@ webix.protoUI({
 	},
 	$setSize:function(x,y){
 		if (webix.ui.view.prototype.$setSize.call(this, x, y)){
-			this._init_tinymce_once();
+			this._require_tinymce_once();
 			this._set_inner_size();
 		}
 	},
