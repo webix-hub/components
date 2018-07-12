@@ -5,7 +5,7 @@ webix.protoUI({
 		value:""
 	},
 	$init:function(config){
-		this.$view.innerHTML = "<div style='padding:10px'>A placeholder</div>";
+		this.$view.innerHTML = "<div style='padding:10px'>Loading...</div>";
 		this.$view.className += " webix_selectable";
 
 		this._waitEditor = webix.promise.defer();

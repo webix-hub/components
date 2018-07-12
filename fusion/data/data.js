@@ -51,7 +51,7 @@ var column2dData = [
 
 var text = "";
 text += "By MLukman (https://github.com/MLukman)";
-text += "<p>FusionCharts requires a licence, so if you have one (or trial version), simply specify path to the folder as <code>cdn</code>.</p>";
+text += "<p>FusionCharts <b>require a licence</b>, so if you have one (or a trial version), simply specify path to the folder as <code>cdn</code>.</p>";
 text += "<h3>Parameters:</h3>";
 text += "<dl>";
 text += "<pre>cdn</pre>";

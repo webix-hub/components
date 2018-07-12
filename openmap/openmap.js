@@ -17,14 +17,14 @@ webix.protoUI({
 		return waitMap?this._waitMap:this._map;
 	},
 	render:function(){
-        if (this.config.cdn === false && (!window.L || !window.L.map)){        	
-            this._initMap();
-            return;
-        };
+		if (this.config.cdn === false && (!window.L || !window.L.map)){			
+			this._initMap();
+			return;
+		};
 
-        var cdn = this.config.cdn ? this.config.cdn : "https://unpkg.com/leaflet@1.3.1/dist";
+		var cdn = this.config.cdn ? this.config.cdn : "https://unpkg.com/leaflet@1.3.1/dist";
 
-        webix.require([
+		webix.require([
 			cdn+"/leaflet.js",
 			cdn+"/leaflet.css"
 		])
@@ -32,31 +32,31 @@ webix.protoUI({
 		.catch(function(e){
 			console.log(e);
 		});
-        
+		
 	},
-    _initMap:function(define){
-	    var c = this.config;
+	_initMap:function(define){
+		var c = this.config;
 
-	    if(this.isVisible(c.id)){
+		if(this.isVisible(c.id)){
 
-	        this._map = L.map(this._contentobj);
-	        this._map.setView(c.center, c.zoom);
-	        L.tileLayer(c.layer, {
-			    attribution: c.attribution
+			this._map = L.map(this._contentobj);
+			this._map.setView(c.center, c.zoom);
+			L.tileLayer(c.layer, {
+				attribution: c.attribution
 			}).addTo(this._map);
 
 			this._waitMap.resolve(this._map);
 		}
-    },
+	},
 	center_setter:function(config){
 		if(this._map)
-            this._map.panTo(config);
+			this._map.panTo(config);
 		return config;
 	},
 	mapType_setter:function(config){
 		//yadex#map, yadex#satellite, yadex#hybrid, yadex#publicMap
 		if(this._map)
-        	this._map.setType(config);
+			this._map.setType(config);
 
 		return config;
 	},
@@ -69,6 +69,6 @@ webix.protoUI({
 	$setSize:function(){
 		webix.ui.view.prototype.$setSize.apply(this, arguments);
 		if(this._map)
-            this._map.invalidateSize();
+			this._map.invalidateSize();
 	}
 }, webix.ui.view, webix.EventSystem);
