@@ -1,6 +1,6 @@
 {
   "name": "@wbx/view-nic-editor",
-  "version": "0.93",
+  "version": "0.93.0",
   "description": "NicEdit editor as Webix view",
   "main": "nicedit.js",
   "scripts": {

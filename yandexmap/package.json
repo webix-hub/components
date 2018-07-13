@@ -1,6 +1,6 @@
 {
   "name": "@wbx/view-yandex-map",
-  "version": "2.1",
+  "version": "2.1.0",
   "description": "Yandex Map as Webix widget",
   "main": "yandexmap.js",
   "scripts": {

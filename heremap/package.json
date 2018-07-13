@@ -1,6 +1,6 @@
 {
   "name": "@wbx/view-here-map",
-  "version": "3.0",
+  "version": "3.0.0",
   "description": "Here Maps as Webix view",
   "main": "heremap.js",
   "scripts": {

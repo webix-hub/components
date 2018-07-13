@@ -1,6 +1,6 @@
 {
   "name": "@wbx/view-dndlist",
-  "version": "1.0",
+  "version": "1.0.0",
   "description": "Webix Component: Drag & Drop List",
   "main": "dndlist.js",
   "scripts": {
