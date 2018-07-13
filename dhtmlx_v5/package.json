@@ -1,5 +1,5 @@
 {
-  "name": "@wbx/view-dhxLayout-webix",
+  "name": "@wbx/view-dhxlayout-webix",
   "version": "5.1.0",
   "description": "Webix view in DHTMLX layout",
   "main": "dhtmlx.js",
