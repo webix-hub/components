@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script type="text/javascript" src="http://cdn.webix.com/edge/webix.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://cdn.webix.com/edge/webix.css">
+
+    <script type="text/javascript" src="./filtermenu.js"></script>
+
+    <script type="text/javascript" src="./data/data.js"></script>
+</head>
+<body>
+	<script>
+		webix.ready(function(){
+			webix.ui({
+				view: 'datatable',
+				id: 'dt',
+				data: grid_data,
+				columns: [
+					{
+						id:'rank',
+						adjust: true,
+						header: 'Rank',
+					},
+			        {
+			        	id:'year',
+			        	adjust: true,
+			        	header: 'Year'
+			        },
+			        {
+			        	id:'title',
+			        	fillspace: 4,
+			        	header: {
+			        		content: 'filterMenu',
+			        		menuConf: {
+			        			label: 'Title',
+			        			sortingFuncs: [
+			        				{name: 'By name ASC', algorithm: 'string', direction: 'asc'},
+			        				{name: 'By name DESC', algorithm: 'string', direction: 'desc'},
+			        				{
+			        					name: 'By length',
+			        					algorithm: function (a, b) {
+			        						var a_str = a.toString();
+			        						var b_str = b.toString();
+			        						if (a_str.length > b_str.length)
+			        							return 1;
+			        						else if (a_str.length < b_str.length)
+			        							return -1;
+			        						else return 0;
+			        					}
+			        				},
+			        			],
+			        		},
+			        	},
+			        },
+			        {
+			        	id:'votes',
+			        	fillspace: 1,
+			        	header: {
+			        		content: 'textFilter'
+			        	},
+			        },
+			        {
+			        	id:'rating',
+			        	fillspace: 1,
+			        	header: {
+							content: 'filterMenu',
+			        		text: 'Rating',
+						},
+			        },
+				],
+			});
+		});
+	</script>
+</body>
+</html>
