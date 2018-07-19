@@ -31,7 +31,13 @@ webix.protoUI({
 		});		
 	},
 	_render_ckeditor:function(){
-		this._3rd_editor = CKEDITOR.replace( this.config.textAreaID, {
+		var initMethod = "replace";
+		if(this.config.editorType === "inline") {
+			CKEDITOR.disableAutoInline = true;
+			initMethod = "inline";
+		}
+
+		this._3rd_editor = CKEDITOR[initMethod]( this.config.textAreaID, {
 			toolbar: this.config.toolbar,
 			language: this.config.language,
 			width:this.$width -2,
@@ -40,7 +46,7 @@ webix.protoUI({
 		this._waitEditor.resolve(this._3rd_editor);
 	},
 	_set_inner_size:function(x, y){
-		if (!this._3rd_editor || !this._3rd_editor.container || !this.$width) return;
+		if (!this._3rd_editor || !this._3rd_editor.container || !this.$width || this.config.editorType === "inline") return;
 		this._3rd_editor.resize(x, y);
 	},
 	$setSize:function(x,y){
@@ -51,7 +57,7 @@ webix.protoUI({
 	},
 	setValue:function(value){
 		this.config.value = value;
-		if (this._3rd_editor)
+		if (this._3rd_editor && this._3rd_editor.status === "ready")
 			this._3rd_editor.setData(value);
 		else webix.delay(function(){
 			this.setValue(value);
