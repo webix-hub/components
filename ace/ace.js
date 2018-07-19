@@ -8,40 +8,49 @@ webix.protoUI({
 		this._waitEditor = webix.promise.defer();
 		this.$ready.push(this._render_cm_editor);
 	},
-	_render_cm_editor:function(){
+	_render_cm_editor:function(){		
+		if (this.config.cdn === false){
+			this._render_when_ready();
+			return;
+		};
+
+		var cdn = this.config.cdn || "https://cdnjs.cloudflare.com/ajax/libs/ace/1.3.3";
+
 		webix.require([
-			"ace/src-min-noconflict/ace.js"
-		], this._render_when_ready, this);
+			cdn + "/ace.js"
+		]).then( webix.bind(this._render_when_ready, this) ).catch(function(e){
+		  console.log(e);
+		});
 	},
-
 	_render_when_ready:function(){
-        var basePath = webix.codebase+"ace/src-min-noconflict/";
-
-        ace.config.set("basePath", basePath);
-        ace.config.set("modePath", basePath);
-        ace.config.set("workerPath", basePath);
-        ace.config.set("themePath", basePath);
+		
+		if (this.config.cdn){
+			ace.config.set("basePath", this._cdn);
+			ace.config.set("modePath", this._cdn);
+			ace.config.set("workerPath", this._cdn);
+			ace.config.set("themePath", this._cdn);
+		};
 
 		this._editor = ace.edit(this.$view);
 		
 
-        this._editor.$blockScrolling = Infinity;
-        this._editor.setOptions({
+		this._editor.$blockScrolling = Infinity;
+		this._editor.setOptions({
 			fontFamily: "consolas,monospace",
 			fontSize: "12pt"
 		});
 
-        if(this.config.theme)
-            this._editor.setTheme("ace/theme/"+this.config.theme);
-        if(this.config.mode)
-            this._editor.getSession().setMode("ace/mode/"+this.config.mode);
-        if(this.config.value)
-            this.setValue(this.config.value);
+		if(this.config.theme)
+			this._editor.setTheme("ace/theme/"+this.config.theme);
+		if(this.config.mode)
+			this._editor.getSession().setMode("ace/mode/"+this.config.mode);
+		if(this.config.value)
+			this.setValue(this.config.value);
 		if (this._focus_await)
-            this.focus();
+			this.focus();
 
-        this._editor.navigateFileStart();
-        this._waitEditor.resolve(this._editor);
+		this._editor.navigateFileStart();
+		this._waitEditor.resolve(this._editor);
 	},
 	setValue:function(value){
 		if(!value && value !== 0)

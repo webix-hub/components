@@ -1,0 +1,25 @@
+{
+  "name": "@wbx/view-ace-editor",
+  "version": "1.3.3",
+  "description": "Ace editor as Webix view",
+  "main": "ace.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webix-hub/components.git"
+  },
+  "keywords": [
+    "webix",
+    "ace",
+    "editor",
+    "view"
+  ],
+  "author": "XB Software",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/webix-hub/components/issues"
+  },
+  "homepage": "https://github.com/webix-hub/components#readme"
+}

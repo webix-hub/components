@@ -1,0 +1,25 @@
+{
+  "name": "@wbx/view-dhxlayout-webix",
+  "version": "5.1.0",
+  "description": "Webix view in DHTMLX layout",
+  "main": "dhtmlx.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webix-hub/components.git"
+  },
+  "keywords": [
+    "webix",
+    "dhtmlx",
+    "layout",
+    "view"
+  ],
+  "author": "XB Software",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/webix-hub/components/issues"
+  },
+  "homepage": "https://github.com/webix-hub/components#readme"
+}

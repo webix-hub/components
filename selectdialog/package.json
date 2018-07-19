@@ -1,0 +1,24 @@
+{
+  "name": "@wbx/view-select-dialog",
+  "version": "1.0.0",
+  "description": "Webix SelectDialog widget",
+  "main": "selectdialog.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webix-hub/components.git"
+  },
+  "keywords": [
+    "webix",
+    "select-dialog",
+    "view"
+  ],
+  "author": "XB Software",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/webix-hub/components/issues"
+  },
+  "homepage": "https://github.com/webix-hub/components#readme"
+}

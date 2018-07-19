@@ -1,0 +1,25 @@
+{
+  "name": "@wbx/view-d3-chart",
+  "version": "5.5.0",
+  "description": "D3 chart as Webix view",
+  "main": "d3.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webix-hub/components.git"
+  },
+  "keywords": [
+    "webix",
+    "d3",
+    "chart",
+    "view"
+  ],
+  "author": "XB Software",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/webix-hub/components/issues"
+  },
+  "homepage": "https://github.com/webix-hub/components#readme"
+}

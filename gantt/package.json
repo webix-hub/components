@@ -1,6 +1,6 @@
 {
   "name": "@wbx/view-dhx-gantt",
-  "version": "5.1.2",
+  "version": "5.2.1",
   "description": "DHTMLX gantt as Webix view",
   "main": "gantt.js",
   "scripts": {
@@ -16,7 +16,7 @@
     "gantt",
     "view"
   ],
-  "author": "Maksim Kozhukh",
+  "author": "XB Software",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/webix-hub/components/issues"

@@ -1,0 +1,26 @@
+{
+  "name": "@wbx/view-yandex-map",
+  "version": "2.1.0",
+  "description": "Yandex Map as Webix widget",
+  "main": "yandexmap.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webix-hub/components.git"
+  },
+  "keywords": [
+    "webix",
+    "yandex",
+    "yandex-map",
+    "map",
+    "view"
+  ],
+  "author": "XB Software",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/webix-hub/components/issues"
+  },
+  "homepage": "https://github.com/webix-hub/components#readme"
+}

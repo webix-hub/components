@@ -1,0 +1,26 @@
+{
+  "name": "@wbx/view-justgage-chart",
+  "version": "1.2.9",
+  "description": "JustGage as Webix view",
+  "main": "justgage.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webix-hub/components.git"
+  },
+  "keywords": [
+    "webix",
+    "justgage",
+    "gauge",
+    "chart",
+    "view"
+  ],
+  "author": "XB Software",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/webix-hub/components/issues"
+  },
+  "homepage": "https://github.com/webix-hub/components#readme"
+}

@@ -5,14 +5,8 @@ Webix Components
 
 Collection of custom components
 
-- [Colored List](http://webix-hub.github.io/components/colorlist/sample.html) (colorlist)
-- [Win8 like menu](http://webix-hub.github.io/components/winmenu/sample.html) (winmenu)
-- [Grid suggest](http://webix-hub.github.io/components/gridsuggest/sample.html) (gridsuggest)
-- [Data suggest](http://webix-hub.github.io/components/datasuggest/sample.html) (datasuggest)
 - [Double list](http://webix-hub.github.io/components/dndlist/sample.html) (dndlist)
 - [Select dialog](http://webix-hub.github.io/components/selectdialog/sample.html) (select-dialog)
-- [SideBar menu](http://webix-hub.github.io/components/sidebar/sample.html) (sidebar)
-- [Slide Button](http://webix-hub.github.io/components/slidebutton/sample.html) (slidebutton)
 - [Form Editor tool](http://webix-hub.github.io/components/formeditor/sample.html) (form-editor)
 - [Ribbon Control](http://webix-hub.github.io/components/ribbon/sample_tabs.html) (ribbon)
 
@@ -32,7 +26,6 @@ Maps
 Editors
 ---------
 - [CKEditor](http://webix-hub.github.io/components/ckeditor/sample.html) (ckeditor)
-- [Mercury](http://webix-hub.github.io/components/mercury/sample.html) (mercury-editor)
 - [Tiny MCE](http://webix-hub.github.io/components/tinymce/sample.html) (tinymce-editor)
 - [Nic Edit](http://webix-hub.github.io/components/nicedit/sample.html) (nic-editor)
 - [Code Mirror](http://webix-hub.github.io/components/codemirror/sample.html) (codemirror-editor)
@@ -46,6 +39,7 @@ Charts
 - [Sigma Chart](http://webix-hub.github.io/components/sigma/sample.html) (sigma-chart)
 - [Just Gage](http://webix-hub.github.io/components/justgage/sample.html) (justgage-chart)
 - [Fusion](http://webix-hub.github.io/components/fusion/sample.html) (fusion-chart)
+- [Vis](http://webix-hub.github.io/components/vis/sample.html) (vis-chart)
 
 DHTMLX components
 -------------------

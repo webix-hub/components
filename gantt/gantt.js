@@ -1,7 +1,6 @@
 webix.protoUI({
 	name:"dhx-gantt",
 	defaults:{
-		skin:"terrace"
 	},
 	$init:function(){
 		this._waitGantt = webix.promise.defer();
@@ -17,19 +16,24 @@ webix.protoUI({
 		}
 	},
 	_render_once:function(){
-		var cdn = this.config.cdn;
-		var skin = this.config.skin;
 		
-		if (cdn === false){
+		if (this.config.cdn === false){
 			this._after_render_once();
 			return;
 		}
 
-		cdn = cdn || "https://cdn.webix.com/components/gantt/";
-		webix.require(cdn + "gantt/skins/dhtmlxgantt_"+skin+".css");
-		webix.require([
-			cdn + "gantt/dhtmlxgantt.js?v=5.1"
-		], this._after_render_once, this);
+		var cdn = this.config.cdn || "http://cdn.dhtmlx.com/gantt/5.2";
+		var skin = this.config.skin;
+		var sources = [];
+		
+		sources.push(cdn+"/dhtmlxgantt.js");
+		sources.push(cdn+(skin ? "/skins/dhtmlxgantt_"+skin+".css" : "/dhtmlxgantt.css"));
+
+		webix.require(sources)
+		.then( webix.bind(this._after_render_once, this) )
+		.catch(function(e){
+			console.log(e);
+		});
 	},
 	_after_render_once:function(){
 		var gantt = this._gantt = window.Gantt ? Gantt.getGanttInstance() : window.gantt;
