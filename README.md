@@ -5,7 +5,6 @@ Webix Components
 
 Collection of custom components
 
-<!-- - [Colored List](http://webix-hub.github.io/components/colorlist/sample.html) (colorlist) -->
 - [Double list](http://webix-hub.github.io/components/dndlist/sample.html) (dndlist)
 - [Select dialog](http://webix-hub.github.io/components/selectdialog/sample.html) (select-dialog)
 - [Form Editor tool](http://webix-hub.github.io/components/formeditor/sample.html) (form-editor)
@@ -40,6 +39,7 @@ Charts
 - [Sigma Chart](http://webix-hub.github.io/components/sigma/sample.html) (sigma-chart)
 - [Just Gage](http://webix-hub.github.io/components/justgage/sample.html) (justgage-chart)
 - [Fusion](http://webix-hub.github.io/components/fusion/sample.html) (fusion-chart)
+- [Vis](http://webix-hub.github.io/components/vis/sample.html) (vis-chart)
 
 DHTMLX components
 -------------------
