@@ -55,7 +55,7 @@ webix.protoUI({
 			return;
 		};
 
-		this._cdn = this._cdn || "http://cdn.dhtmlx.com/scheduler/4.4";
+		this._cdn = this._cdn || "http://cdn.dhtmlx.com/scheduler/5.0";
 		var sources = [
 			this._cdn+"/dhtmlxscheduler"+skin+".css",
 			this._cdn+"/dhtmlxscheduler.js"			
