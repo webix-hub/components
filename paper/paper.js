@@ -29,11 +29,7 @@ webix.protoUI({
 			this._canvas.width = x;
 			this._canvas.height = y;
 			if (window.paper){
-				this.getView().bounds.setSize({width : x, height : y});
-				this.getView().bounds.setCenter({x : x/2, y : y/2});
-				this.getView().emit('resize', {
-					size: this.getView().size
-				});
+				this.getView().setViewSize(x,y);
 			};			
 		}
 	}
