@@ -1,7 +1,8 @@
 webix.protoUI({
 	name:"dhx-scheduler",
 	defaults:{
-		tabs:["day", "week", "month"]
+		tabs:["day", "week", "month"],
+		skin:"terrace",
 	},
 	getScheduler:function(waitScheduler){
 		return waitScheduler ? this._waitScheduler : this._scheduler;
@@ -11,7 +12,6 @@ webix.protoUI({
 
 		this.$ready.push(function(){
 			var tabs = this.config.tabs;
-
 			var html = ["<div class='dhx_cal_container' style='width:100%; height:100%;'><div class='dhx_cal_navline'><div class='dhx_cal_prev_button'>&nbsp;</div><div class='dhx_cal_next_button'>&nbsp;</div><div class='dhx_cal_today_button'></div><div class='dhx_cal_date'></div>"];
 			if (tabs)
 				for (var i=0; i<tabs.length; i++)
@@ -40,22 +40,43 @@ webix.protoUI({
 				this._scheduler.setCurrentView();
 		}
 	},
-	_render_once:function(){
-		webix.require("scheduler/dhtmlxscheduler.css");
-		webix.require([
-			"scheduler/dhtmlxscheduler.js"
-		], function(){
-			var scheduler = this._scheduler = window.Scheduler ? Scheduler.getSchedulerInstance() : window.scheduler;
+	_render_once:function(){		
+		this._cdn = this.config.cdn;
+		
+		var skin = this.config.skin;
+		if (skin === "terrace"){
+			skin = "";
+		} else {
+			skin = "_"+skin;
+		};
+		
+		if (this._cdn === false){
+			this._after_render_once();
+			return;
+		};
 
-			if (this.config.init)
-				this.config.init.call(this);
+		this._cdn = this._cdn || "http://cdn.dhtmlx.com/scheduler/5.0";
+		var sources = [
+			this._cdn+"/dhtmlxscheduler"+skin+".css",
+			this._cdn+"/dhtmlxscheduler.js"			
+		];
 
-			scheduler.init(this.$view.firstChild, (this.config.date||new Date()), (this.config.mode||"week"));
-			if (this.config.ready)
-				this.config.ready.call(this);
+		webix.require(sources).then( webix.bind(this._after_render_once, this) ).catch(function(e){
+			console.log(e);
+		});
+	},
+	_after_render_once:function(){
+		var scheduler = this._scheduler = window.Scheduler ? Scheduler.getSchedulerInstance() : window.scheduler;
+		scheduler.skin = this.config.skin;
 
-			this._waitScheduler.resolve(scheduler);
+		if (this.config.init)
+			this.config.init.call(this);
 
-		}, this);
+		scheduler.init(this.$view.firstChild, (this.config.date||new Date()), (this.config.mode||"week"));
+		if (this.config.ready)
+			this.config.ready.call(this);
+
+		this._waitScheduler.resolve(scheduler);
+
 	}
 }, webix.EventSystem, webix.ui.view);

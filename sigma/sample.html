@@ -3,19 +3,47 @@
 	<head>
 		<link rel="stylesheet" href="http://cdn.webix.com/edge/webix.css" type="text/css" media="screen" charset="utf-8">
 		<script src="http://cdn.webix.com/edge/webix.js" type="text/javascript" charset="utf-8"></script>
-		
+
 		<title>Sigma Chart</title>
 		<script type="text/javascript" src="./sigma.js"></script>
 	</head>
 	<body>
 		<script type="text/javascript" charset="utf-8">
-			webix.codebase = "./";
+			var i,
+			    s,
+			    N = 100,
+			    E = 500,
+			    g = {
+			      nodes: [],
+			      edges: []
+			    };
+
+			for (i = 0; i < N; i++)
+			  g.nodes.push({
+			    id: 'n' + i,
+			    label: 'Node ' + i,
+			    x: Math.random(),
+			    y: Math.random(),
+			    size: Math.random(),
+			    color: '#666'
+			  });
+
+			for (i = 0; i < E; i++)
+			  g.edges.push({
+			    id: 'e' + i,
+			    source: 'n' + (Math.random() * N | 0),
+			    target: 'n' + (Math.random() * N | 0),
+			    size: Math.random(),
+			    color: '#ccc'
+			  });
 
 			webix.ui({
 				type:"space", rows:[
 					{
-						view:"sigma-chart", 
-						url:"./data/les_miserables.gexf"
+						view:"sigma-chart",
+						config:{
+							graph:g
+						}
 					}
 				]
 			});

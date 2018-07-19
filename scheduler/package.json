@@ -1,0 +1,25 @@
+{
+  "name": "@wbx/view-dhx-scheduler",
+  "version": "5.0.0",
+  "description": "DHTMLX Scheduler as Webix view",
+  "main": "scheduler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webix-hub/components.git"
+  },
+  "keywords": [
+    "webix",
+    "dhtmlx",
+    "scheduler",
+    "view"
+  ],
+  "author": "Maksim Kozhukh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/webix-hub/components/issues"
+  },
+  "homepage": "https://github.com/webix-hub/components#readme"
+}

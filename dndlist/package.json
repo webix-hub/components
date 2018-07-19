@@ -1,0 +1,25 @@
+{
+  "name": "@wbx/view-dndlist",
+  "version": "1.0.0",
+  "description": "Webix Component: Drag & Drop List",
+  "main": "dndlist.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webix-hub/components.git"
+  },
+  "keywords": [
+    "webix",
+    "drag-n-drop",
+    "dnd",
+    "view"
+  ],
+  "author": "Muhammad Lukman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/webix-hub/components/issues"
+  },
+  "homepage": "https://github.com/webix-hub/components#readme"
+}

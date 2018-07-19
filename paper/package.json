@@ -1,0 +1,26 @@
+{
+  "name": "@wbx/view-paper",
+  "version": "0.11.6",
+  "description": "Paper.js widget as Webix view",
+  "main": "paper.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webix-hub/components.git"
+  },
+  "keywords": [
+    "webix",
+    "paper",
+    "canvas",
+    "vector-graphics",
+    "view"
+  ],
+  "author": "XB Software",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/webix-hub/components/issues"
+  },
+  "homepage": "https://github.com/webix-hub/components#readme"
+}

@@ -3,33 +3,32 @@
 	<head>
 		<link rel="stylesheet" href="http://cdn.webix.com/edge/webix.css" type="text/css" media="screen" charset="utf-8">
 		<script src="http://cdn.webix.com/edge/webix.js" type="text/javascript" charset="utf-8"></script>
-		
+				
 		<title>Raphael Just Gage</title>
 		<script type="text/javascript" src="./justgage.js"></script>
 	</head>
 	<body>
 		<div id="sample_div" style='width:600px; height:300px; margin:50px;'></div>
 		<script type="text/javascript" charset="utf-8">
-			webix.codebase = "./";
 
 				webix.ready(function(){
-				webix.ui({
-					container:"sample_div",
-					width:400, rows:[{
-						view:"justgage-chart",
-						value:25,
-						id:"gage1",
-						title:"Positive",
-						height:300
-					},{
-						view:"resizer"
-					},{
-						view:"justgage-chart",
-						value:75,
-						id:"gage2",
-						title:"Negative"
-					}]
-				});
+					webix.ui({
+						container:"sample_div",
+						width:400, rows:[{
+							view:"justgage-chart",
+							value:25,
+							id:"gage1",
+							title:"Positive",
+							height:300,
+						},{
+							view:"resizer"
+						},{
+							view:"justgage-chart",
+							value:75,
+							id:"gage2",
+							title:"Negative",
+						}]
+					});
 
 					setInterval(function(){
 						var value = Math.floor(Math.random()*100)+1;
