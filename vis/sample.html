@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="http://cdn.webix.com/edge/webix.css" type="text/css" media="screen" charset="utf-8">
+		<script src="http://cdn.webix.com/edge/webix.js" type="text/javascript" charset="utf-8"></script>
+
+		<title>Vis Graph3d Chart</title>
+		<script type="text/javascript" src="./vis.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript" charset="utf-8">
+			function custom(x, y) {
+				return (Math.sin(x/50) * Math.cos(y/50) * 50 + 50);
+			}
+			var data = [];
+			var counter = 1;
+			var steps = 50;
+			var axisMax = 314;
+			var axisStep = axisMax / steps;
+			for (var x = 0; x < axisMax; x+=axisStep) {
+				for (var y = 0; y < axisMax; y+=axisStep) {
+					var value = custom(x,y);
+					data.push({
+						id:counter++,
+						x:x,
+						y:y,
+						z:value,
+						style:value
+					});
+				}
+			}
+
+			var data2 = [
+				{x: '2014-06-11', y: 10},
+				{x: '2014-06-12', y: 25},
+				{x: '2014-06-13', y: 30},
+				{x: '2014-06-14', y: 10},
+				{x: '2014-06-15', y: 15},
+				{x: '2014-06-16', y: 30}
+			];
+
+			var nodes = [
+				{id: 1, label: 'Node 1'},
+				{id: 2, label: 'Node 2'},
+				{id: 3, label: 'Node 3'},
+				{id: 4, label: 'Node 4'},
+				{id: 5, label: 'Node 5'}
+			];
+
+			var edges = [
+				{from: 1, to: 3},
+				{from: 1, to: 2},
+				{from: 2, to: 4},
+				{from: 2, to: 5},
+				{from: 3, to: 3}
+			];
+
+			var data3 = [
+				{id: 1, content: 'item 1', start: '2014-04-20'},
+				{id: 2, content: 'item 2', start: '2014-04-14'},
+				{id: 3, content: 'item 3', start: '2014-04-18'},
+				{id: 4, content: 'item 4', start: '2014-04-16', end: '2014-04-19'},
+				{id: 5, content: 'item 5', start: '2014-04-25'},
+				{id: 6, content: 'item 6', start: '2014-04-27', type: 'point'}
+			];
+
+			var v3d = {
+				view:"vis-chart",
+				data:data,
+				graph3d:{
+					style: 'surface'
+				}
+			};
+
+			var v2d = {
+				view:"vis-chart",
+				data:data2,
+				graph2d:{
+					style:'bar',
+					barChart: {
+						width:50, align:'center'
+					},
+					drawPoints: false,
+					dataAxis: {
+						icons:true
+					},
+					orientation:'top',
+					start: '2014-06-10',
+					end: '2014-06-18'
+				}
+			};
+
+			var vnet = {
+				view:"vis-chart",
+				data:{
+					nodes: nodes, edges: edges
+				},
+				network:{}
+			};
+
+			var vtime = {
+				view:"vis-chart",
+				data:data3,
+				timeline:{
+				}
+			};
+
+			webix.ui({
+				type:"space", rows:[
+					{ cols:[v3d, v2d]},
+					{ view:"resizer" },
+					{ cols:[vnet, vtime]}
+				]});
+		</script>
+	</body>
+
+
+	
+</html>
