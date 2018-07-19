@@ -2,7 +2,7 @@ webix.protoUI({
 	name:"tinymce-editor",
 	defaults:{
 		config:{ theme:"modern", statusbar:false },
-		barHeight:74,
+		barHeight:72,
 		value:""
 	},
 	$init:function(config){
@@ -83,7 +83,7 @@ webix.protoUI({
 	},
 	_set_inner_size:function(){
 		if (!this._3rd_editor || !this.$width) return;
-		this._3rd_editor.theme.resizeTo(this.$width, this.$height - this.config.barHeight);
+		this._3rd_editor.theme.resizeTo(this.$width-2, this.$height - this.config.barHeight);
 	},
 	$setSize:function(x,y){
 		if (webix.ui.view.prototype.$setSize.call(this, x, y)){
