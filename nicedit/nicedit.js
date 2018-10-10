@@ -1,7 +1,7 @@
 webix.protoUI({
 	name:"nic-editor",
 	defaults:{
-		config:{ buttonList:['fontSize','bold','italic','underline','strikeThrough','subscript','superscript'] },
+		config:{ },
 		value:""
 	},
 	$init:function(config){
@@ -22,7 +22,10 @@ webix.protoUI({
 		
 		var cdn = this.config.cdn ? this.config.cdn : "https://cdnjs.cloudflare.com/ajax/libs/NicEdit/0.93";
 
-		sources.push(cdn+"/nicEdit.js")
+		sources.push(cdn+"/nicEdit.js");
+
+		if (!this.config.config.iconsPath)
+			this.config.config.iconsPath = cdn+"/nicEditorIcons.gif";
 
 		webix.require(sources)
 		.then(webix.bind(this._render_nic_editor, this))
@@ -38,10 +41,7 @@ webix.protoUI({
 			webix.html.addStyle(style);
 			this._editorCss = true;
 		}
-		
-		if (this.config.cdn && !this.config.config.iconsPath)
-			this.config.config.iconsPath = cdn+"/nicEditorIcons.gif";
-
+				
 		var nic = new nicEditor(this.config.config).panelInstance(this.$view.firstChild);
 		this._3rd_editor = nic.nicInstances[nic.nicInstances.length-1];
 		this._set_inner_size();
