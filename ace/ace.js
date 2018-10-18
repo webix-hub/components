@@ -2,13 +2,13 @@ webix.protoUI({
 	name:"ace-editor",
 	defaults:{
 		mode:"javascript",
-		theme:"monokai"
+		theme:"monokai",
 	},
 	$init:function(config){
 		this._waitEditor = webix.promise.defer();
 		this.$ready.push(this._render_cm_editor);
 	},
-	_render_cm_editor:function(){		
+	_render_cm_editor:function(){
 		if (this.config.cdn === false){
 			this._render_when_ready();
 			return;
@@ -23,7 +23,7 @@ webix.protoUI({
 		});
 	},
 	_render_when_ready:function(){
-		
+
 		if (this.config.cdn){
 			ace.config.set("basePath", this._cdn);
 			ace.config.set("modePath", this._cdn);
@@ -32,7 +32,7 @@ webix.protoUI({
 		};
 
 		this._editor = ace.edit(this.$view);
-		
+
 
 		this._editor.$blockScrolling = Infinity;
 		this._editor.setOptions({
@@ -46,6 +46,15 @@ webix.protoUI({
 			this._editor.getSession().setMode("ace/mode/"+this.config.mode);
 		if(this.config.value)
 			this.setValue(this.config.value);
+		if(this.config.readOnly)
+			this._editor.setReadOnly(this.config.readOnly);
+		if(this.config.highlightActiveLine)
+			this._editor.setHighlightActiveLine(this.config.highlightActiveLine);
+		if(this.config.showInvisibles)
+			this._editor.setShowInvisibles(this.config.showInvisibles);
+		if(this.config.showPrintMargin)
+			this._editor.setShowPrintMargin(this.config.showPrintMargin);
+
 		if (this._focus_await)
 			this.focus();
 
@@ -71,5 +80,13 @@ webix.protoUI({
 	},
 	getEditor:function(waitEditor){
 		return waitEditor?this._waitEditor:this._editor;
+	},
+	clearSelection:function(){
+		if (this._editor)
+			this._editor.clearSelection();
+	},
+	gotoLine:function(line){
+		if (this._editor)
+			this._editor.gotoLine(line);
 	}
 }, webix.ui.view);
