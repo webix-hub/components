@@ -87,7 +87,8 @@ webix.protoUI({
 	},
 	$setSize:function(x,y){
 		if (webix.ui.view.prototype.$setSize.call(this, x, y)){
-			this._require_tinymce_once();
+			if (!this._3rd_editor)
+				this._require_tinymce_once();
 			this._set_inner_size();
 		}
 	},
