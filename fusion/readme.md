@@ -1,4 +1,5 @@
-By MLukman (https://github.com/MLukman)
+By MLukman (https://github.com/MLukman).
+
 **FusionCharts require a licence**, so this integration assumes that you have one (or a trial version), to specify path to the folder as `cdn` property.
 
 ### Parameters:
