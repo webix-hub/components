@@ -7,34 +7,38 @@
 	<title>Here Map</title>
 </head>
 <body>
-	<div id="sample_div" style='width:600px; height:300px; margin:50px;'></div>
 	<script type="text/javascript">
 		webix.ui({
-			container:"sample_div",
-    		view:"here-map",
-    		id:"map",
-			modules:["mapevents", "ui"],
-			center:[ 48.724, 8.215 ],
-			zoom:6,
-			/*
-				provide your own Nokia map credentails
-				https://developer.here.com/javascript-apis/documentation/v3/maps/common/credentials.html
-			*/
-			key:{
-				app_id: "rKXqAgcqFKC1SwjKmLHK",
-				app_code: "C4lZgPcRAUprVs852zTYxQ"
-			}
-		});
-
+		  view:"window",
+		  height:600,  width:600,
+		  top:50, left:50,
+		  head:{template:"Here maps example"},
+		  body:{
+		    view:"here-map",
+		    id:"map",
+		    modules:["mapevents", "ui"],
+		    center:[ 48.724, 8.215 ],
+		    zoom:6,
+		    /*
+		      provide your own Nokia map credentails
+		      https://developer.here.com/javascript-apis/documentation/v3/maps/common/credentials.html
+		    */
+		    key:{
+		      app_id: "1ABRBQas40fithl31gWe",
+		      app_code: "RSz9AQaADwMmSf8oZYq8sA",
+		      useHTTPS: true 
+		    }
+		  }
+		}).show();  
 
 		$$("map").getMap(true).then(function(map){
-			// to-do: get rid of the timeout
-			// but the default layer needs time to render
-			webix.delay(function(){
-				H.ui.UI.createDefault(map, $$("map").getLayers());
-				var mapEvents = new H.mapevents.MapEvents(map);
-				var behavior = new H.mapevents.Behavior(mapEvents);
-			}, $$("map"), [], 100);
+		  // to-do: get rid of the timeout
+		  // but the default layer needs time to render
+		  webix.delay(function(){
+		    H.ui.UI.createDefault(map, $$("map").getLayers());
+		    var mapEvents = new H.mapevents.MapEvents(map);
+		    var behavior = new H.mapevents.Behavior(mapEvents);
+		  }, $$("map"), [], 100);
 		});
 		
 	</script>
