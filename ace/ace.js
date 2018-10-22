@@ -14,17 +14,17 @@ webix.protoUI({
 			return;
 		};
 
-		var cdn = this.config.cdn || "https://cdnjs.cloudflare.com/ajax/libs/ace/1.3.3";
+		this._cdn = this.config.cdn || "https://cdnjs.cloudflare.com/ajax/libs/ace/1.3.3";
 
 		webix.require([
-			cdn + "/ace.js"
+			this._cdn + "/ace.js"
 		]).then( webix.bind(this._render_when_ready, this) ).catch(function(e){
 		  console.log(e);
 		});
 	},
 	_render_when_ready:function(){
 		
-		if (this.config.cdn){
+		if (this._cdn){
 			ace.config.set("basePath", this._cdn);
 			ace.config.set("modePath", this._cdn);
 			ace.config.set("workerPath", this._cdn);
