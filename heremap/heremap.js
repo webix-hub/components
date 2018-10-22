@@ -66,6 +66,12 @@ webix.protoUI({
 			this._waitMap.resolve(this._map);
 		}
 	},
+	$setSize:function(x,y){
+		if (webix.ui.view.prototype.$setSize.call(this, x, y)){
+			if (this._map)
+				this._map.getViewPort().resize(); 
+		}
+	},
 	center_setter:function(config){
 		config = { lat:config[0], lng:config[1]};
 		
