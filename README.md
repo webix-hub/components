@@ -45,12 +45,12 @@ DHTMLX components
 -------------------
 - [DHTMLX Scheduler](http://webix-hub.github.io/components/scheduler/sample.html) (dhx-scheduler)
 - [DHTMLX Gantt](http://webix-hub.github.io/components/gantt/sample.html) (dhx-gantt)
-- [Using Webix with DHTMLX components](http://webix-hub.github.io/components/dhtmlx/dhtmlx_v5/sample.html)
+- [Using Webix with DHTMLX components](http://webix-hub.github.io/components/dhtmlx_v5/sample.html)
 
 Other
 ------
 
-- [Hipchat ](http://webix-hub.github.io/components/hipchat/sample.html) (hipchat)
+- [Hipchat](http://webix-hub.github.io/components/hipchat/sample.html) (hipchat)
 - [Konva](http://webix-hub.github.io/components/konva/sample.html) (konva)
 - [Paper](http://webix-hub.github.io/components/paper/sample.html) (paper)
 
