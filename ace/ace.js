@@ -8,6 +8,13 @@ webix.protoUI({
 		this._waitEditor = webix.promise.defer();
 		this.$ready.push(this._render_cm_editor);
 	},
+	$setSize: function(w, h) {
+		if (webix.ui.view.prototype.$setSize.call(this, w, h)) {
+			if (this._editor) {
+				this._editor.resize();
+			}
+		}
+	},
 	_render_cm_editor:function(){		
 		if (this.config.cdn === false){
 			this._render_when_ready();
