@@ -17,13 +17,15 @@ webix.protoUI({
 	render:function(){
 		this._set_inner_size();
 	},	
-	_require_tinymce_once:function(){				
+	_require_tinymce_once:function(){
+
+		var c = this.config;
 	
-		if (this.config.cdn === false || window.tinymce){
+		if (c.cdn === false || window.tinymce){
 			this._init_tinymce_once();
 			return;
 		};
-		var cdn = this.config.cdn || "https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.9.4";
+		var cdn = c.cdn || "https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.9.4";
 
 		//path to tinymce codebase
 		window.tinyMCEPreInit = { 
@@ -32,8 +34,9 @@ webix.protoUI({
 			suffix:".min" 
 		};
 
+		var apiKey = c.apiKey ? "?apiKey="+c.apiKey : "";
 		webix.require([
-			cdn+"/tinymce.min.js"
+			cdn+"/tinymce.min.js" + apiKey
 		])
 			.then( webix.bind(this._init_tinymce_once, this) )
 			.catch(function(e){
