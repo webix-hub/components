@@ -1,6 +1,6 @@
 {
   "name": "@wbx/view-tinymce-editor",
-  "version": "4.7.13",
+  "version": "4.9.4",
   "description": "TinyMCE editor as Webix widget",
   "main": "tinymce.js",
   "scripts": {
