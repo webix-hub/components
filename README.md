@@ -29,6 +29,7 @@ Editors
 - [Tiny MCE](http://webix-hub.github.io/components/tinymce/sample.html) (tinymce-editor)
 - [Nic Edit](http://webix-hub.github.io/components/nicedit/sample.html) (nic-editor)
 - [Code Mirror](http://webix-hub.github.io/components/codemirror/sample.html) (codemirror-editor)
+- [Monaco](http://webix-hub.github.io/components/monaco/sample.html) (monaco-editor)
 - [Ace](http://webix-hub.github.io/components/ace/sample.html) (ace-editor)
 
 
