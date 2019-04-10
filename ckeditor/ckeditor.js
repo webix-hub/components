@@ -7,6 +7,7 @@ webix.protoUI({
 	defaults:{
 		borderless:true,
 		language:"en",
+		barHeight:44,
 		toolbar: [
 			[ 'Bold', 'Italic', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' ],
 			[ 'FontSize', 'TextColor', 'BGColor' ]
@@ -41,7 +42,7 @@ webix.protoUI({
 			toolbar: this.config.toolbar,
 			language: this.config.language,
 			width:this.$width -2,
-			height:this.$height - 44
+			height:this.$height - this.config.barHeight
 		});
 		this._waitEditor.resolve(this._3rd_editor);
 	},

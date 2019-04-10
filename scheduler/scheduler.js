@@ -3,6 +3,7 @@ webix.protoUI({
 	defaults:{
 		tabs:["day", "week", "month"],
 		skin:"terrace",
+		ext:[]
 	},
 	getScheduler:function(waitScheduler){
 		return waitScheduler ? this._waitScheduler : this._scheduler;
@@ -43,23 +44,35 @@ webix.protoUI({
 	_render_once:function(){		
 		this._cdn = this.config.cdn;
 		
+		// if 'false', do not try to load anything (assuming all sources were included to the page)
+		if (this._cdn === false){
+			this._after_render_once();
+			return;
+		};
+
+		// otherwise, use CDN
+		this._cdn = this._cdn || "https://cdn.dhtmlx.com/scheduler/5.0";
+
+		var cdn = this._cdn;
 		var skin = this.config.skin;
 		if (skin === "terrace"){
 			skin = "";
 		} else {
 			skin = "_"+skin;
 		};
-		
-		if (this._cdn === false){
-			this._after_render_once();
-			return;
-		};
-
-		this._cdn = this._cdn || "http://cdn.dhtmlx.com/scheduler/5.0";
+		// main js/css files
 		var sources = [
-			this._cdn+"/dhtmlxscheduler"+skin+".css",
-			this._cdn+"/dhtmlxscheduler.js"			
+			cdn+"/dhtmlxscheduler"+skin+".css",
+			cdn+"/dhtmlxscheduler.js"			
 		];
+		// modules from 'ext' folder of the package
+		var ext = this.config.ext;
+		if (ext && Array.isArray(ext) && ext.length){
+			var ext_to_load = ext.map(function(name){
+				return cdn+"/ext/dhtmlxscheduler_"+name+".js"
+			})
+			sources = sources.concat(ext_to_load);
+		};
 
 		webix.require(sources).then( webix.bind(this._after_render_once, this) ).catch(function(e){
 			console.log(e);

@@ -1,8 +1,8 @@
 {
-  "name": "@wbx/view-tinymce-editor",
-  "version": "4.9.4",
-  "description": "TinyMCE editor as Webix widget",
-  "main": "tinymce.js",
+  "name": "@wbx/view-monaco-editor",
+  "version": "0.16.2",
+  "description": "monaco as Webix view",
+  "main": "monaco.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,7 +12,7 @@
   },
   "keywords": [
     "webix",
-    "tinymce",
+    "monaco",
     "editor",
     "view"
   ],

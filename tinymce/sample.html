@@ -1,18 +1,26 @@
 <!doctype html>
 <html>
 <head>
-	<script type="text/javascript" src="http://cdn.webix.com/edge/webix.js"></script>
-	<link rel="stylesheet" type="text/css" href="http://cdn.webix.com/edge/webix.css">
+	<link rel="stylesheet" href="//cdn.webix.com/edge/webix.css" type="text/css" media="screen" charset="utf-8">
+	<script src="//cdn.webix.com/edge/webix.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript" src="./tinymce.js"></script>
 </head>
 <body>
-	<div id="sample_div" style='width:600px; height:300px; margin:50px;'></div>
 	<script type="text/javascript">
-
 		webix.ui({
-			container:"sample_div",
-    		view:"tinymce-editor",
-    		value:'<h2>Text editor</h2> <div><small>From Wikipedia, the free encyclopedia</small></div> <p>A <strong>text editor</strong> is a type of program used for editing plain text files </p>'
+			type:"space", rows:[		
+				{ template:"TinyMCE editor", type:"header" },	 
+				{ 
+					id:'editor', view:"tinymce-editor",
+					value:"<h2>Text editor</h2> <div><small>From Wikipedia, the free encyclopedia</small></div> <p>A <strong>text editor</strong> is a type of program used for editing plain text files </p>",
+					config:{
+						menubar:false,
+						plugins:"link",
+						toolbar:"fontsizeselect | bold italic underline | alignleft aligncenter alignright alignjustify | link",
+						content_style:"* { color:#475466; font-family:Roboto,sans-serif; font-size:15px; }"
+					}
+				}
+			]
 		});
 	</script>
 </body>

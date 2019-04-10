@@ -34,6 +34,7 @@ Editors
 - [Tiny MCE](http://webix-hub.github.io/components/tinymce/sample.html) (tinymce-editor)
 - [Nic Edit](http://webix-hub.github.io/components/nicedit/sample.html) (nic-editor)
 - [Code Mirror](http://webix-hub.github.io/components/codemirror/sample.html) (codemirror-editor)
+- [Monaco](http://webix-hub.github.io/components/monaco/sample.html) (monaco-editor)
 - [Ace](http://webix-hub.github.io/components/ace/sample.html) (ace-editor)
 
 
@@ -50,12 +51,12 @@ DHTMLX components
 -------------------
 - [DHTMLX Scheduler](http://webix-hub.github.io/components/scheduler/sample.html) (dhx-scheduler)
 - [DHTMLX Gantt](http://webix-hub.github.io/components/gantt/sample.html) (dhx-gantt)
-- [Using Webix with DHTMLX components](http://webix-hub.github.io/components/dhtmlx/dhtmlx_v5/sample.html)
+- [Using Webix with DHTMLX components](http://webix-hub.github.io/components/dhtmlx_v5/sample.html)
 
 Other
 ------
 
-- [Hipchat ](http://webix-hub.github.io/components/hipchat/sample.html) (hipchat)
+- [Hipchat](http://webix-hub.github.io/components/hipchat/sample.html) (hipchat)
 - [Konva](http://webix-hub.github.io/components/konva/sample.html) (konva)
 - [Paper](http://webix-hub.github.io/components/paper/sample.html) (paper)
 
