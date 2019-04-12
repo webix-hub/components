@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+	<link rel="stylesheet" href="//cdn.webix.com/edge/webix.css" type="text/css" media="screen" charset="utf-8">
+	<script src="//cdn.webix.com/edge/webix.js" type="text/javascript" charset="utf-8"></script>
+	
+	<script type="text/javascript" src="./richtext.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+		webix.ui({
+			rows:[
+				{ type:"header", template:"DHTMLX Richtext within Webix layout", css:"webix_dark"},				
+				{cols:[
+					{ 
+						view:"dhx-richtext", id:"richtext",
+						config:{								
+							toolbarBlocks: ["clear", "colors", "decoration", "undo", "fullscreen","link", "fullscreen"],
+							mode: "document"
+						}
+					},
+					{ view:"resizer" },
+					{ gravity:0.3, template:"Resizable area" }
+				]}			
+			]
+		});
+
+		var text = `<h1>Meet DHTMLX Rich Text Editor!</h1>` +
+					`<p>This demo will show you a customizable JavaScript rich text editor.</p>` +
+					`<p><i>To learn more, read </i><a href="http://docs"><i>documentation</i></a></p>.`
+		$$("richtext").setValue(text);
+
+	</script>
+</body>
+</html>
