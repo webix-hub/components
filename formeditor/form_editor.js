@@ -155,10 +155,10 @@ webix.protoUI({
 		}
 
 		grid.columns.push({ id:"del", header:"", template:"{common.trashIcon()}", width:35 });
-		grid.columns[0].footer = { text:"<span class='webix_icon fa-plus-circle'></span>", colspan:grid.columns.length };
+		grid.columns[0].footer = { text:"<span class='webix_icon footer_icon wxi wxi-plus-circle'></span>", colspan:grid.columns.length };
 
 		grid.onClick = {
-			"fa-trash":function(e, id){
+			"wxi-trash":function(e, id){
 				webix.confirm({
 					text:webix.i18n.formEditor.removeWarning,
 					ok:webix.i18n.formEditor.ok,
@@ -168,7 +168,7 @@ webix.protoUI({
 					}, this)
 				});
 			},
-			"fa-plus-circle":function(){
+			"wxi-plus-circle":function(){
 				var id = this.add({});
 				if(self._isSubView(this))
 					self._delayEdit = {view:this, id:id};
