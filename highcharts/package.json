@@ -1,5 +1,5 @@
 {
-	"name": "@wbx/view-hchart",
+	"name": "@wbx/view-highchart",
 	"version": "7.0.3",
 	"description": "Highcharts as Webix component",
 	"main": "hchart.js",
