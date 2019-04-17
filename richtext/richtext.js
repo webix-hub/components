@@ -32,10 +32,7 @@
 		this._waitEditor.resolve(this._editor);
 	},
 	getEditor:function(wait){
-		if(wait)
-			return this._waitEditor;
-		else
-			return this._editor;
+		return wait ? this._waitEditor : this._editor;
 	},
 	value_setter:function(value){
 			this.setValue(value)
@@ -46,8 +43,8 @@
 		})
 	},
 	getValue:function(mode){
-		return this._waitEditor.then(function(editor){
-			return editor.getValue(mode)
-		})
+		if (this._editor)
+			return this._editor.getValue(mode);
+		return ""
 	}
 }, webix.ui.view);
