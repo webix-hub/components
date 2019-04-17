@@ -1,6 +1,8 @@
 ﻿webix.protoUI({
 	name:"dhx-richtext",
-	defaults:{ },
+	defaults:{
+		config:{}
+	},
 	$init:function(config){
 		var elm = webix.html.create("div", {
 			// overflow-x for minimum width limitation in Richtext 1.1
@@ -26,8 +28,7 @@
 		});
 	},
 	_init_richtext:function(){			
-		var config = this.config.config ? webix.copy(this.config.config) : {};
-
+		var config = this.config.config;
 		this._editor = new dhx.Richtext(this.$view.firstChild, config);
 		this._waitEditor.resolve(this._editor);
 	},
@@ -35,16 +36,14 @@
 		return wait ? this._waitEditor : this._editor;
 	},
 	value_setter:function(value){
-			this.setValue(value)
+		this.setValue(value);
 	},
 	setValue:function(value, mode){
 		this._waitEditor.then(function(editor){
-			editor.setValue(value, mode)
-		})
+			editor.setValue(value, mode);
+		});
 	},
 	getValue:function(mode){
-		if (this._editor)
-			return this._editor.getValue(mode);
-		return ""
+		this._editor ? this._editor.getValue(mode) : "";
 	}
 }, webix.ui.view);
