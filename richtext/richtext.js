@@ -44,6 +44,6 @@
 		});
 	},
 	getValue:function(mode){
-		this._editor ? this._editor.getValue(mode) : "";
+		return this._editor ? this._editor.getValue(mode) : "";
 	}
 }, webix.ui.view);
