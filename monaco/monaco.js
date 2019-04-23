@@ -28,14 +28,14 @@ webix.protoUI({
 
 			this._render_when_ready();
 		}, this))
-		.catch(console.log);		
+		.catch(console.log);
 	},
 	_render_when_ready:function(){
 		require(["vs/editor/editor.main"], webix.bind(function () {
-			const config = webix.copy(this.config);
-		    this._editor = monaco.editor.create(this.$view, config);
+			var config = webix.copy(this.config);
+			this._editor = monaco.editor.create(this.$view, config);
 
-		    this._waitEditor.resolve(this._editor);
+			this._waitEditor.resolve(this._editor);
 		}, this));
 		
 		if (this._focus_await)
