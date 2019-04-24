@@ -10,7 +10,7 @@ webix.protoUI({
 		this._mce_id = "webix_mce_"+(this.config.id || webix.uid());
 		this.$view.innerHTML = "<textarea id='"+this._mce_id+"' style='width:100%; height:100%'></textarea>";
 
-		this._waitEditor = webix.promise.defer();		
+		this._waitEditor = webix.promise.defer();
 		
 		this.$ready.push(this._require_tinymce_once);
 	},
@@ -30,9 +30,9 @@ webix.protoUI({
 
 		//path to tinymce codebase
 		window.tinyMCEPreInit = {
-			query:"", 
-			base: cdn, 
-			suffix:".min" 
+			query:"",
+			base: cdn,
+			suffix:".min"
 		};
 
 		var apiKey = c.apiKey ? "?apiKey="+c.apiKey : "";
@@ -48,14 +48,14 @@ webix.protoUI({
 	_init_tinymce_once:function(){	
 		if (!tinymce.dom.Event.domLoaded){
 			// woraround event logic in tinymce
-			tinymce.dom.Event.domLoaded = true;			
+			tinymce.dom.Event.domLoaded = true;
 		};
 		
 		var editor_config = webix.copy(this.config.config || {});
 		webix.extend(editor_config, {
 			selector:"#"+this._mce_id,
 			resize:false
-		});
+		}, true);
 
 		var custom_setup = editor_config.setup;
 		editor_config.setup = webix.bind(function(editor){
@@ -70,10 +70,10 @@ webix.protoUI({
 	},
 	_mce_editor_ready:function(event){
 		this._editor = event.target;
-		this._waitEditor.resolve(this._editor);
 
 		this.setValue(this.config.value);
 		this._set_inner_size();
+		this._waitEditor.resolve(this._editor);
 	},
 	_set_inner_size:function(){
 		if (this._editor){
@@ -95,11 +95,11 @@ webix.protoUI({
 		return this._editor?this._editor.getContent():this.config.value;
 	},
 	focus:function(){
-		this._focus_await = true;
-		if (this._editor)
-			this._editor.focus();
+		this._waitEditor.then(function(editor){
+			editor.focus();
+		});
 	},
-	getEditor:function(waitEditor){
-		return waitEditor?this._waitEditor:this._editor;
+	getEditor:function(wait){
+		return wait?this._waitEditor:this._editor;
 	}
 }, webix.ui.view);
