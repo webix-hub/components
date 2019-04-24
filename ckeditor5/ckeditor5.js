@@ -49,6 +49,7 @@ webix.protoUI({
 		}, this));
 
 		this._set_height(this.$height);
+		this.setValue(this.config.value);
 	},
 	$setSize:function(x,y){
 		if (webix.ui.view.prototype.$setSize.call(this, x, y) && this._body_container)
@@ -65,11 +66,12 @@ webix.protoUI({
 		return wait ? this._waitEditor : this._editor;
 	},
 	setValue:function(value){
+		this.config.value = value;
 		this.getEditor(true).then(function(editor){
 			editor.setData(value);
 		});
 	},
 	getValue:function(value){
-		return this._editor ? this._editor.getData() : "";
+		return this._editor ? this._editor.getData() : this.config.value;
 	}
 }, webix.ui.view);
