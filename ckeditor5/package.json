@@ -1,6 +1,6 @@
 {
   "name": "@wbx/view-ckeditor5",
-  "version": "12.0.0",
+  "version": "12.1.0",
   "description": "CKEditor5 as Webix view",
   "main": "ckeditor5.js",
   "scripts": {
@@ -14,7 +14,8 @@
     "webix",
     "ckeditor",
     "ckeditor5",
-    "editor",
+    "text-editor",
+    "editor"
   ],
   "author": "XB Software",
   "license": "MIT",

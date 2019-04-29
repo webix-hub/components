@@ -3,7 +3,7 @@ webix.protoUI({
 	$init:function(config){
 		var html = "<div class='webix_ck_toolbar'></div>";
 		var editor = "<div class='webix_ck_editor'></div>";
-		html += config.mode == "document" ? ("<div class='webix_ck_body'>"+editor+"div") : editor;
+		html += config.mode == "document" ? ("<div class='webix_ck_body'>"+editor+"</div>") : editor;
 
 		this.$view.innerHTML = html;
 		this._waitEditor = webix.promise.defer();
@@ -19,7 +19,7 @@ webix.protoUI({
 		};
 
 		// we use DecoupledEditor only
-		var cdn = this.config.cdn || "https://cdn.ckeditor.com/ckeditor5/12.0.0/decoupled-document";
+		var cdn = this.config.cdn || "https://cdn.ckeditor.com/ckeditor5/12.1.0/decoupled-document";
 	
 		webix.require([cdn+"/ckeditor.js"])
 			.then( webix.bind(this._render_ckeditor, this) )
