@@ -1,4 +1,4 @@
-/*
+ /*
  * Webix Component "dndlist"
  * Version 1.0 
  * By Muhammad Lukman Nasaruddin (https://github.com/MLukman/webix-components) 
@@ -42,12 +42,12 @@ webix.protoUI({
 					header: "&nbsp;",
 					width: 35,
 					template: function (row) {
-						return "<span  style=' cursor:pointer;' class='webix_icon fa-plus-square'></span>";
+						return "<span  style=' cursor:pointer;' class='webix_icon mdi mdi-plus-box'></span>";
 					}
 				}
 			],
 			onClick: {
-				'fa-plus-square': function (e, i) {
+				'mdi-plus-box': function (e, i) {
 					var row = this.getItem(i.row);
 					dnd.addValue(row.value);
 				}
@@ -74,12 +74,12 @@ webix.protoUI({
 					header: "&nbsp;",
 					width: 35,
 					template: function (row) {
-						return "<span  style=' cursor:pointer;' class='webix_icon fa-minus-square'></span>";
+						return "<span  style=' cursor:pointer;' class='webix_icon mdi mdi-minus-box'></span>";
 					}
 				}
 			],
 			onClick: {
-				'fa-minus-square': function (e, i) {
+				'mdi-minus-box': function (e, i) {
 					var row = this.getItem(i.row);
 					dnd.removeValue(row.value);
 				}
@@ -151,7 +151,7 @@ webix.protoUI({
 		var rowFinder = (function (row) {
 			return row.value === value;
 		});
-		if (valueDt.find(rowFinder, true) == false) {
+		if (!valueDt.find(rowFinder, true)) {
 			valueDt.add({value: value});
 		}
 		var choices = choicesDt.find(rowFinder);
@@ -172,7 +172,7 @@ webix.protoUI({
 		for (var i = 0; i < value.length; i++) {
 			valueDt.remove(value[i].id);
 		}
-		if (choicesDt.find(rowFinder, true) == false) {
+		if (!choicesDt.find(rowFinder, true)) {
 			choicesDt.add({value: val});
 		}
 	}
