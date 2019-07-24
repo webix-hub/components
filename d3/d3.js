@@ -5,15 +5,9 @@ webix.protoUI({
 		version:"5"
 	},
 	$init:function(){
-		this._ready_awaits = 0;
-
+		this._waitContent = webix.promise.defer();
 		this.attachEvent("onAfterLoad", function(){
-			if (this._ready_awaits == 2){
-				if (this.config.ready){
-					this.config.ready.call(this, this.data);
-					this._ready_awaits = 3;
-				}
-			} else this._ready_awaits = 1;
+			this._data_ready();
 		});
 
 		webix.delay(this._render_once, this);
@@ -21,7 +15,7 @@ webix.protoUI({
 	_render_once:function(){
 				
 		if (this.config.cdn === false){
-			this._set_ready_awaits();
+			this._finalize_init();
 			return;
 		};
 
@@ -33,26 +27,35 @@ webix.protoUI({
 		var source = cdn+"/d3.v"+version+isMin+".js";
 		
 		webix.require([ source ])
-		.then( webix.bind(this._set_ready_awaits, this) )
+		.then( webix.bind(this._finalize_init, this) )
 		.catch(function(e){
 			console.log(e);
-		});	;
+		});
 	},
-	_set_ready_awaits:function(first_init){
+	_finalize_init:function(){
+		this._waitContent.resolve(d3.select(this.$view));
 		if (this.config.init)
 			this.config.init.call(this);
-		if (this._ready_awaits == 1 && this.config.ready){
-			this.config.ready.call(this, this.data);
-			this._ready_awaits = 3;
-		} else 
-			this._ready_awaits = 2;
 	},
+	_data_ready:function(){
+		webix.promise.all([
+			this._waitContent,
+			this.waitData
+		])
+		.then( webix.bind(this.renderData, this) );
+	},	
 	$setSize:function(x,y){
 		if (webix.ui.view.prototype.$setSize.call(this,x,y)){
-			if (this._ready_awaits == 3 && this.config.resize){
-				this.$view.innerHTML = "";
-				this.config.ready.call(this, this.data);
-			}
+			this._data_ready();
 		}
+	},
+	renderData:function(){
+		if (this.config.ready){
+			this.$view.innerHTML = "";
+			this.config.ready.call(this, this.data);
+		}
+	},
+	getSelection:function(wait){
+		return wait ? this._waitContent : d3.select(this.$view)
 	}
 }, webix.AtomDataLoader, webix.EventSystem, webix.ui.view );
