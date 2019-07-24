@@ -39,9 +39,9 @@ webix.protoUI({
 			this._waitContent,
 			this.waitData
 		])
-		.then( webix.bind(this._render_data, this) );
+		.then( webix.bind(this.renderData, this) );
 	},
-	_render_data:function(){
+	renderData:function(){
 		if (this.config.ready){
 			this.$view.innerHTML = "";
 			this.config.ready.call(this, this.data);
@@ -52,7 +52,7 @@ webix.protoUI({
 			this._data_ready();
 		}
 	},
-	getChart:function(wait){
+	getSelection:function(wait){
 		return wait ? this._waitContent : d3.select(this.$view)
 	}
 }, webix.AtomDataLoader, webix.EventSystem, webix.ui.view );
