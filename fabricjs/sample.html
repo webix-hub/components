@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="//cdn.webix.com/edge/webix.css" type="text/css" media="screen" charset="utf-8">
+    <script src="//cdn.webix.com/edge/webix.js" type="text/javascript" charset="utf-8"></script>
+    <title>Fabric.js</title>
+    <script type="text/javascript" src="./fabric.js"></script>
+</head>
+<body>
+    <script type="text/javascript" charset="utf-8">
+        webix.ui({
+            rows: [{
+                type: "header",
+                template: "Fabric.js app"
+            }, {
+                view: "fabric",
+                canvas: "fabric",
+                ready: function(canvas) {
+                    canvas.add(new fabric.Circle({
+                        radius: 30,
+                        fill: '#f55',
+                        top: 100,
+                        left: 100
+                    }));
+                    canvas.item(0).set({
+                        borderColor: 'red',
+                        cornerColor: 'green',
+                        cornerSize: 6,
+                        transparentCorners: false
+                    });
+                    canvas.setActiveObject(canvas.item(0));
+                }
+            }]
+        });
+    </script>
+</body>
+</html>
