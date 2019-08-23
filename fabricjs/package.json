@@ -1,0 +1,29 @@
+{
+  "name": "@wbx/view-fabricjs",
+  "version": "3.4.0",
+  "description": "Fabric.js widget as Webix view",
+  "main": "fabric.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webix-hub/components.git"
+  },
+  "keywords": [
+    "webix",
+    "fabric",
+    "canvas",
+    "vector-graphics",
+    "view"
+  ],
+  "author": "Wenig Web Werkstatt",
+  "contributors": [
+    "Jerry Bruwes <jbruwes@icloud.com> (https://w--w--w.com)"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/webix-hub/components/issues"
+  },
+  "homepage": "https://github.com/webix-hub/components#readme"
+}
