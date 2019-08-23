@@ -1,7 +1,6 @@
 webix.protoUI({
 	name: "fabric",
 	$init: function() {
-		this.getIframe().style.position = "absolute";
 		this._waitCanvas = webix.promise.defer();
 		this.$ready.push(this.render);
 	},
@@ -18,7 +17,7 @@ webix.protoUI({
 			});
 	},
 	_initCanvas: function() {
-		var elm = document.createElement("canvas");
+		var elm = webix.html.create("canvas");
 		elm.id = this.config.canvas;
 		this._canvas = this.$view.appendChild(elm);
 		this._canvas = new fabric.Canvas(this._canvas, {
@@ -32,12 +31,11 @@ webix.protoUI({
 	$setSize: function(x, y) {
 		webix.ui.view.prototype.$setSize.call(this, x, y);
 		this._waitCanvas.then(_ => {
-			var de = this.getWindow().document.documentElement;
-			this._canvas.setWidth(de.clientWidth);
-			this._canvas.setHeight(de.clientHeight);
+			this._canvas.setWidth(x);
+			this._canvas.setHeight(y);
 		});
 	},
 	getCanvas: function(waitCanvas) {
 		return waitCanvas ? this._waitCanvas : this._canvas;
 	}
-}, webix.ui.iframe);
+}, webix.ui.view);
