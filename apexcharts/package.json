@@ -1,0 +1,26 @@
+{
+	"name": "@wbx/view-apexchart",
+	"version": "7.0.3",
+	"description": "apexcharts as Webix component",
+	"main": "achart.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/webix-hub/components.git"
+	},
+	"keywords": [
+		"webix",
+		"apexchart",
+		"apexcharts",
+		"chart",
+		"view"
+	],
+	"author": "Apexcharts",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/webix-hub/components/issues"
+	},
+	"homepage": "https://github.com/webix-hub/components#readme"
+}
