@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<link rel="stylesheet" href="//cdn.webix.com/edge/webix.css" type="text/css" media="screen" charset="utf-8">
-		<script src="//cdn.webix.com/edge/webix.js" type="text/javascript" charset="utf-8"></script>
-		<script src="" type="text/javascript" charset="utf-8"></script>
+    <head>
+        <link rel="stylesheet" href="//cdn.webix.com/edge/webix.css" type="text/css" media="screen" charset="utf-8">
+        <script src="//cdn.webix.com/edge/webix.js" type="text/javascript" charset="utf-8"></script>
+        <script src="" type="text/javascript" charset="utf-8"></script>
 
-		<title>Apexcharts in Webix</title>
-		<script type="text/javascript" src="./acharts.js"></script>
-	</head>
-	<body>
-		<script type="text/javascript" charset="utf-8">
+        <title>Apexcharts in Webix</title>
+        <script type="text/javascript" src="./acharts.js"></script>
+    </head>
+    <body>
+        <script type="text/javascript" charset="utf-8">
 
-			webix.ready(function(){
-				webix.ui({
-					cols:[
-						{
-							id: "achart",
+            webix.ready(function(){
+                webix.ui({
+                    cols:[
+                        {
+                            id: "achart",
                             view:"apexchart",
-							settings:{
+                            settings:{
                                 chart: {
                                     height: "100%",
                                     width:"100%",
@@ -36,21 +36,21 @@
                                     enabled: false,
                                 },
                                 series: [{
-										name: 'Installation',
-										data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]
-								}, {
-										name: 'Manufacturing',
-										data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434]
-								}, {
-										name: 'Sales & Distribution',
-										data: [11744, 17722, 16005, 19771, 20185, 24377, 32147, 39387]
-								}, {
-										name: 'Project Development',
-										data: [null, null, 7988, 12169, 15112, 22452, 34400, 34227]
-								}, {
-										name: 'Other',
-										data: [12908, 5948, 8105, 11248, 8989, 11816, 18274, 18111]
-								}],
+                                        name: 'Installation',
+                                        data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]
+                                }, {
+                                        name: 'Manufacturing',
+                                        data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434]
+                                }, {
+                                        name: 'Sales & Distribution',
+                                        data: [11744, 17722, 16005, 19771, 20185, 24377, 32147, 39387]
+                                }, {
+                                        name: 'Project Development',
+                                        data: [null, null, 7988, 12169, 15112, 22452, 34400, 34227]
+                                }, {
+                                        name: 'Other',
+                                        data: [12908, 5948, 8105, 11248, 8989, 11816, 18274, 18111]
+                                }],
                                 title: {
                                     text: 'Apexcharts with Webix: Solar Employment Growth by Sector, 2010-2016',
                                     style:{
@@ -60,9 +60,9 @@
                                     align: 'center'
                                 },
                                 subtitle: {
-									text: 'Source: thesolarfoundation.com',
+                                    text: 'Source: thesolarfoundation.com',
                                     align:'center',
-								},
+                                },
                                 grid: {
                                     borderColor: '#e7e7e7',
                                     row: {
@@ -110,13 +110,13 @@
                                     offsetY: 100,
                                     //offsetX: -5
                                 }
-							}
-						},
-						{view:"resizer"},
-						{ gravity:0.2 }
-					]
-				});
-			});
-		</script>
-	</body>
+                            }
+                        },
+                        {view:"resizer"},
+                        { gravity:0.2 }
+                    ]
+                });
+            });
+        </script>
+    </body>
 </html>
