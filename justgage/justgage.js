@@ -7,6 +7,8 @@ webix.protoUI({
 	defaults:{
 		minHeight:100,
 		minWidth:200,
+		min:0,
+		max:100
 	},
 	_request_and_render:function(){
 
@@ -48,7 +50,7 @@ webix.protoUI({
 	},
 	setValue:function(value){
 		this.config.value=value;
-		this._chart.refresh(value,100);
+		this._chart.refresh(value, this.config.max);
 	},
 	getValue:function(){
 		return this.config.value;
