@@ -12,6 +12,11 @@ webix.protoUI({
 		
 		this._waitMap = webix.promise.defer();
 		this.$ready.push(this.render);
+
+		// do not call Webix Touch handlers in any case
+		webix.event(this.$view, "touchstart", function(e){
+			e.cancelBubble = true;
+		});
 	},
 	getMap:function(waitMap){
 		return waitMap?this._waitMap:this._map;
@@ -54,7 +59,6 @@ webix.protoUI({
 		return config;
 	},
 	mapType_setter:function(config){
-		//yadex#map, yadex#satellite, yadex#hybrid, yadex#publicMap
 		if(this._map)
 			this._map.setType(config);
 
