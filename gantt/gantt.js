@@ -22,7 +22,7 @@ webix.protoUI({
 			return;
 		}
 
-		var cdn = this.config.cdn || "https://cdn.dhtmlx.com/gantt/5.2";
+		var cdn = this.config.cdn || "https://cdn.dhtmlx.com/gantt/6.2";
 		var skin = this.config.skin;
 		var sources = [];
 		
