@@ -18,7 +18,7 @@ webix.protoUI({
 			return;
 		};
 
-		var cdn = this.config.cdn || "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.38.0/";
+		var cdn = this.config.cdn || "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/";
 		// basic
 		var sources = [
 			cdn+"/codemirror.css",
