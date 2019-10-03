@@ -1,8 +1,5 @@
 webix.protoUI({
     name:"apexchart",
-    defaults:{
-        modules:[]
-    },
     $init:function(){
         this.uid = "chart"+webix.uid();
         this.$view.innerHTML = "<div id='"+this.uid+"' style='width:100%;height:100%'></div>";
@@ -37,6 +34,7 @@ webix.protoUI({
             this._waitChart.resolve(this._chart);
         } catch(e) {
             console.log(e);
+            this._waitChart.reject(e);
         }
     },
     getChart:function(wait){

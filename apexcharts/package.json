@@ -1,6 +1,6 @@
 {
     "name": "@wbx/view-apexchart",
-    "version": "7.0.3",
+    "version": "3.8.6",
     "description": "apexcharts as Webix component",
     "main": "achart.js",
     "scripts": {
