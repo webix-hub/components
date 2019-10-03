@@ -19,7 +19,7 @@ webix.protoUI({
 		};
 
 		// we use DecoupledEditor only
-		var cdn = this.config.cdn || "https://cdn.ckeditor.com/ckeditor5/12.1.0/decoupled-document";
+		var cdn = this.config.cdn || "https://cdn.ckeditor.com/ckeditor5/12.4.0/decoupled-document";
 	
 		webix.require([cdn+"/ckeditor.js"])
 			.then( webix.bind(this._render_ckeditor, this) )

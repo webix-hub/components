@@ -1,6 +1,6 @@
 {
   "name": "@wbx/view-ckeditor5",
-  "version": "12.1.0",
+  "version": "12.4.0",
   "description": "CKEditor5 as Webix view",
   "main": "ckeditor5.js",
   "scripts": {
