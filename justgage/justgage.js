@@ -18,17 +18,12 @@ webix.protoUI({
 			return;
 		};
 
-		var cdn = this.config.cdn ? this.config.cdn : "https://cdnjs.cloudflare.com/ajax/libs/justgage/1.2.9";
+		var cdn = this.config.cdn ? this.config.cdn : "https://cdnjs.cloudflare.com/ajax/libs/justgage/1.3.1";
 
 		var sources = [];
 
+		sources.push("https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.8/raphael.min.js");
 		sources.push(cdn+"/justgage.js");
-		// raphael version included in the main justGage package is named differently
-		// while cdnjs stores raphael in its own repo
-		if (this.config.cdn)
-			sources.push(cdn+"/raphael-2.1.4.min.js");
-		else
-			sources.push("https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.4/raphael-min.js");
 
 		webix.require(sources)
 		.then(webix.bind( this._render_after_load, this ))
