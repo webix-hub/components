@@ -26,7 +26,8 @@ webix.protoUI({
 			return;
 		};
 
-		var cdn = c.cdn || "https://cloud.tinymce.com/5.0.3";
+		var apiKey = c.apiKey ? c.apiKey : "no-api-key";
+		var cdn = c.cdn || "https://cdn.tiny.cloud/1/"+apiKey+"/tinymce/5.0.14-54";
 
 		//path to tinymce codebase
 		window.tinyMCEPreInit = {
@@ -35,9 +36,9 @@ webix.protoUI({
 			suffix:".min"
 		};
 
-		var apiKey = c.apiKey ? "?apiKey="+c.apiKey : "";
+		
 		webix.require([
-			cdn+"/tinymce.min.js" + apiKey
+			cdn+"/tinymce.min.js"
 		])
 			.then( webix.bind(this._init_tinymce_once, this) )
 			.catch(function(e){
