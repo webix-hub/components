@@ -14,7 +14,7 @@ webix.protoUI({
 			return;
 		};
 
-		var cdn = this.config.cdn || "https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.16.2/min/";
+		var cdn = this.config.cdn || "https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.18.0/min/";
 
 		webix.require(cdn + "vs/loader.js")
 		.then(webix.bind(function(){
