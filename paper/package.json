@@ -1,6 +1,6 @@
 {
   "name": "@wbx/view-paper",
-  "version": "0.11.6",
+  "version": "0.12.2",
   "description": "Paper.js widget as Webix view",
   "main": "paper.js",
   "scripts": {

@@ -9,7 +9,7 @@ webix.protoUI({
 		if (this.config.cdn === false)
 			return;
 
-		var cdn = this.config.cdn ? this.config.cdn : "https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.11.5"
+		var cdn = this.config.cdn ? this.config.cdn : "https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.12.2"
 		webix.require([cdn + "/paper-full.js"])
 		.then(webix.bind(this._init_paper, this))
 		.catch(function(e){
