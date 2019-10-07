@@ -2,106 +2,101 @@
 <html>
 	<head>
 		<link rel="stylesheet" href="//cdn.webix.com/edge/webix.css" type="text/css" media="screen" charset="utf-8">
-        <script src="//cdn.webix.com/edge/webix.js" type="text/javascript" charset="utf-8"></script>
+		<script src="//cdn.webix.com/edge/webix.js" type="text/javascript" charset="utf-8"></script>
 		
 		<title>Konva</title>
 		<script type="text/javascript" src="./konva.js"></script>
 	</head>
 	<body>
 		<script type="text/javascript" charset="utf-8">
-webix.ui({
-	rows:[
-		{ type:"header", template:"Drag-n-drop stars"},
-		{ view:"konva", ready: render_stars },
-		{ view:"resizer"},
-		{}
-	]
-});
+			webix.ui({
+				rows:[
+					{ type:"header", template:"Drag-n-drop stars"},
+					{ view:"konva", ready: render_stars },
+					{ view:"resizer"},
+					{}
+				]
+			});
 
-		
-function render_stars(stage){
+					
+			function render_stars(stage){
 
-    var tween = null;
-    function addStar(layer, stage, width, height) {
+				var tween = null;
+				function addStar(layer, stage, width, height) {
 
-        var scale = Math.random();
-        var star = new Konva.Star({
-            x: Math.random() * width,
-            y: Math.random() * height,
-            numPoints: 5,
-            innerRadius: 30,
-            outerRadius: 50,
-            fill: '#89b717',
-            opacity: 0.8,
-            draggable: true,
-            scale: {
-                x : scale,
-                y : scale
-            },
-            rotationDeg: Math.random() * 180,
-            shadowColor: 'black',
-            shadowBlur: 10,
-            shadowOffset: {
-                x : 5,
-                y : 5
-            },
-            shadowOpacity: 0.6,
-            startScale: scale
-        });
-        layer.add(star);
-    }
+					var scale = Math.random();
+					var star = new Konva.Star({
+						x: Math.random() * width,
+						y: Math.random() * height,
+						numPoints: 5,
+						innerRadius: 30,
+						outerRadius: 50,
+						fill: "#89b717",
+						opacity: 0.8,
+						draggable: true,
+						scale: {
+						  x: scale,
+						  y: scale
+						},
+						rotation: Math.random() * 180,
+						shadowColor: "black",
+						shadowBlur: 10,
+						shadowOffset: {
+						  x: 5,
+						  y: 5
+						},
+						shadowOpacity: 0.6,
+						// custom attribute
+						startScale: scale
+					});
 
-    var layer = new Konva.Layer();
-    var dragLayer = new Konva.Layer();
-    for(var n = 0; n < 20; n++) {
-        addStar(layer, stage, this.$width, this.$height*2);
-    }
-    stage.add(layer);
-    stage.add(dragLayer);
-    // bind stage handlers
-    stage.on('mousedown', function(evt) {
-        var shape = evt.target;
-        shape.moveTo(dragLayer);
-        stage.draw();
-        // restart drag and drop in the new layer
-        shape.startDrag();
-    });
-    stage.on('mouseup', function(evt) {
-        var shape = evt.target;
-        shape.moveTo(layer);
-        stage.draw();
-    });
-    stage.on('dragstart', function(evt) {
-        var shape = evt.target;
-        if (tween) {
-            tween.pause();
-        }
-        shape.setAttrs({
-            shadowOffset: {
-                x: 15,
-                y: 15
-            },
-            scale: {
-                x: shape.getAttr('startScale') * 1.2,
-                y: shape.getAttr('startScale') * 1.2
-            }
-        });
-    });
-    stage.on('dragend', function(evt) {
-        var shape = evt.target;
-        tween = new Konva.Tween({
-            node: shape,
-            duration: 0.5,
-            easing: Konva.Easings.ElasticEaseOut,
-            scaleX: shape.getAttr('startScale'),
-            scaleY: shape.getAttr('startScale'),
-            shadowOffsetX: 5,
-            shadowOffsetY: 5
-        });
-        tween.play();
-    });
-}
+					layer.add(star);
+				};
+
+				var layer = new Konva.Layer();
+				var dragLayer = new Konva.Layer();
+				for(var n = 0; n < 20; n++) {
+					addStar(layer, stage, this.$width, this.$height*2);
+				};
+
+				stage.add(layer, dragLayer);
+
+				// bind stage handlers	
+				stage.on("dragstart", function(evt) {
+					var shape = evt.target;
+					// moving to another layer will improve dragging performance
+					shape.moveTo(dragLayer);
+					stage.draw();
+
+					if (tween) {
+						tween.pause();
+					}
+					shape.setAttrs({
+						shadowOffset: {
+							x: 15,
+							y: 15
+						},
+						scale: {
+							x: shape.getAttr("startScale") * 1.2,
+							y: shape.getAttr("startScale") * 1.2
+						}
+					});
+				});
+
+				stage.on("dragend", function(evt) {
+					var shape = evt.target;
+					shape.moveTo(layer);
+					stage.draw();
+					shape.to({
+						duration: 0.5,
+						easing: Konva.Easings.ElasticEaseOut,
+						scaleX: shape.getAttr("startScale"),
+						scaleY: shape.getAttr("startScale"),
+						shadowOffsetX: 5,
+						shadowOffsetY: 5
+					});
+				});
+			};
 		</script>
 	</body>
-
 </html>
