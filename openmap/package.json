@@ -1,6 +1,6 @@
 {
   "name": "@wbx/view-open-map",
-  "version": "1.3.1",
+  "version": "1.5.1",
   "description": "Leaflet OpenStreet map as Webix view",
   "main": "openmap.js",
   "scripts": {

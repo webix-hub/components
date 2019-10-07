@@ -13,7 +13,7 @@ webix.protoUI({
 		this._waitMap = webix.promise.defer();
 		this.$ready.push(this.render);
 
-		// do not call Webix Touch handlers in any case
+		// do not call Webix Touch handlers on the map
 		webix.event(this.$view, "touchstart", function(e){
 			e.cancelBubble = true;
 		});
@@ -27,7 +27,7 @@ webix.protoUI({
 			return;
 		};
 
-		var cdn = this.config.cdn ? this.config.cdn : "https://unpkg.com/leaflet@1.3.1/dist";
+		var cdn = this.config.cdn ? this.config.cdn : "https://unpkg.com/leaflet@1.5.1/dist";
 
 		webix.require([
 			cdn+"/leaflet.js",
