@@ -1,6 +1,6 @@
 {
   "name": "@wbx/view-raphael-chart",
-  "version": "2.2.7",
+  "version": "2.3.0",
   "description": "Raphael chart widget as Webix view",
   "main": "raphael.js",
   "scripts": {
