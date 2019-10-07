@@ -23,7 +23,9 @@ webix.protoUI({
 			this._init_tinymce_once();
 			return;
 		};
-		var cdn = c.cdn || "https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.9.6";
+
+		var apiKey = c.apiKey ? c.apiKey : "no-api-key";
+		var cdn = c.cdn || "https://cdn.tiny.cloud/1/"+apiKey+"/tinymce/4.9.6-54";
 
 		//path to tinymce codebase
 		window.tinyMCEPreInit = { 
@@ -32,9 +34,8 @@ webix.protoUI({
 			suffix:".min" 
 		};
 
-		var apiKey = c.apiKey ? "?apiKey="+c.apiKey : "";
 		webix.require([
-			cdn+"/tinymce.min.js" + apiKey
+			cdn+"/tinymce.min.js"
 		])
 			.then( webix.bind(this._init_tinymce_once, this) )
 			.catch(function(e){
