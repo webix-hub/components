@@ -23,7 +23,7 @@ webix.protoUI({
 			this._init_tinymce_once();
 			return;
 		};
-		var cdn = c.cdn || "https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.9.4";
+		var cdn = c.cdn || "https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.9.6";
 
 		//path to tinymce codebase
 		window.tinyMCEPreInit = { 
