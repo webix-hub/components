@@ -19,14 +19,23 @@
 	<script type="text/javascript">
 		webix.ready(function(){
 			webix.ui({
-				type:"space", rows:[{
-					view:"ckeditor",
-		    		value:'<h2>Text editor</h2> <div><small>From Wikipedia, the free encyclopedia</small></div> <p>A <strong>text editor</strong> is a type of program used for editing plain text files </p>'
-		    	},{
-					view:"ckeditor",
-					editorType:"inline",
-		    		value:'<h2>Text editor</h2> <div><small>From Wikipedia, the free encyclopedia</small></div> <p>A <strong>text editor</strong> is a type of program used for editing plain text files </p>'
-		    	}]
+				cols:[
+					{rows:[
+						{
+							view:"ckeditor",
+				    		value:'<h2>Text editor</h2> <div><small>From Wikipedia, the free encyclopedia</small></div> <p>A <strong>text editor</strong> is a type of program used for editing plain text files </p>'
+				    	},
+				    	{view:"resizer"},
+				    	// {},
+				    	{
+							view:"ckeditor",
+							editorType:"inline",
+				    		value:'<h2>Text editor</h2> <div><small>From Wikipedia, the free encyclopedia</small></div> <p>A <strong>text editor</strong> is a type of program used for editing plain text files </p>'
+				    	}
+					]},
+					{view:"resizer"},
+					{gravity:0.5}
+				]
 			});
 		});
 	</script>
