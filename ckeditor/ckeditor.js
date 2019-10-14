@@ -10,7 +10,6 @@ webix.protoUI({
 		this.$ready.push(this._init_ckeditor_once);
 	},
 	defaults:{
-		borderless:true,
 		language:"en",
 		toolbar: [
 			[ 'Bold', 'Italic', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' ],
@@ -19,7 +18,7 @@ webix.protoUI({
 	},
 	_init_ckeditor_once:function(){		
 		if (this.config.cdn === false){
-			this._render_ckeditor();
+			webix.delay( webix.bind( this._render_ckeditor, this) );
 			return;
 		};
 
@@ -40,7 +39,7 @@ webix.protoUI({
 			this.$view.style["overflow-y"] = "auto";
 		};
 
-		var barHeight = 71; // toolbar + bottombar, as initial sizes are set to the editable area
+		var barHeight = 70; // toolbar + bottombar, as initial sizes are set to the editable area
 		this._editor = CKEDITOR[initMethod]( this.config.textAreaID, {
 			toolbar: this.config.toolbar,
 			language: this.config.language,
@@ -55,7 +54,7 @@ webix.protoUI({
 		this._editor.resize(x, y);
 	},
 	$setSize:function(x,y){
-		if (webix.ui.view.prototype.$setSize.call(this, x, y)){			
+		if (webix.ui.view.prototype.$setSize.call(this, x, y)){
 			this._set_inner_size(x,y);
 		}
 	},
