@@ -2,7 +2,7 @@
     "name": "@wbx/view-apexchart",
     "version": "3.8.6",
     "description": "apexcharts as Webix component",
-    "main": "achart.js",
+    "main": "apexchart.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
