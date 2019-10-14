@@ -7,6 +7,7 @@
 	<script src="http://cdn.webix.com/edge/webix.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript" src="ribbon.js"></script>
 	<link rel="stylesheet" type="text/css" href="ribbon.css">
+	<link rel="stylesheet" href="https://cdn.materialdesignicons.com/2.7.94/css/materialdesignicons.css" type="text/css" charset="utf-8">
   	
   	<body>
   		<div id="testA" style="margin:10px;"></div>
@@ -49,17 +50,17 @@
 					]}
 				]},
 				{ header:"Tab3", items:[
-					{ view:"label", label:"Editing", autowidth:true},
+					{ view:"label", label:"Editing", width:100},
 					{ type:"block", header:"Text", rows:[
 						{ cols:[
-							{view:"toggle", name:"bold", icon:"bold", type:"icon", width:40},
-							{view:"toggle", name:"italic", icon:"italic", type:"icon", width:40},
-							{view:"toggle", name:"underline", icon:"underline", type:"icon", width:40}
+							{view:"toggle", name:"bold", icon:"mdi mdi-format-bold", type:"icon", width:40},
+							{view:"toggle", name:"italic", icon:"mdi mdi-format-italic", type:"icon", width:40},
+							{view:"toggle", name:"underline", icon:"mdi mdi-format-underline", type:"icon", width:40}
 						]},
 						{ cols:[
-							{view:"toggle", name:"open", icon:"align-center", type:"icon", width:40},
-							{view:"toggle", name:"align-justify", icon:"align-justify", type:"icon", width:40},
-							{view:"toggle", name:"align-left", icon:"align-left", type:"icon", width:40}
+							{view:"toggle", name:"open", icon:"mdi mdi-format-align-center", type:"icon", width:40},
+							{view:"toggle", name:"align-justify", icon:"mdi mdi-format-align-justify", type:"icon", width:40},
+							{view:"toggle", name:"align-left", icon:"mdi mdi-format-align-left", type:"icon", width:40}
 						]}
 					]},
 					{ type:"block", header:"Font", width:300,  rows:[
