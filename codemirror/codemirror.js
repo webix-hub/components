@@ -26,14 +26,17 @@ webix.protoUI({
 		];
 
 		// mode
-		if (this.config.mode == "htmlmixed"){
-			sources.push(cdn+"/mode/xml/xml.js");
-			sources.push(cdn+"/mode/css/css.js");
-			sources.push(cdn+"/mode/javascript/javascript.js");
-		} else {
-			var mode = this.config.mode ? this.config.mode : "javascript";
-			sources.push(cdn+"/mode/"+mode+"/"+mode+".js");
+		var mode = this.config.mode ? this.config.mode : "javascript";
+		if (mode.indexOf("html") === 0) {
+			sources.push(cdn + "/mode/xml/xml.js");
+			sources.push(cdn + "/mode/css/css.js");
+			sources.push(cdn + "/mode/javascript/javascript.js");
+			if (mode === "htmlembedded") {
+				sources.push(cdn + "/mode/htmlmixed/htmlmixed.js");
+				sources.push(cdn + "/addon/mode/multiplex.js");
+			}
 		};
+		sources.push(cdn + "/mode/" + mode + "/" + mode + ".js");
 
 		// theme
 		if (this.config.theme && this.config.theme !== "default"){
