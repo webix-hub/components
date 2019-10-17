@@ -27,16 +27,21 @@ webix.protoUI({
 
 		// mode
 		var mode = this.config.mode ? this.config.mode : "javascript";
-		if (mode.indexOf("html") === 0) {
+		// complex modes based on others: htmlmixed, htmlembedded, php
+		if (mode.indexOf("html") === 0 || mode === "php") {
+			sources.push(cdn + "/mode/htmlmixed/htmlmixed.js");
 			sources.push(cdn + "/mode/xml/xml.js");
-			sources.push(cdn + "/mode/css/css.js");
 			sources.push(cdn + "/mode/javascript/javascript.js");
+			sources.push(cdn + "/mode/css/css.js");
 			if (mode === "htmlembedded") {
-				sources.push(cdn + "/mode/htmlmixed/htmlmixed.js");
 				sources.push(cdn + "/addon/mode/multiplex.js");
+				sources.push(cdn + "/mode/htmlembedded/htmlembedded.js");
+			} else if (mode === "php") {
+				sources.push(cdn + "/mode/clike/clike.js");
+				sources.push(cdn + "/mode/php/php.js");
 			}
-		};
-		sources.push(cdn + "/mode/" + mode + "/" + mode + ".js");
+		} else
+			sources.push(cdn + "/mode/" + mode + "/" + mode + ".js");
 
 		// theme
 		if (this.config.theme && this.config.theme !== "default"){
