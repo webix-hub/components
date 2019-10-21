@@ -8,6 +8,7 @@ webix.protoUI({
 	},
 	$init: function (config) {
 		this.$view.innerHTML = "<textarea style='width:100%;height:100%;'></textarea>";
+		this._textarea = this.$view.firstChild;
 		this._waitEditor = webix.promise.defer();
 		this.$ready.push(this._render_cm_editor);
 	},
@@ -77,7 +78,7 @@ webix.protoUI({
 			});
 	},
 	_render_when_ready: function () {
-		this._editor = CodeMirror.fromTextArea(this.$view.firstChild, {
+		this._editor = CodeMirror.fromTextArea(this._textarea, {
 			mode: this.config.mode,
 			lineNumbers: this.config.lineNumbers,
 			matchBrackets: this.config.matchBrackets,

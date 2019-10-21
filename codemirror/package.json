@@ -1,6 +1,6 @@
 {
   "name": "@wbx/view-codemirror-editor",
-  "version": "5.48.4-c",
+  "version": "5.48.4-d",
   "description": "CodeMirror as Webix view",
   "main": "codemirror.js",
   "scripts": {
