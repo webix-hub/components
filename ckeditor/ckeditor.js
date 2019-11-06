@@ -10,11 +10,13 @@ webix.protoUI({
 		this.$ready.push(this._init_ckeditor_once);
 	},
 	defaults:{
-		language:"en",
-		toolbar: [
-			[ 'Bold', 'Italic', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' ],
-			[ 'FontSize', 'TextColor', 'BGColor' ]
-		]
+		editorConfig: {
+			language:"en",
+			toolbar: [
+				[ 'Bold', 'Italic', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' ],
+				[ 'FontSize', 'TextColor', 'BGColor' ]
+			]
+		}
 	},
 	_init_ckeditor_once:function(){		
 		if (this.config.cdn === false){
@@ -40,13 +42,11 @@ webix.protoUI({
 		};
 
 		var barHeight = 70; // toolbar + bottombar, as initial sizes are set to the editable area
-		this._editor = CKEDITOR[initMethod]( this.config.textAreaID, {
-			toolbar: this.config.toolbar,
-			language: this.config.language,
+		this._editor = CKEDITOR[initMethod](this.config.textAreaID, webix.extend({
 			width:this.$width,
 			height:this.$height-barHeight,
 			resize_enabled:false
-		});
+		}, this.config.editorConfig));
 		this._waitEditor.resolve(this._editor);
 	},
 	_set_inner_size:function(x, y){
