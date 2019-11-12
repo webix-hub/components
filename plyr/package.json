@@ -1,0 +1,27 @@
+{
+    "name": "@wbx/view-plyr",
+    "version": "3.5.6",
+    "description": "Plyr player as Webix view",
+    "main": "plyr.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/webix-hub/components.git"
+    },
+    "keywords": [
+      "webix",
+      "plyr",
+      "html5-video",
+      "youtube",
+      "vimeo",
+      "video-player"
+    ],
+    "author": "XB Software",
+    "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/webix-hub/components/issues"
+    },
+    "homepage": "https://github.com/webix-hub/components#readme"
+  }
