@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<link rel="stylesheet" href="//cdn.webix.com/edge/webix.css" type="text/css" media="screen" charset="utf-8">
+	<script src="//cdn.webix.com/edge/webix.js" type="text/javascript" charset="utf-8"></script>
+	<title>Plyr</title>
+
+	<script type="text/javascript" src="./plyr.js"></script>
+	
+	</head>
+	<body> 
+	<script type="text/javascript" charset="utf-8">
+	webix.ui({
+		rows:[
+			{cols:[
+				{
+					view:"plyr-player",
+					source:{
+						type: 'video',
+						sources: [
+							{
+								src: '-ZQWsuXS3ck',
+								provider: 'youtube',
+							},
+						]
+					}
+				},
+				{view:"resizer"},
+				{}
+			]},
+			{view:"resizer"},
+			{}
+		]
+
+	});
+	</script>
+	
+	</body>
+
+</html>
