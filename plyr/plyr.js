@@ -5,7 +5,7 @@ webix.protoUI({
 		source:{}
     },
     $init:function(){
-        this.$view.innerHTML = '<div class="webix_video_parent"><video playsinline controls></video><div>';
+        this.$view.innerHTML = '<div class="webix_video_parent"><video playsinline controls></video></div>';
 		this._container = this.$view.firstChild.firstChild;
 		
 		this._waitView = webix.promise.defer();
