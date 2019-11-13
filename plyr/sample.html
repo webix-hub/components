@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 	<head>
 	<link rel="stylesheet" href="//cdn.webix.com/edge/webix.css" type="text/css" media="screen" charset="utf-8">
@@ -26,12 +26,29 @@
 					}
 				},
 				{view:"resizer"},
-				{}
+				{rows:[
+					{ 
+						view:"plyr-player",
+						height:52,
+						config:{
+							controls:['play-large', 'play', 'progress', 'current-time', 'mute', 'volume']
+						},
+						source:{
+							type: 'audio',
+							sources: [
+								{
+									src: 'path/to/file.mp3',
+									type: 'audio/mp3',
+								}
+							]
+						}
+					},
+					{}
+				]}
 			]},
 			{view:"resizer"},
 			{}
 		]
-
 	});
 	</script>
 	

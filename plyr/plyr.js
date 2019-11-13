@@ -15,7 +15,7 @@ webix.protoUI({
 		return wait?this._waitView:this._player;
 	},
 	render:function(){
-		if (this.config.cdn === false){			
+		if (this.config.cdn === false || window.Plyr){
 			this._initPlyr();
 			return;
 		};
@@ -77,6 +77,6 @@ webix.protoUI({
 			ratioY = (y/div).toString();
 			ratio = ratioX+":"+ratioY;
 		
-		this._player.ratio = ratio;		
+		this._player.ratio = ratio;
 	}
 }, webix.ui.view, webix.EventSystem);

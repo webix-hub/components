@@ -13,10 +13,12 @@
     "keywords": [
       "webix",
       "plyr",
-      "html5-video",
+      "html5 video",
+      "html5 audio",
       "youtube",
       "vimeo",
-      "video-player"
+      "video player"
+      "web audio"
     ],
     "author": "XB Software",
     "license": "MIT",
