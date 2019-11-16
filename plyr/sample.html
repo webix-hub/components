@@ -10,46 +10,84 @@
 	</head>
 	<body> 
 	<script type="text/javascript" charset="utf-8">
-	webix.ui({
-		rows:[
-			{cols:[
-				{
-					view:"plyr-player",
-					source:{
-						type: 'video',
-						sources: [
-							{
-								src: '-ZQWsuXS3ck',
-								provider: 'youtube',
-							},
-						]
-					}
-				},
-				{view:"resizer"},
-				{rows:[
-					{ 
+
+	webix.ready(function(){
+		webix.ui({
+			rows:[
+				{cols:[
+					{
 						view:"plyr-player",
-						height:52,
-						config:{
-							controls:['play-large', 'play', 'progress', 'current-time', 'mute', 'volume']
-						},
 						source:{
-							type: 'audio',
+							type: 'video',
 							sources: [
 								{
-									src: 'path/to/file.mp3',
-									type: 'audio/mp3',
-								}
+									src: '-ZQWsuXS3ck',
+									provider: 'youtube',
+								},
 							]
 						}
 					},
-					{}
-				]}
-			]},
-			{view:"resizer"},
-			{}
-		]
+					{view:"resizer"},
+					{rows:[
+						{
+							view:"uploader",
+							value:"Upload a song",
+							accept:"audio/*",
+							inputWidth:200,
+							multiple:false,
+							autosend:false,
+							on:{
+								onBeforeFileAdd:setAudio
+							}
+						},
+						{ 
+							view:"plyr-player",
+							id:"audio",
+							height:52,
+							config:{
+								controls:['play-large', 'play', 'progress', 'current-time', 'mute', 'volume']
+							},
+							source:{
+								type: 'audio',
+								sources: [
+									{
+										src: 'path/to/file.mp3',
+										type: 'audio/mp3',
+									}
+								]
+							}
+						},
+						{}
+					]}
+				]},
+				{view:"resizer"},
+				{}
+			]
+		});
 	});
+
+	function setAudio(obj){        
+		var file = obj.file;
+		var reader = new FileReader();  
+		var player = $$("audio");
+		reader.onload = function(e) {
+			var track = e.target.result;
+			player.define({
+				source:{
+					type: 'audio',
+					sources: [
+						{
+							src: e.target.result,
+							type: file.type
+						}
+					]
+				}
+			});
+		};           
+		reader.readAsDataURL(file)
+		return false;
+	};
+
 	</script>
 	
 	</body>
