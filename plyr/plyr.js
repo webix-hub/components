@@ -1,13 +1,15 @@
 webix.protoUI({
-    name:"plyr-player",
-    defaults:{
-        config:{},
+	name:"plyr-player",
+	defaults:{
+		config:{},
 		source:{}
-    },
-    $init:function(){
-        this.$view.innerHTML = '<div class="webix_player_parent"><audio></audio></div>';
+	},
+	$init:function(){
+		this.$view.innerHTML = '<div class="webix_player_parent"><audio></audio></div>';
 		this._container = this.$view.firstChild.firstChild;
-		
+		// visibility of tooltips and popup menu
+		this.$view.style.overflow = "visible";
+
 		this._waitView = webix.promise.defer();
 		this.$ready.push(this.render);
 	},
@@ -32,18 +34,20 @@ webix.protoUI({
 		});
 		
 	},
-    _initPlyr:function(){
+	_initPlyr:function(){
 		var options = webix.extend({}, this.config.config);
 		this._player = new Plyr(this._container, options);
 		this._waitView.resolve(this._player);
-		
+
 		this._player.on("canplay", webix.bind(function(){
 			this._normalizeRatio();
 		}, this));
 		this._player.on("ready", webix.bind(function(){
+			// allow width less than 200px
+			this.$view.querySelector(".plyr--full-ui").style["min-width"] = "0px";
 			this._normalizeRatio();
 		}, this));
-    },
+	},
 	$setSize:function(x,y){
 		this.$view.firstChild.style.width = x+"px";
 		this.$view.firstChild.style.height = (y-2)+"px";
