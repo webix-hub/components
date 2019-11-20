@@ -46,7 +46,7 @@ webix.protoUI({
     },
 	$setSize:function(x,y){
 		this.$view.firstChild.style.width = x+"px";
-		this.$view.firstChild.style.height = y+"px";
+		this.$view.firstChild.style.height = (y-2)+"px";
 		if (this._player)
 			this._normalizeRatio(x, y);
 	},
