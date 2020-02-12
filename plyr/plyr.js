@@ -74,11 +74,11 @@ webix.protoUI({
 		return x;
 	},
 	_normalizeRatio:function(x, y){
-		var x = x || this.$view.clientWidth,
-			y = y || this.$view.clientHeight;
+		x = x || this.$view.clientWidth;
+		y = y || this.$view.clientHeight;
 		var div = this._gcdRatio(x, y),
 			ratioX = (x/div).toString(),
-			ratioY = (y/div).toString();
+			ratioY = (y/div).toString(),
 			ratio = ratioX+":"+ratioY;
 		
 		this._player.ratio = ratio;
