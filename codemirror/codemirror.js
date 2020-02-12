@@ -30,7 +30,7 @@ webix.protoUI({
 	_render_cm_editor: function () {
 
 		if (this.config.cdn === false) {
-			this._render_when_ready;
+			this._render_when_ready();
 			return;
 		};
 
