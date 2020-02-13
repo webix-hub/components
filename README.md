@@ -17,7 +17,6 @@ Collection of third party integrations for the Webix UI
 
 Maps
 ------
-
 - [Open Street Maps](http://webix-hub.github.io/components/openmap/sample.html) (open-map)
 - [Yandex Maps](http://webix-hub.github.io/components/yandexmap/sample.html) (yandex-map)
 - [Here Maps](http://webix-hub.github.io/components/heremap/sample.html), also known as Nokia Maps (here-map)
@@ -25,8 +24,10 @@ Maps
 
 Editors
 ---------
-- [CKEditor](http://webix-hub.github.io/components/ckeditor/sample.html) (ckeditor)
-- [Tiny MCE](http://webix-hub.github.io/components/tinymce/sample.html) (tinymce-editor)
+- [CKEditor 4](http://webix-hub.github.io/components/ckeditor/sample.html) (ckeditor)
+- [CKEditor 5](http://webix-hub.github.io/components/ckeditor5/sample.html) (ckeditor5)
+- [Tiny MCE 4](http://webix-hub.github.io/components/tinymce/sample.html) (tinymce-editor)
+- [Tiny MCE 5](http://webix-hub.github.io/components/tinymce5/sample.html) (tinymce5-editor)
 - [Nic Edit](http://webix-hub.github.io/components/nicedit/sample.html) (nic-editor)
 - [Code Mirror](http://webix-hub.github.io/components/codemirror/sample.html) (codemirror-editor)
 - [Monaco](http://webix-hub.github.io/components/monaco/sample.html) (monaco-editor)
@@ -41,21 +42,25 @@ Charts
 - [Fusion](http://webix-hub.github.io/components/fusion/sample.html) (fusion-chart)
 - [Vis](http://webix-hub.github.io/components/vis/sample.html) (vis-chart)
 - [Highcharts](http://webix-hub.github.io/components/highcharts/sample.html) (highchart)
+- [ApexCharts](http://webix-hub.github.io/components/apexcharts/sample.html) (apexchart)
 
 DHTMLX components
 -------------------
 - [DHTMLX Scheduler](http://webix-hub.github.io/components/scheduler/sample.html) (dhx-scheduler)
 - [DHTMLX Gantt](http://webix-hub.github.io/components/gantt/sample.html) (dhx-gantt)
+- [DHTMLX Richtext](http://webix-hub.github.io/components/richtext/sample.html) (dhx-richtext)
 - [Using Webix with DHTMLX components](http://webix-hub.github.io/components/dhtmlx_v5/sample.html)
 
 Other
 ------
-
 - [Hipchat](http://webix-hub.github.io/components/hipchat/sample.html) (hipchat)
 - [Konva](http://webix-hub.github.io/components/konva/sample.html) (konva)
 - [Paper](http://webix-hub.github.io/components/paper/sample.html) (paper)
+- [Fabric.js](http://webix-hub.github.io/components/fabricjs/sample.html) (fabric)
+- [Plyr](http://webix-hub.github.io/components/plyr/sample.html) (plyr-player)
 
 Thanks
 ------
-
-- [Muhammad Lukman](https://github.com/MLukman) fusion charts integration and dndlist component
+- [MLukman](https://github.com/MLukman): FusionCharts integration and dndlist component
+- [franck34](https://github.com/franck34): ApexCharts
+- [jbruwes](https://github.com/jbruwes): Fabric.js
