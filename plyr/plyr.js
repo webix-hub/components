@@ -37,6 +37,7 @@ webix.protoUI({
 	_initPlyr:function(){
 		var options = webix.extend({}, this.config.config);
 		this._player = new Plyr(this._container, options);
+		this.$view.firstChild.firstChild.setAttribute("tabindex", "-1");
 		this._waitView.resolve(this._player);
 
 		this._player.on("canplay", webix.bind(function(){
