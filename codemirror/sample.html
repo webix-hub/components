@@ -7,14 +7,26 @@
 	<script type="text/javascript" src="./codemirror.js"></script>
 </head>
 <body>
-	<div id="sample_div" style='width:600px; height:300px; margin:50px;'></div>
 	<script type="text/javascript">
 		
 		webix.ui({
-			container:"sample_div",
-    		view:"codemirror-editor",
-    		mode:"javascript",
-    		value:'webix.ui({\n\tcontainer:"sample_div",\n\tview:"codemirror",\n\tmode:"javascript"\n\tvalue:""\n});'
+			rows:[
+				{ template:"CodeMirror editor", type:"header", css:"webix_dark" },
+				{cols:[
+					{ 
+						view:"codemirror-editor",
+						mode:"javascript",
+						theme:"lucario",
+						value:'webix.ui({\n\tview:"codemirror",\n\tmode:"javascript",\n\ttheme:"lucario",\n\tvalue:""\n});'
+					},
+					{view:"resizer"},
+					{ 
+						view:"codemirror-editor",
+						mode:"javascript",
+						value:'webix.ui({\n\tview:"codemirror",\n\tmode:"javascript",\n\tvalue:""\n});'
+					}
+				]}
+			]
 		});
 	</script>
 </body>

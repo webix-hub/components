@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+	<link rel="stylesheet" href="//cdn.webix.com/edge/webix.css" type="text/css" media="screen" charset="utf-8">
+	<script src="//cdn.webix.com/edge/webix.js" type="text/javascript" charset="utf-8"></script>
+	
+	<script type="text/javascript" src="./ckeditor5.js"></script>
+
+	<link rel="stylesheet" href="./document_style.css" type="text/css" media="screen" charset="utf-8">
+</head>
+<body>
+	<script type="text/javascript">
+		webix.ui({
+			rows:[
+				{ type:"header", template:"CKEditor 5 within Webix layout", css:"webix_dark"},
+				{cols:[
+					{ 
+						view:"ckeditor5", id:"editor"
+					},
+					{ view:"resizer" },
+					{ 
+						view:"ckeditor5", id:"editor2",
+						mode:"document",
+						config:{
+							table:{
+								contentToolbar:[ "tableColumn", "tableRow", "mergeTableCells" ]
+							}
+						}
+					}
+				]},
+				{ view:"resizer" },
+				{gravity:0.2}
+			]
+		});
+
+		$$("editor").setValue(`<table>
+			<thead>
+				<tr>
+					<th rowspan="2"></th>
+					<th scope="col" rowspan="2">Espresso</th>
+					<th scope="colgroup" colspan="2">Milk</th>
+					<th scope="col" rowspan="2">Water</th>
+				</tr>
+				<tr>
+					<th scope="col">Steamed</th>
+					<th scope="col">Foam</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th scope="row">Cappuccino</th>
+					<td>yes</td>
+					<td>yes</td>
+					<td>yes</td>
+					<td>no</td>
+				</tr>
+				<tr>
+					<th scope="row">Macchiato</th>
+					<td>yes</td>
+					<td>no</td>
+					<td>yes</td>
+					<td>no</td>
+				</tr>
+				<tr>
+					<th scope="row">Latte</th>
+					<td>yes</td>
+					<td>yes</td>
+					<td>no</td>
+					<td>no</td>
+				</tr>
+				<tr>
+					<th scope="row">Americano</th>
+					<td>yes</td>
+					<td>no</td>
+					<td>no</td>
+					<td>yes</td>
+				</tr>
+			</tbody>
+		</table>`);
+
+		$$("editor2").setValue("<h4>CKEditor5 in a Webix view with mode:\"document\" and extra CSS</h4><p>The decoupled editor provides an inline editable and a toolbar. However, unlike other editors, it does not render these components anywhere in the DOM unless configured.&nbsp;</p><p>This type of an editor is dedicated to integrations which require a customized UI with an open structure, allowing developers to specify the exact location of the interface.</p>")
+	</script>
+</body>
+</html>

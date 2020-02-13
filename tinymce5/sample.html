@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+	<link rel="stylesheet" href="//cdn.webix.com/edge/webix.css" type="text/css" media="screen" charset="utf-8">
+	<script src="//cdn.webix.com/edge/webix.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="./tinymce5.js"></script>
+	<style>
+		.tox-tinymce{ border:0px !important}
+	</style>
+</head>
+<body>
+	<script type="text/javascript">
+		webix.ui({
+			type:"space",
+			rows:[		
+				{ template:"TinyMCE 5 editor within Webix view", type:"header", css:"webix_dark" },
+				{ 
+					id:'editor', view:"tinymce5-editor",
+					// provide an API key here:
+					// apiKey:"",						
+					config:{
+						plugins:"link, anchor",
+						toolbar:"anchor | fontsizeselect | bold italic underline | alignleft aligncenter alignright alignjustify | link",
+						content_style:"* { color:#475466; font-family:Roboto,sans-serif; font-size:15px; }"
+					}
+				}
+			]
+		});
+
+		$$("editor").setValue("<h2>Text editor</h2> <div><small>From Wikipedia, the free encyclopedia</small></div> <p>A <strong>text editor</strong> is a type of program used for editing plain text files </p>");
+		$$("editor").focus();
+	</script>
+</body>
+</html>

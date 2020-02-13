@@ -11,22 +11,23 @@
 	<script type="text/javascript">
 		
 		webix.ui({
-			type:"space", rows:[
+			type:"space", cols:[
 			{
 				view:"monaco-editor",
-	    		language:"javascript",
-	    		theme:"vs-dark",
-	    		value:'webix.ui({\n\tcontainer:"sample_div",\n\tview:"monaco-editor",\n\tlanguage:"javascript",\n\tvalue:""\n});'
-	    	},
-	    	{ view:"resizer"},
-	    	{ padding:10, css:{ "background":"#202020" }, rows:[
-	    		{
-		    		view:"monaco-editor",
-		    		borderless:true,
-		    		language:"css",
-		    		value:"body{\n\theight:100%;\n\tbackground: #fff;\n}"
-	    		}
-	    	]}]
+				language:"javascript",
+				theme:"vs-dark",
+				value:'webix.ui({\n\tcontainer:"sample_div",\n\tview:"monaco-editor",\n\tlanguage:"javascript",\n\tvalue:""\n});'
+			},
+			{ view:"resizer"},
+			{ padding:10, css:{ "background":"#202020" }, rows:[
+				{
+					view:"monaco-editor",
+					borderless:true,
+					language:"css",
+					theme:"vs-dark",
+					value:"body{\n\theight:100%;\n\tbackground: #fff;\n}"
+				}
+			]}]
 		});
 	</script>
 </body>

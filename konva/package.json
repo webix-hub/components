@@ -1,6 +1,6 @@
 {
   "name": "@wbx/view-konva",
-  "version": "2.1.7",
+  "version": "4.0.13",
   "description": "Konva widget as Webix view",
   "main": "konva.js",
   "scripts": {

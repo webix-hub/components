@@ -5,6 +5,7 @@ webix.protoUI({
 		theme:"monokai"
 	},
 	$init:function(config){
+		this.$view.innerHTML = "<div style='width:100%;height:100%'></div>";
 		this._waitEditor = webix.promise.defer();
 		this.$ready.push(this._render_cm_editor);
 	},
@@ -21,7 +22,7 @@ webix.protoUI({
 			return;
 		};
 
-		this._cdn = this.config.cdn || "https://cdnjs.cloudflare.com/ajax/libs/ace/1.3.3";
+		this._cdn = this.config.cdn || "https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.6";
 
 		webix.require([
 			this._cdn + "/ace.js"
@@ -38,7 +39,7 @@ webix.protoUI({
 			ace.config.set("themePath", this._cdn);
 		};
 
-		this._editor = ace.edit(this.$view);
+		this._editor = ace.edit(this.$view.firstChild);
 		
 
 		this._editor.$blockScrolling = Infinity;

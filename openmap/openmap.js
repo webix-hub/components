@@ -12,6 +12,11 @@ webix.protoUI({
 		
 		this._waitMap = webix.promise.defer();
 		this.$ready.push(this.render);
+
+		// do not call Webix Touch handlers on the map
+		webix.event(this.$view, "touchstart", function(e){
+			e.cancelBubble = true;
+		});
 	},
 	getMap:function(waitMap){
 		return waitMap?this._waitMap:this._map;
@@ -22,7 +27,7 @@ webix.protoUI({
 			return;
 		};
 
-		var cdn = this.config.cdn ? this.config.cdn : "https://unpkg.com/leaflet@1.3.1/dist";
+		var cdn = this.config.cdn ? this.config.cdn : "https://unpkg.com/leaflet@1.5.1/dist";
 
 		webix.require([
 			cdn+"/leaflet.js",
@@ -54,7 +59,6 @@ webix.protoUI({
 		return config;
 	},
 	mapType_setter:function(config){
-		//yadex#map, yadex#satellite, yadex#hybrid, yadex#publicMap
 		if(this._map)
 			this._map.setType(config);
 

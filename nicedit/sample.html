@@ -7,15 +7,31 @@
 	<script type="text/javascript" src="./nicedit.js"></script>
 </head>
 <body>
-	<div id="sample_div" style='width:600px; height:300px; margin:50px;'></div>
 	<script type="text/javascript">
 		webix.ui({
-			container:"sample_div",
-    		view:"nic-editor",
-    		config:{
-    			buttonList:['fontSize','bold','italic','underline','strikeThrough','subscript','superscript']
-    		},
-    		value:'<h2>Text editor</h2> <div><small>From Wikipedia, the free encyclopedia</small></div> <p>A <strong>text editor</strong> is a type of program used for editing plain text files </p>'
+    		rows:[
+    			{
+    				template:"NicEdit - WYSIWYG Content Editor",
+    				type:"header"
+    			},
+    			{cols:[
+    				{
+    					view:"nic-editor",
+			    		config:{
+			    			fullPanel : true
+			    		},
+			    		value:'<h2>Text editor</h2> <div><small>From Wikipedia, the free encyclopedia</small></div> <p>A <strong>text editor</strong> is a type of program used for editing plain text files </p>'
+    				},
+    				{view:"resizer"},
+    				{
+    					view:"nic-editor",
+			    		config:{
+			    			buttonList:['fontSize','bold','italic','underline','strikeThrough','subscript','superscript']
+			    		},
+			    		value:'<h2>Text editor</h2> <div><small>From Wikipedia, the free encyclopedia</small></div> <p>A <strong>text editor</strong> is a type of program used for editing plain text files </p>'
+    				}
+    			]}
+    		]
 		});
 		
 	</script>

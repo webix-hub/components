@@ -1,5 +1,5 @@
 webix.protoUI({
-	name:"hchart",
+	name:"highchart",
 	defaults:{		
 		modules:[]	
 	},
@@ -18,11 +18,7 @@ webix.protoUI({
 			return;
 		};
 
-		var cdn = c.cdn || "https://code.highcharts.com";
-
-		// stable version by default
-		if (!c.cdn)
-			cdn += "/7.0.3";
+		var cdn = c.cdn || "https://code.highcharts.com/7.2.0";		
 
 		var sources = [];
 			

@@ -14,7 +14,7 @@ webix.protoUI({
 			return;
 		};
 
-		var cdn = this.config.cdn || "https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.16.2/min/";
+		var cdn = this.config.cdn || "https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.18.0/min/";
 
 		webix.require(cdn + "vs/loader.js")
 		.then(webix.bind(function(){
@@ -28,14 +28,14 @@ webix.protoUI({
 
 			this._render_when_ready();
 		}, this))
-		.catch(console.log);		
+		.catch(console.log);
 	},
 	_render_when_ready:function(){
 		require(["vs/editor/editor.main"], webix.bind(function () {
-			const config = webix.copy(this.config);
-		    this._editor = monaco.editor.create(this.$view, config);
+			var config = webix.copy(this.config);
+			this._editor = monaco.editor.create(this.$view, config);
 
-		    this._waitEditor.resolve(this._editor);
+			this._waitEditor.resolve(this._editor);
 		}, this));
 		
 		if (this._focus_await)

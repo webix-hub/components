@@ -51,7 +51,7 @@ webix.protoUI({
 		};
 
 		// otherwise, use CDN
-		this._cdn = this._cdn || "https://cdn.dhtmlx.com/scheduler/5.0";
+		this._cdn = this._cdn || "https://cdn.dhtmlx.com/scheduler/5.2";
 
 		var cdn = this._cdn;
 		var skin = this.config.skin;
@@ -79,7 +79,7 @@ webix.protoUI({
 		});
 	},
 	_after_render_once:function(){
-		var scheduler = this._scheduler = window.Scheduler ? Scheduler.getSchedulerInstance() : window.scheduler;
+		var scheduler = this._scheduler = (window.Scheduler && Scheduler.getSchedulerInstance) ? Scheduler.getSchedulerInstance() : window.scheduler;
 		scheduler.skin = this.config.skin;
 
 		if (this.config.init)

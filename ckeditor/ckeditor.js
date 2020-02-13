@@ -3,77 +3,82 @@ webix.protoUI({
 	$init:function(config){
 		this.$view.className += " webix_selectable";
 		this._waitEditor = webix.promise.defer();
+
+		var tid = config.textAreaID = "t"+webix.uid();
+		this.$view.innerHTML = "<textarea id='"+tid+"'>"+config.value+"</textarea>";
+
+		this.$ready.push(this._init_ckeditor_once);
 	},
 	defaults:{
-		borderless:true,
 		language:"en",
-		barHeight:44,
 		toolbar: [
 			[ 'Bold', 'Italic', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' ],
 			[ 'FontSize', 'TextColor', 'BGColor' ]
-		]
+		],
+		editorConfig: {}
 	},
-	_init_ckeditor_once:function(){
-		var tid = this.config.textAreaID = "t"+webix.uid();
-		this.$view.innerHTML = "<textarea id='"+tid+"'>"+this.config.value+"</textarea>";
-		
+	_init_ckeditor_once:function(){		
 		if (this.config.cdn === false){
-			this._render_ckeditor;
+			webix.delay( webix.bind( this._render_ckeditor, this) );
 			return;
 		};
 
-		var cdn = this.config.cdn || "//cdn.ckeditor.com/4.9.2/standard/";
+		var cdn = this.config.cdn || "//cdn.ckeditor.com/4.13.0/standard/";
 	
 		window.CKEDITOR_BASEPATH = cdn;			
 		webix.require([cdn+"/ckeditor.js"])
 		.then( webix.bind(this._render_ckeditor, this) )
 		.catch(function(e){
 			console.log(e);
-		});		
+		});	
 	},
 	_render_ckeditor:function(){
 		var initMethod = "replace";
 		if(this.config.editorType === "inline") {
 			CKEDITOR.disableAutoInline = true;
 			initMethod = "inline";
-		}
+			this.$view.style["overflow-y"] = "auto";
+		};
 
-		this._3rd_editor = CKEDITOR[initMethod]( this.config.textAreaID, {
+		var barHeight = 70; // toolbar + bottombar, as initial sizes are set to the editable area
+		var config = webix.extend({
 			toolbar: this.config.toolbar,
 			language: this.config.language,
-			width:this.$width -2,
-			height:this.$height - this.config.barHeight
-		});
-		this._waitEditor.resolve(this._3rd_editor);
+			width:this.$width,
+			height:this.$height-barHeight,
+			resize_enabled:false
+		}, this.config.editorConfig);
+
+		this._editor = CKEDITOR[initMethod](this.config.textAreaID, config);
+		this._waitEditor.resolve(this._editor);
 	},
 	_set_inner_size:function(x, y){
-		if (!this._3rd_editor || !this._3rd_editor.container || !this.$width || this.config.editorType === "inline") return;
-		this._3rd_editor.resize(x, y);
+		if (!this._editor || !this._editor.container || !this.$width || this.config.editorType === "inline") return;
+		this._editor.resize(x, y);
 	},
 	$setSize:function(x,y){
 		if (webix.ui.view.prototype.$setSize.call(this, x, y)){
-			this._init_ckeditor_once();
 			this._set_inner_size(x,y);
 		}
 	},
 	setValue:function(value){
 		this.config.value = value;
 
-		if (this._3rd_editor && this._3rd_editor.status === "ready")
-			this._3rd_editor.setData(value);
+		if (this._editor && this._editor.status === "ready")
+			this._editor.setData(value);
 		else webix.delay(function(){
 			this.setValue(value);
 		},this,[],100);
 	},
 	getValue:function(){
-		return this._3rd_editor?this._3rd_editor.getData():this.config.value;
+		return this._editor?this._editor.getData():this.config.value;
 	},
 	focus:function(){
 		this._focus_await = true;
-		if (this._3rd_editor)
-			this._3rd_editor.focus();
+		if (this._editor)
+			this._editor.focus();
 	},
 	getEditor:function(waitEditor){
-		return waitEditor?this._waitEditor:this._3rd_editor;
+		return waitEditor?this._waitEditor:this._editor;
 	}
 }, webix.ui.view);

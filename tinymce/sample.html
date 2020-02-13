@@ -9,12 +9,12 @@
 	<script type="text/javascript">
 		webix.ui({
 			type:"space", rows:[		
-				{ template:"TinyMCE editor", type:"header" },	 
+				{ template:"TinyMCE 4 editor within Webix view", type:"header", css:"webix_dark" },
 				{ 
 					id:'editor', view:"tinymce-editor",
-					value:"<h2>Text editor</h2> <div><small>From Wikipedia, the free encyclopedia</small></div> <p>A <strong>text editor</strong> is a type of program used for editing plain text files </p>",
+					// provide an API key here:
+					// apiKey:"",
 					config:{
-						menubar:false,
 						plugins:"link",
 						toolbar:"fontsizeselect | bold italic underline | alignleft aligncenter alignright alignjustify | link",
 						content_style:"* { color:#475466; font-family:Roboto,sans-serif; font-size:15px; }"
@@ -22,6 +22,11 @@
 				}
 			]
 		});
+
+
+		$$("editor").setValue("<h2>Text editor</h2> <div><small>From Wikipedia, the free encyclopedia</small></div> <p>A <strong>text editor</strong> is a type of program used for editing plain text files </p>");
+		$$("editor").focus();
+
 	</script>
 </body>
 </html>

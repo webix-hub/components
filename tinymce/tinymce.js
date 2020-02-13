@@ -4,11 +4,10 @@ webix.protoUI({
 		config:{ theme:"modern", statusbar:false },
 		value:""
 	},
-	$init:function(){
-		this.$view.className += " webix_selectable";		
-
+	$init:function(){		
 		this._mce_id = "webix_mce_"+(this.config.id || webix.uid());
 		this.$view.innerHTML = "<textarea id='"+this._mce_id+"' style='width:100%; height:100%'></textarea>";
+		this.$view.className += " webix_selectable";
 
 		this._waitEditor = webix.promise.defer();		
 		
@@ -18,14 +17,15 @@ webix.protoUI({
 		this._set_inner_size();
 	},	
 	_require_tinymce_once:function(){
-
 		var c = this.config;
 	
 		if (c.cdn === false || window.tinymce){
 			this._init_tinymce_once();
 			return;
 		};
-		var cdn = c.cdn || "https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.9.4";
+
+		var apiKey = c.apiKey ? c.apiKey : "no-api-key";
+		var cdn = c.cdn || "https://cdn.tiny.cloud/1/"+apiKey+"/tinymce/4.9.6-54";
 
 		//path to tinymce codebase
 		window.tinyMCEPreInit = { 
@@ -34,15 +34,13 @@ webix.protoUI({
 			suffix:".min" 
 		};
 
-		var apiKey = c.apiKey ? "?apiKey="+c.apiKey : "";
 		webix.require([
-			cdn+"/tinymce.min.js" + apiKey
+			cdn+"/tinymce.min.js"
 		])
 			.then( webix.bind(this._init_tinymce_once, this) )
 			.catch(function(e){
 				console.log(e);
 			});
-
 	},
 	_init_tinymce_once:function(){	
 		if (!tinymce.dom.Event.domLoaded){
@@ -51,38 +49,33 @@ webix.protoUI({
 			webix.html.addStyle(".mce-tinymce.mce-container{ border-width:0px !important}");
 		};
 		
-		var c = this.config,
-				editor_config = c.config ? webix.copy(c.config) : {};
+		var editor_config = webix.copy(this.config.config || {});
 
-		editor_config.mode = "exact";
-		editor_config.selector = "#"+this._mce_id;
+		webix.extend(editor_config, {
+			selector:"#"+this._mce_id,
+			resize:false,
+			mode:"exact"
+		}, true);
 
 		var custom_setup = editor_config.setup;
 
 		editor_config.setup = webix.bind(function(editor){			
 			if (custom_setup) 
 				custom_setup(editor);
-			editor.on("init", webix.bind(this._mce_editor_setup, this), true);			
+			editor.on("init", webix.bind(this._mce_editor_ready, this), true);			
 		}, this);
 		
 		webix.delay(function(){
 			tinymce.init(editor_config)
-		}, this)
-		
+		}, this);		
 	},
-	_mce_editor_setup:function(event){
-		if (!this._editor){
+	_mce_editor_ready:function(event){
+		if (!this._editor)
 			this._editor = event.target;
-			this._mce_editor_ready();
-		}		
-	},
-	_mce_editor_ready:function(){
-		this._set_inner_size();
 		this._waitEditor.resolve(this._editor);
 
 		this.setValue(this.config.value);
-		if (this._focus_await)
-			this.focus();
+		this._set_inner_size();	
 	},
 	_set_inner_size:function(){
 		if (this._editor){
@@ -98,26 +91,25 @@ webix.protoUI({
 		return height;
 	},
 	$setSize:function(x,y){
-		if (webix.ui.view.prototype.$setSize.call(this, x, y)){				
-			if (this._editor)
-				this._set_inner_size();		
+		if (webix.ui.view.prototype.$setSize.call(this, x, y)){
+			this._set_inner_size();		
 		}	
 	},
 	setValue:function(value){
 		this.config.value = value;
 		this._waitEditor.then(function(editor){
 			editor.setContent(value);
-		});		
+		});
 	},
 	getValue:function(){
 		return this._editor?this._editor.getContent():this.config.value;
 	},
 	focus:function(){
-		this._focus_await = true;
-		if (this._editor)
-			this._editor.focus();
+		this._waitEditor.then(function(editor){
+			editor.focus();
+		});
 	},
-	getEditor:function(waitEditor){
-		return waitEditor?this._waitEditor:this._editor;
+	getEditor:function(wait){
+		return wait?this._waitEditor:this._editor;
 	}
 }, webix.ui.view);

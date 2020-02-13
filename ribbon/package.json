@@ -1,6 +1,6 @@
 {
   "name": "@wbx/view-ribbon",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Webix Ribbon widget",
   "main": "ribbon.js",
   "scripts": {

@@ -1,8 +1,11 @@
 .webix_view.webix_form_editor .webix_editor_top{
 	position:relative;
 }
-.webix_view.webix_form_editor .webix_icon.fa-trash:hover,
-.webix_view.webix_form_editor .webix_icon.fa-plus-circle:hover {
+.webix_view.webix_form_editor .webix_icon.wxi-plus-circle {
+	color:#475466;
+}
+.webix_view.webix_form_editor .webix_icon.wxi-trash:hover,
+.webix_view.webix_form_editor .webix_icon.wxi-plus-circle:hover {
 	cursor:pointer;
 	color:#3498db;
 }
@@ -29,10 +32,10 @@
 }
 .group_header:before{
 	position: absolute;
-	content: "\f107";
+	content: "\F001";
 	margin-top: 9px;
 	margin-left: -3px;
-	font-family:FontAwesome;
+	font-family:"Webix Awesome Icons";
 	font-size:20px;
 	font-weight:400;
 }

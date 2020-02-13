@@ -1,6 +1,6 @@
 {
   "name": "@wbx/view-d3-chart",
-  "version": "5.5.0",
+  "version": "5.12.0",
   "description": "D3 chart as Webix view",
   "main": "d3.js",
   "scripts": {

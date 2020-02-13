@@ -5,12 +5,12 @@
 	<script src="//cdn.webix.com/edge/webix.js" type="text/javascript" charset="utf-8"></script>
 
 	<!-- `cdn:false` assumes that required files are included manually -->
-	<!-- 
-	<script src="//cdn.ckeditor.com/4.9.2/basic/ckeditor.js"></script>
+	<!--  
+	<script src="//cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
 	<script>
-		window.CKEDITOR_BASEPATH = "//cdn.ckeditor.com/4.9.2/basic/";
+		window.CKEDITOR_BASEPATH = "//cdn.ckeditor.com/4.13.0/standard/";
 	</script> 
-	-->
+	 -->
 
 	<script type="text/javascript" src="./ckeditor.js"></script>
 	<style type="text/css">.cke_textarea_inline{ padding:10px; }</style>
@@ -19,14 +19,19 @@
 	<script type="text/javascript">
 		webix.ready(function(){
 			webix.ui({
-				type:"space", rows:[{
-					view:"ckeditor",
-		    		value:'<h2>Text editor</h2> <div><small>From Wikipedia, the free encyclopedia</small></div> <p>A <strong>text editor</strong> is a type of program used for editing plain text files </p>'
-		    	},{
-					view:"ckeditor",
-					editorType:"inline",
-		    		value:'<h2>Text editor</h2> <div><small>From Wikipedia, the free encyclopedia</small></div> <p>A <strong>text editor</strong> is a type of program used for editing plain text files </p>'
-		    	}]
+				rows:[
+					{template:"CKEditor 4: Classic and Inline modes", type:"header"},
+					{
+						view:"ckeditor",
+						value:'<h2>Text editor</h2> <div><small>From Wikipedia, the free encyclopedia</small></div> <p>A <strong>text editor</strong> is a type of program used for editing plain text files </p>'
+					},
+					{view:"resizer"},
+					{
+						view:"ckeditor",
+						editorType:"inline",
+						value:'<h2>Text editor</h2> <div><small>From Wikipedia, the free encyclopedia</small></div> <p>A <strong>text editor</strong> is a type of program used for editing plain text files </p>'
+					}
+				]
 			});
 		});
 	</script>

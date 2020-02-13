@@ -11,7 +11,7 @@ webix.protoUI({
 			return;
 		}
 
-		var cdn = this.config.cdn ? this.config.cdn : "https://cdn.rawgit.com/konvajs/konva/2.1.7";
+		var cdn = this.config.cdn ? this.config.cdn : "https://unpkg.com/konva@4.0.13";
 		webix.require([
 			cdn+"/konva.min.js"
 		])

@@ -1,6 +1,6 @@
 {
   "name": "@wbx/view-ace-editor",
-  "version": "1.3.3",
+  "version": "1.4.6",
   "description": "Ace editor as Webix view",
   "main": "ace.js",
   "scripts": {

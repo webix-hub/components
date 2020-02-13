@@ -43,24 +43,28 @@ webix.protoUI({
 		}
 				
 		var nic = new nicEditor(this.config.config).panelInstance(this.$view.firstChild);
-		this._3rd_editor = nic.nicInstances[nic.nicInstances.length-1];
+		this._editor = nic.nicInstances[nic.nicInstances.length-1];
 		this._set_inner_size();
 
-		this._waitEditor.resolve(this._3rd_editor);
+		this._waitEditor.resolve(this._editor);
 		
 		this.setValue(this.config.value);
 		if (this._focus_await)
 			this.focus();
 	},
 	_set_inner_size:function(){
-		if (!this._3rd_editor || !this.$width) return;
+		if (!this._editor || !this.$width) return;
 
-		var editor = this.$view.firstChild;
-		editor.style.width = this.$width+"px";
+		var editorView = this.$view;
+		var toolbar = editorView.firstChild;
 
-		editor = editor.nextSibling;
-		editor.style.width = this.$width-20+"px";	//2x10 - padding
-		editor.style.height = this.$height-46+"px";	//2x10 padding + 26 - header with borders
+		toolbar.style.width = this.$width+"px";
+
+		var toolbarHeight = toolbar.clientHeight || 0;
+		var editor = toolbar.nextSibling;
+		
+		editor.style.width = (this.$width-20)+"px";	//2x10 - padding
+		editor.style.height = (this.$height-20-toolbarHeight)+"px";	//2x10 padding + header with borders
 	},
 	$setSize:function(x,y){
 		if (webix.ui.view.prototype.$setSize.call(this, x, y)){
@@ -69,18 +73,18 @@ webix.protoUI({
 	},
 	setValue:function(value){
 		this.config.value = value;
-		if (this._3rd_editor)
-			this._3rd_editor.setContent(value);
+		if (this._editor)
+			this._editor.setContent(value);
 	},
 	getValue:function(){
-		return this._3rd_editor?this._3rd_editor.getContent():this.config.value;
+		return this._editor?this._editor.getContent():this.config.value;
 	},
 	focus:function(){
 		this._focus_await = true;
-		if (this._3rd_editor)
-			this._3rd_editor.elm.focus();
+		if (this._editor)
+			this._editor.elm.focus();
 	},
 	getEditor:function(waitEditor){
-		return waitEditor?this._waitEditor:this._3rd_editor;
+		return waitEditor?this._waitEditor:this._editor;
 	}
 }, webix.ui.view);

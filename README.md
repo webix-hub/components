@@ -37,7 +37,6 @@ Editors
 - [Monaco](http://webix-hub.github.io/components/monaco/sample.html) (monaco-editor)
 - [Ace](http://webix-hub.github.io/components/ace/sample.html) (ace-editor)
 
-
 Charts
 -------
 - [Raphael](http://webix-hub.github.io/components/raphael/sample.html) (raphael-chart)
@@ -46,6 +45,7 @@ Charts
 - [Just Gage](http://webix-hub.github.io/components/justgage/sample.html) (justgage-chart)
 - [Fusion](http://webix-hub.github.io/components/fusion/sample.html) (fusion-chart)
 - [Vis](http://webix-hub.github.io/components/vis/sample.html) (vis-chart)
+- [Highcharts](http://webix-hub.github.io/components/highcharts/sample.html) (highchart)
 
 DHTMLX components
 -------------------

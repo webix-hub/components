@@ -23,7 +23,7 @@ webix.protoUI({
 			return;
 		};
 
-		var cdn = this.config.cdn ? this.config.cdn : "https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7";
+		var cdn = this.config.cdn ? this.config.cdn : "https://cdnjs.cloudflare.com/ajax/libs/raphael/2.3.0";
 
 		webix.require([
 			cdn + "/raphael.min.js"
