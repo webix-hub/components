@@ -22,7 +22,7 @@ webix.protoUI({
 			return;
 		};
 
-		var cdn = this.config.cdn ? this.config.cdn : "https://cdn.plyr.io/3.5.6";
+		var cdn = this.config.cdn ? this.config.cdn : "https://cdn.plyr.io/3.5.10";
 
 		webix.require([
 			cdn+"/plyr.js",
