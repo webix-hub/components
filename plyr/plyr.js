@@ -37,15 +37,17 @@ webix.protoUI({
 	_initPlyr:function(){
 		var options = webix.extend({}, this.config.config);
 		this._player = new Plyr(this._container, options);
-		this.$view.firstChild.firstChild.setAttribute("tabindex", "-1");
+		this._player.elements.container.setAttribute("tabindex", "-1");		
 		this._waitView.resolve(this._player);
 
 		this._player.on("canplay", webix.bind(function(){
+			// prevent focusing on media tag outside the expected UI
+			this._player.media.setAttribute("tabindex", "-1");	
 			this._normalizeRatio();
 		}, this));
 		this._player.on("ready", webix.bind(function(){
 			// allow width less than 200px
-			this.$view.querySelector(".plyr--full-ui").style["min-width"] = "0px";
+			this.$view.querySelector(".plyr--full-ui").style["min-width"] = "0px";			
 			this._normalizeRatio();
 		}, this));
 	},
