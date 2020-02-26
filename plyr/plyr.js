@@ -50,6 +50,11 @@ webix.protoUI({
 			this.$view.querySelector(".plyr--full-ui").style["min-width"] = "0px";			
 			this._normalizeRatio();
 		}, this));
+		this.attachEvent("onDestroy", function(){
+			if (this._player){
+				this._player.destroy();
+			}
+		});
 	},
 	$setSize:function(x,y){
 		this.$view.firstChild.style.width = x+"px";
@@ -77,13 +82,14 @@ webix.protoUI({
 		return x;
 	},
 	_normalizeRatio:function(x, y){
-		x = x || this.$view.clientWidth;
-		y = y || this.$view.clientHeight;
-		var div = this._gcdRatio(x, y),
-			ratioX = (x/div).toString(),
-			ratioY = (y/div).toString(),
-			ratio = ratioX+":"+ratioY;
-		
-		this._player.ratio = ratio;
+		if (this.$view){
+			x = x || this.$view.clientWidth;
+			y = y || this.$view.clientHeight;
+			var div = this._gcdRatio(x, y),
+				ratioX = (x/div).toString(),
+				ratioY = (y/div).toString(),
+				ratio = ratioX+":"+ratioY;			
+			this._player.ratio = ratio;
+		}
 	}
 }, webix.ui.view, webix.EventSystem);

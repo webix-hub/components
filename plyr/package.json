@@ -1,6 +1,6 @@
 {
     "name": "@wbx/view-plyr",
-    "version": "3.5.10-a",
+    "version": "3.5.10-b",
     "description": "Plyr player as Webix view",
     "main": "plyr.js",
     "scripts": {
