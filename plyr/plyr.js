@@ -35,26 +35,33 @@ webix.protoUI({
 		
 	},
 	_initPlyr:function(){
-		var options = webix.extend({}, this.config.config);
-		this._player = new Plyr(this._container, options);
-		this._player.elements.container.setAttribute("tabindex", "-1");		
-		this._waitView.resolve(this._player);
+		if (this.$view){
+			var options = webix.extend({}, this.config.config);
+			this._player = new Plyr(this._container, options);
+			this._player.elements.container.setAttribute("tabindex", "-1");
+			// ensure proper desctruction
+			this.attachEvent("onDestroy", function(){
+				if (this._player){
+					this._player.destroy();
+				}
+			});
+			this._waitView.resolve(this._player);
 
-		this._player.on("canplay", webix.bind(function(){
-			// prevent focusing on media tag outside the expected UI
-			this._player.media.setAttribute("tabindex", "-1");	
-			this._normalizeRatio();
-		}, this));
-		this._player.on("ready", webix.bind(function(){
-			// allow width less than 200px
-			this.$view.querySelector(".plyr--full-ui").style["min-width"] = "0px";			
-			this._normalizeRatio();
-		}, this));
-		this.attachEvent("onDestroy", function(){
-			if (this._player){
-				this._player.destroy();
-			}
-		});
+			this._player.on("canplay", webix.bind(function(){
+				if (this._player.media){
+					// prevent focusing on media tag outside the expected UI
+					this._player.media.setAttribute("tabindex", "-1");	
+					this._normalizeRatio();
+				}
+			}, this));
+			this._player.on("ready", webix.bind(function(){
+				if (this.$view){
+					// allow width less than 200px
+					this.$view.querySelector(".plyr--full-ui").style["min-width"] = "0px";			
+					this._normalizeRatio();
+				}
+			}, this));			
+		}
 	},
 	$setSize:function(x,y){
 		this.$view.firstChild.style.width = x+"px";
