@@ -19,7 +19,7 @@ webix.protoUI({
 		};
 
 		// we use DecoupledEditor only
-		var cdn = this.config.cdn || "https://cdn.ckeditor.com/ckeditor5/12.4.0/decoupled-document";
+		var cdn = this.config.cdn || "https://cdn.ckeditor.com/ckeditor5/17.0.0/decoupled-document";
 	
 		webix.require([cdn+"/ckeditor.js"])
 			.then( webix.bind(this._render_ckeditor, this) )
@@ -28,7 +28,11 @@ webix.protoUI({
 			});		
 	},
 	_render_ckeditor:function(){
-		var config = this.config.config;		
+		var config = webix.extend({
+			toolbar: {
+				shouldNotGroupWhenFull: true
+			}
+		}, this.config.config, true);		
 		DecoupledEditor.create(this.$view.querySelector(".webix_ck_editor"), config)
 			.then(webix.bind(this._finalize_init, this))
 			.catch(function(e){
