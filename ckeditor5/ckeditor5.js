@@ -14,12 +14,12 @@ webix.protoUI({
 	},
 	_require_ckeditor:function(){
 		if (this.config.cdn === false){
-			this._render_ckeditor;
+			this._render_ckeditor();
 			return;
 		};
 
 		// we use DecoupledEditor only
-		var cdn = this.config.cdn || "https://cdn.ckeditor.com/ckeditor5/17.0.0/decoupled-document";
+		var cdn = this.config.cdn || "https://cdn.ckeditor.com/ckeditor5/18.0.0/decoupled-document";
 	
 		webix.require([cdn+"/ckeditor.js"])
 			.then( webix.bind(this._render_ckeditor, this) )
@@ -32,12 +32,15 @@ webix.protoUI({
 			toolbar: {
 				shouldNotGroupWhenFull: true
 			}
-		}, this.config.config, true);		
-		DecoupledEditor.create(this.$view.querySelector(".webix_ck_editor"), config)
-			.then(webix.bind(this._finalize_init, this))
-			.catch(function(e){
-				console.error(e);
-			});					
+		}, this.config.config, true);
+
+		var editor = typeof DecoupledDocumentEditor === "undefined" ? DecoupledEditor : DecoupledDocumentEditor; //support Document Editor built with online builder
+
+    editor.create(this.$view.querySelector(".webix_ck_editor"), config)
+      .then(webix.bind(this._finalize_init, this))
+      .catch(function(e){
+      console.error(e);
+    });					
 	},
 	_finalize_init:function(editor){
 		this._tools_container = this.$view.querySelector(".webix_ck_toolbar");
