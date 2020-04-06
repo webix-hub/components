@@ -34,13 +34,13 @@ webix.protoUI({
 			}
 		}, this.config.config, true);
 
-		var editor = typeof DecoupledDocumentEditor === "undefined" ? DecoupledEditor : DecoupledDocumentEditor; //support Document Editor built with online builder
+		var editor = !window.DecoupledDocumentEditor ? DecoupledEditor : DecoupledDocumentEditor; //support Document Editor built with online builder
 
-    editor.create(this.$view.querySelector(".webix_ck_editor"), config)
-      .then(webix.bind(this._finalize_init, this))
-      .catch(function(e){
-      console.error(e);
-    });					
+		editor.create(this.$view.querySelector(".webix_ck_editor"), config)
+			.then(webix.bind(this._finalize_init, this))
+			.catch(function(e){
+				console.error(e);
+			});					
 	},
 	_finalize_init:function(editor){
 		this._tools_container = this.$view.querySelector(".webix_ck_toolbar");
