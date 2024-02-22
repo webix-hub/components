@@ -18,7 +18,7 @@ webix.protoUI({
 			return;
 		};
 
-		var cdn = c.cdn || "https://code.highcharts.com/7.2.0";		
+		var cdn = c.cdn || "https://code.highcharts.com/11.3.0";		
 
 		var sources = [];
 			
