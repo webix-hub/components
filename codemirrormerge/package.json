@@ -1,0 +1,26 @@
+{
+    "name": "@wbx/view-codemirror-merge-editor",
+    "version": "5.48.4-e",
+    "description": "CodeMirror with merge addon as Webix view",
+    "main": "codemirror_merge.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/webix-hub/components.git"
+    },
+    "keywords": [
+      "webix",
+      "codemirror",
+      "merge",
+      "editor",
+      "view"
+    ],
+    "author": "XB Software",
+    "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/webix-hub/components/issues"
+    },
+    "homepage": "https://github.com/webix-hub/components#readme"
+  }

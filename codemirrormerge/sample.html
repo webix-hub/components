@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+    <link rel="stylesheet" href="//cdn.webix.com/edge/webix.css" type="text/css" media="screen" charset="utf-8">
+    <script src="//cdn.webix.com/edge/webix.js" type="text/javascript" charset="utf-8"></script>
+
+    <script type="text/javascript" src="./codemirror_merge.js"></script>
+
+    <style>
+        .webix_view .CodeMirror-merge,
+        .webix_view .CodeMirror-merge-pane,
+        .webix_view .CodeMirror-merge .CodeMirror {
+            height:100%;
+        }
+    </style>
+</head>
+<body>
+    <script type="text/javascript">
+
+        webix.ui({
+            rows: [
+                { template: "CodeMirror Merge Editor", type: "header", css: "webix_dark" },
+                { view: "codemirror-merge-editor", id: "editor", preserveUndoHistory: true },
+            ]
+        });
+
+        const editor = $$("editor");
+        editor.setValues({
+            editorLeft: "<span>Editable value</span>",
+            editorRight: "<span>Modified value</span>",
+        });
+        editor.focus();
+
+    </script>
+</body>
+</html>
