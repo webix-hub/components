@@ -22,7 +22,7 @@ webix.protoUI({
 			return;
 		};
 
-		var cdn = "https://js.api.here.com/v3/3.0";
+		var cdn = "https://js.api.here.com/v3/3.1";
 		var sources = [
 			cdn+"/mapsjs-core.js",
 			cdn+"/mapsjs-service.js"
@@ -57,7 +57,7 @@ webix.protoUI({
 
 		if(this.isVisible(c.id)){
 			this._map = new H.Map( this._contentobj,
-				this._defaultLayers[c.mapType.type][c.mapType.layer],
+				this._defaultLayers.vector.normal.map,
 				{
 					zoom: c.zoom,
 					center: c.center
