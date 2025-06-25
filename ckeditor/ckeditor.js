@@ -17,20 +17,20 @@ webix.protoUI({
 		],
 		editorConfig: {}
 	},
-	_init_ckeditor_once:function(){		
+	_init_ckeditor_once:function(){
 		if (this.config.cdn === false){
 			webix.delay( webix.bind( this._render_ckeditor, this) );
 			return;
 		};
 
 		var cdn = this.config.cdn || "//cdn.ckeditor.com/4.13.0/standard/";
-	
-		window.CKEDITOR_BASEPATH = cdn;			
-		webix.require([cdn+"/ckeditor.js"])
+
+		window.CKEDITOR_BASEPATH = cdn;
+		webix.require([cdn+"ckeditor.js"])
 		.then( webix.bind(this._render_ckeditor, this) )
 		.catch(function(e){
 			console.log(e);
-		});	
+		});
 	},
 	_render_ckeditor:function(){
 		var initMethod = "replace";
