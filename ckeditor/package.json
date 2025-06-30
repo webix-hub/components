@@ -1,6 +1,6 @@
 {
   "name": "@wbx/view-ckeditor",
-  "version": "4.13.0",
+  "version": "4.22.1",
   "description": "CKEditor as Webix view",
   "main": "ckeditor.js",
   "scripts": {
