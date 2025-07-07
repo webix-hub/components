@@ -34,11 +34,11 @@ webix.protoUI({
 			return;
 		};
 
-		var cdn = this.config.cdn || "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/";
+		var cdn = this.config.cdn || "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.19";
 		// basic
 		var sources = [
-			cdn + "/codemirror.css",
-			cdn + "/codemirror.js"
+			cdn + "/codemirror.min.css",
+			cdn + "/codemirror.min.js"
 		];
 
 		// mode
