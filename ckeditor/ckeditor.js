@@ -4,49 +4,50 @@ webix.protoUI({
 		this.$view.className += " webix_selectable";
 		this._waitEditor = webix.promise.defer();
 
-		var tid = config.textAreaID = "t"+webix.uid();
-		this.$view.innerHTML = "<textarea id='"+tid+"'>"+config.value+"</textarea>";
+		const tid = config.textAreaID = "t"+webix.uid();
+		this.$view.innerHTML = `<textarea id=${tid}>${config.value || ""}</textarea>`;
 
 		this.$ready.push(this._init_ckeditor_once);
 	},
 	defaults:{
-		language:"en",
+		language: "en",
+		barHeight: 70,
 		toolbar: [
 			[ 'Bold', 'Italic', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' ],
 			[ 'FontSize', 'TextColor', 'BGColor' ]
 		],
 		editorConfig: {}
 	},
-	_init_ckeditor_once:function(){		
+	_init_ckeditor_once:function(){
 		if (this.config.cdn === false){
 			webix.delay( webix.bind( this._render_ckeditor, this) );
 			return;
 		};
 
-		var cdn = this.config.cdn || "//cdn.ckeditor.com/4.13.0/standard/";
-	
-		window.CKEDITOR_BASEPATH = cdn;			
-		webix.require([cdn+"/ckeditor.js"])
+		const cdn = this.config.cdn || "//cdn.ckeditor.com/4.22.1/standard/";
+
+		window.CKEDITOR_BASEPATH = cdn;
+		webix.require([cdn+"ckeditor.js"])
 		.then( webix.bind(this._render_ckeditor, this) )
 		.catch(function(e){
 			console.log(e);
-		});	
+		});
 	},
 	_render_ckeditor:function(){
-		var initMethod = "replace";
+		let initMethod = "replace";
 		if(this.config.editorType === "inline") {
 			CKEDITOR.disableAutoInline = true;
 			initMethod = "inline";
 			this.$view.style["overflow-y"] = "auto";
 		};
 
-		var barHeight = 70; // toolbar + bottombar, as initial sizes are set to the editable area
-		var config = webix.extend({
+		const barHeight = this.config.barHeight; // toolbar + bottombar, as initial sizes are set to the editable area
+		const config = webix.extend({
 			toolbar: this.config.toolbar,
 			language: this.config.language,
-			width:this.$width,
-			height:this.$height-barHeight,
-			resize_enabled:false
+			width: this.$width,
+			height: this.$height - barHeight,
+			resize_enabled: false,
 		}, this.config.editorConfig);
 
 		this._editor = CKEDITOR[initMethod](this.config.textAreaID, config);
@@ -68,10 +69,10 @@ webix.protoUI({
 			this._editor.setData(value);
 		else webix.delay(function(){
 			this.setValue(value);
-		},this,[],100);
+		}, this, [], 100);
 	},
 	getValue:function(){
-		return this._editor?this._editor.getData():this.config.value;
+		return this._editor ? this._editor.getData() : this.config.value;
 	},
 	focus:function(){
 		this._focus_await = true;
@@ -79,6 +80,6 @@ webix.protoUI({
 			this._editor.focus();
 	},
 	getEditor:function(waitEditor){
-		return waitEditor?this._waitEditor:this._editor;
+		return waitEditor ? this._waitEditor : this._editor;
 	}
 }, webix.ui.view);
